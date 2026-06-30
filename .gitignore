@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+*.pyo
+*.tmp
+~$*
+
+# Local environments
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+
+# Manuscripts and administrative files
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+
+# Generated analysis outputs
+tennis_workflow_results_en.xlsx
+model_ablation_all_4095.csv
+figure*.pdf
+figure*.png
+*.xlsx
+
