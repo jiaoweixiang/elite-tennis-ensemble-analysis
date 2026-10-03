@@ -1,0 +1,84 @@
+{
+  "protocol": {
+    "n_complete_runs": 30,
+    "seeds": [
+      42,
+      142,
+      242,
+      342,
+      442,
+      542,
+      642,
+      742,
+      842,
+      942,
+      1042,
+      1142,
+      1242,
+      1342,
+      1442,
+      1542,
+      1642,
+      1742,
+      1842,
+      1942,
+      2042,
+      2142,
+      2242,
+      2342,
+      2442,
+      2542,
+      2642,
+      2742,
+      2842,
+      2942
+    ],
+    "archived_seed_values_recomputed": 3,
+    "other_seed_values": 27,
+    "test_observations": 40,
+    "background_observations": 50,
+    "background_seed": 42,
+    "nsamples_per_observation": 2048,
+    "model": "fixed final AUC-selected seven-member Platt ensemble"
+  },
+  "backhand_rank_counts": {
+    "6": 30
+  },
+  "backhand_top6_frequency": 1.0,
+  "backhand_rank_median": 6.0,
+  "backhand_rank_range": [
+    6,
+    6
+  ],
+  "pairwise_rank_spearman_range": [
+    0.9884315906562846,
+    1.0
+  ],
+  "pairwise_rank_spearman_median": 0.9959955506117909,
+  "pairwise_top6_jaccard_range": [
+    1.0,
+    1.0
+  ],
+  "pairwise_top6_jaccard_median": 1.0,
+  "number_of_distinct_top6_sets": 1,
+  "top6_30": [
+    "Service Breaks",
+    "Total Returns",
+    "Total Points Won",
+    "Unforced Errors",
+    "2nd Serve Pts Won ",
+    "Backhand Returns"
+  ],
+  "top6_archived3": [
+    "Service Breaks",
+    "Total Returns",
+    "Total Points Won",
+    "Unforced Errors",
+    "2nd Serve Pts Won ",
+    "Backhand Returns"
+  ],
+  "mean_abs_shap_30_vs_archived3_max_absolute_difference": 9.495147873606752e-05,
+  "point_shap_30_vs_archived3_median_absolute_difference": 0.00015383153534861732,
+  "point_shap_30_vs_archived3_max_absolute_difference": 0.00222093691577472,
+  "mean_abs_shap_30_vs_archived3_rank_spearman": 0.9982202447163514
+}

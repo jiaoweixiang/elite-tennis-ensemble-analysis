@@ -1,0 +1,69 @@
+{
+  "status": "post hoc fixed-member refit ablation; not selection by backhand rank",
+  "removed": [
+    "Backhand Returns"
+  ],
+  "member_rule": "inherit the AUC-selected members in each outer fold and final training fit",
+  "full_refit_max_abs_difference": {
+    "outer": 1.1102230246251565e-16,
+    "test": 1.1102230246251565e-16
+  },
+  "outer": {
+    "full_auc": 0.9655760054533061,
+    "without_backhand_auc": 0.9652351738241308,
+    "auc_delta_full_minus_without": 0.00034083162917530885,
+    "auc_delta_match_bootstrap_95pct": [
+      -0.003831417624520994,
+      0.004696429584493718
+    ],
+    "brier_increase_without": 0.0006053996888921026,
+    "brier_increase_match_bootstrap_95pct": [
+      -0.001893489548184184,
+      0.002991956155317072
+    ],
+    "valid_resamples": 2000
+  },
+  "outer_folds": [
+    {
+      "fold": 1,
+      "full_auc": 0.9666666666666667,
+      "without_backhand_auc": 0.9708333333333333
+    },
+    {
+      "fold": 2,
+      "full_auc": 0.993939393939394,
+      "without_backhand_auc": 0.993939393939394
+    },
+    {
+      "fold": 3,
+      "full_auc": 0.934640522875817,
+      "without_backhand_auc": 0.9313725490196079
+    },
+    {
+      "fold": 4,
+      "full_auc": 0.9904761904761905,
+      "without_backhand_auc": 0.9904761904761905
+    },
+    {
+      "fold": 5,
+      "full_auc": 0.9761904761904763,
+      "without_backhand_auc": 0.9761904761904763
+    }
+  ],
+  "test_2025": {
+    "full_auc": 0.9733333333333334,
+    "without_backhand_auc": 0.9566666666666667,
+    "auc_delta_full_minus_without": 0.01666666666666672,
+    "auc_delta_match_bootstrap_95pct": [
+      0.0,
+      0.03809523809523796
+    ],
+    "brier_increase_without": 0.001700687721640906,
+    "brier_increase_match_bootstrap_95pct": [
+      -0.003001490922134418,
+      0.008602566156907177
+    ],
+    "valid_resamples": 2000
+  },
+  "uncertainty_scope": "fixed models and selected members; overlapping outer training sets and no reselection uncertainty"
+}

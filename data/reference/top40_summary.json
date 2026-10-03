@@ -1,0 +1,25 @@
+{
+  "selection": "Highest grouped development OOF AUC among 4,095 nonempty subsets",
+  "tie_break": "Increasing member count, then lexicographic original model order",
+  "n_candidates": 40,
+  "fraction_of_search_percent": 0.9768009768009768,
+  "top40_cutoff_auc": 0.9686434901158828,
+  "top40_cutoff_ties_total": 17,
+  "top40_cutoff_ties_included": 7,
+  "all_ties_through_cutoff_n": 50,
+  "all_ties_through_cutoff_top10_jaccard_median": 0.8181818181818182,
+  "all_ties_through_cutoff_full_rank_spearman_median": 0.9256312165263962,
+  "all_ties_through_cutoff_backhand_top6_count": 22,
+  "top40_backhand_top6_count": 22,
+  "top40_backhand_rank_min": 5,
+  "top40_backhand_rank_max": 12,
+  "top40_common_top10_count": 7,
+  "n_2025_sets_used_for_shap": 40,
+  "shap_seeds": [
+    42,
+    142,
+    242
+  ],
+  "scope": "fixed fitted learners and Platt maps; ensemble composition changes; this comparison does not estimate selection optimism",
+  "performance_bias_check": "nested grouped outer validation; see response R2.4"
+}

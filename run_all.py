@@ -1,29 +1,20 @@
-# -*- coding: utf-8 -*-
-"""
-Driver: run the four modules in dependency order to reproduce all tables and figures.
-Usage: python run_all.py
-"""
-import os
-import sys
+"""Verify deposited data and regenerate the manuscript's numerical summaries."""
+
 import subprocess
-
-HERE = os.path.dirname(os.path.abspath(__file__))
-STEPS = [
-    "tennis_workflow_v4_en.py",
-    "plot_model_ablation.py",
-    "plot_importance_heatmap.py",
-    "plot_shap_dependence.py",
-]
+import sys
+from pathlib import Path
 
 
-def main():
-    for i, script in enumerate(STEPS, 1):
-        print(f"\n===== [{i}/{len(STEPS)}] running {script} =====", flush=True)
-        ret = subprocess.run([sys.executable, os.path.join(HERE, script)], cwd=HERE)
-        if ret.returncode != 0:
-            print(f"\n[ABORT] {script} failed (exit {ret.returncode}).")
-            sys.exit(ret.returncode)
-    print("\n[ALL DONE] All tables and figures reproduced (random_state=42).")
+ROOT = Path(__file__).resolve().parent
+
+
+def main() -> None:
+    for script in ("verify_data.py", "build_processed.py", "audit_source_mapping.py",
+                   "descriptive.py", "reproduce.py", "reproduce_top40.py",
+                   "reproduce_tuned_top40.py", "bootstrap_ci.py"):
+        print(f"Running {script}", flush=True)
+        subprocess.run([sys.executable, str(ROOT / "analysis" / script)], cwd=ROOT, check=True)
+    print("Numerical reproduction complete; see outputs/", flush=True)
 
 
 if __name__ == "__main__":

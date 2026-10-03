@@ -1,0 +1,35 @@
+{
+  "selection": "Top 40 of 4095 final-training grouped OOF AUC combinations; cutoff ties by subset index",
+  "top40_percent_of_all_combinations": 0.9768009768009768,
+  "top40_cutoff_auc": 0.9679618268575324,
+  "cutoff_ties_total": 10,
+  "cutoff_ties_included": 6,
+  "all_ties_through_cutoff_n": 44,
+  "top40_ensembles": {
+    "n_pairs": 780,
+    "top10_jaccard_median": 0.8181818181818182,
+    "top6_jaccard_median": 1.0,
+    "full_rank_spearman_median": 0.9343534812547818
+  },
+  "all_12_single_models": {
+    "n_pairs": 66,
+    "top10_jaccard_median": 0.42857142857142855,
+    "top6_jaccard_median": 0.5,
+    "full_rank_spearman_median": 0.6283091048201989
+  },
+  "all_cutoff_ties_ensembles": {
+    "n_pairs": 946,
+    "top10_jaccard_median": 0.8181818181818182,
+    "top6_jaccard_median": 1.0,
+    "full_rank_spearman_median": 0.9369548584544759
+  },
+  "top40_backhand_rank_min": 7,
+  "top40_backhand_rank_max": 22,
+  "top40_backhand_top6_count": 0,
+  "top40_backhand_top10_count": 36,
+  "all_cutoff_ties_backhand_top6_count": 0,
+  "all_cutoff_ties_backhand_rank_min": 7,
+  "all_cutoff_ties_backhand_rank_max": 22,
+  "shap_winner_reconstruction_max_abs_error": 5.273559366969494e-16,
+  "interpretation": "Agreement describes fitted models on the same 2025 samples. It does not quantify refitting or model-selection uncertainty."
+}

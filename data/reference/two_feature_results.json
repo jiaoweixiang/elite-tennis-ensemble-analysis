@@ -1,0 +1,162 @@
+{
+  "status": "post-review exploratory; 2025 labels were previously viewed",
+  "removed": [
+    "Service Breaks",
+    "Total Points Won"
+  ],
+  "criterion": "inner grouped OOF AUC maximum; exact tie by fewer members then original subset order",
+  "outer": {
+    "auc": 0.741223585548739,
+    "accuracy": 0.6582914572864321,
+    "f1": 0.7588652482269503,
+    "balanced_accuracy": 0.6615541922290389,
+    "precision": 0.8991596638655462,
+    "recall_win": 0.656441717791411,
+    "recall_loss": 0.6666666666666666,
+    "score_mse": 0.14149122256836724,
+    "brier": 0.14149122256836724,
+    "log_loss": 0.44237687037465706,
+    "score_min": 0.10047310209672962,
+    "score_max": 0.9984993096988262,
+    "scores_outside_0_1": 0,
+    "confusion_matrix": [
+      [
+        24,
+        12
+      ],
+      [
+        56,
+        107
+      ]
+    ]
+  },
+  "outer_folds": [
+    {
+      "fold": 1,
+      "selection": {
+        "index": 64,
+        "columns": [
+          6,
+          8
+        ],
+        "members": [
+          "AdaB",
+          "KNN"
+        ],
+        "selection_auc": 0.8327067669172933,
+        "threshold": 0.8494859432868783
+      },
+      "auc": 0.8979166666666667
+    },
+    {
+      "fold": 2,
+      "selection": {
+        "index": 179,
+        "columns": [
+          2,
+          3,
+          5
+        ],
+        "members": [
+          "Lasso",
+          "RF",
+          "SVR"
+        ],
+        "selection_auc": 0.86575682382134,
+        "threshold": 0.7768123818803424
+      },
+      "auc": 0.8424242424242423
+    },
+    {
+      "fold": 3,
+      "selection": {
+        "index": 56,
+        "columns": [
+          4,
+          11
+        ],
+        "members": [
+          "GB",
+          "LDA"
+        ],
+        "selection_auc": 0.9049669824863623,
+        "threshold": 0.8641251635546752
+      },
+      "auc": 0.562091503267974
+    },
+    {
+      "fold": 4,
+      "selection": {
+        "index": 1,
+        "columns": [
+          1
+        ],
+        "members": [
+          "Ridge"
+        ],
+        "selection_auc": 0.849624060150376,
+        "threshold": 0.7888702827654023
+      },
+      "auc": 0.7619047619047619
+    },
+    {
+      "fold": 5,
+      "selection": {
+        "index": 351,
+        "columns": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "members": [
+          "LR",
+          "Lasso",
+          "GB",
+          "SVR"
+        ],
+        "selection_auc": 0.8164539777355416,
+        "threshold": 0.8227541978246244
+      },
+      "auc": 0.8888888888888888
+    }
+  ],
+  "final_selection": {
+    "index": 36,
+    "columns": [
+      2,
+      6
+    ],
+    "members": [
+      "Lasso",
+      "AdaB"
+    ],
+    "selection_auc": 0.8663940013633266,
+    "threshold": 0.8305629166993438
+  },
+  "test_2025": {
+    "auc": 0.9433333333333334,
+    "accuracy": 0.775,
+    "f1": 0.8301886792452831,
+    "balanced_accuracy": 0.8166666666666667,
+    "precision": 0.9565217391304348,
+    "recall_win": 0.7333333333333333,
+    "recall_loss": 0.9,
+    "score_mse": 0.13254666042886754,
+    "brier": 0.13254666042886754,
+    "log_loss": 0.40091522945176594,
+    "score_min": 0.4463144972607468,
+    "score_max": 0.9384187316376222,
+    "scores_outside_0_1": 0,
+    "confusion_matrix": [
+      [
+        9,
+        1
+      ],
+      [
+        8,
+        22
+      ]
+    ]
+  }
+}

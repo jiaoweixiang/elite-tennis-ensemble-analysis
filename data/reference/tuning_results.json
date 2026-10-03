@@ -1,0 +1,917 @@
+{
+  "protocol": {
+    "status": "exploratory post-review sensitivity; 2025 outcomes were seen in earlier analyses",
+    "train_hash_sha256": "ce81d30145adc57b99270899beebb534bb11a777f3a701cc240b94e4fb6d9ffe",
+    "test_hash_sha256": "71be006c03e0861337eb490c74cf013cd5d6559d3df727b742219923df312489",
+    "grid": {
+      "LR": [
+        {
+          "label": "default",
+          "settings": {}
+        }
+      ],
+      "Ridge": [
+        {
+          "label": "alpha1",
+          "settings": {
+            "score__estimator__model__alpha": 1.0
+          }
+        },
+        {
+          "label": "alpha0.1",
+          "settings": {
+            "score__estimator__model__alpha": 0.1
+          }
+        },
+        {
+          "label": "alpha10",
+          "settings": {
+            "score__estimator__model__alpha": 10.0
+          }
+        }
+      ],
+      "Lasso": [
+        {
+          "label": "alpha0.1",
+          "settings": {
+            "score__estimator__model__alpha": 0.1
+          }
+        },
+        {
+          "label": "alpha0.01",
+          "settings": {
+            "score__estimator__model__alpha": 0.01
+          }
+        },
+        {
+          "label": "alpha1",
+          "settings": {
+            "score__estimator__model__alpha": 1.0
+          }
+        }
+      ],
+      "RF": [
+        {
+          "label": "leaf1",
+          "settings": {
+            "score__estimator__min_samples_leaf": 1
+          }
+        },
+        {
+          "label": "leaf3",
+          "settings": {
+            "score__estimator__min_samples_leaf": 3
+          }
+        },
+        {
+          "label": "leaf5",
+          "settings": {
+            "score__estimator__min_samples_leaf": 5
+          }
+        }
+      ],
+      "GB": [
+        {
+          "label": "lr0.1",
+          "settings": {
+            "score__estimator__learning_rate": 0.1
+          }
+        },
+        {
+          "label": "lr0.03",
+          "settings": {
+            "score__estimator__learning_rate": 0.03
+          }
+        },
+        {
+          "label": "lr0.2",
+          "settings": {
+            "score__estimator__learning_rate": 0.2
+          }
+        }
+      ],
+      "SVR": [
+        {
+          "label": "C1",
+          "settings": {
+            "score__estimator__model__C": 1.0
+          }
+        },
+        {
+          "label": "C0.1",
+          "settings": {
+            "score__estimator__model__C": 0.1
+          }
+        },
+        {
+          "label": "C10",
+          "settings": {
+            "score__estimator__model__C": 10.0
+          }
+        }
+      ],
+      "AdaB": [
+        {
+          "label": "trees100",
+          "settings": {
+            "score__estimator__n_estimators": 100
+          }
+        },
+        {
+          "label": "trees50",
+          "settings": {
+            "score__estimator__n_estimators": 50
+          }
+        },
+        {
+          "label": "trees200",
+          "settings": {
+            "score__estimator__n_estimators": 200
+          }
+        }
+      ],
+      "DT": [
+        {
+          "label": "unlimited",
+          "settings": {
+            "score__estimator__max_depth": null
+          }
+        },
+        {
+          "label": "depth3",
+          "settings": {
+            "score__estimator__max_depth": 3
+          }
+        },
+        {
+          "label": "depth5",
+          "settings": {
+            "score__estimator__max_depth": 5
+          }
+        }
+      ],
+      "KNN": [
+        {
+          "label": "k5",
+          "settings": {
+            "score__estimator__model__n_neighbors": 5
+          }
+        },
+        {
+          "label": "k3",
+          "settings": {
+            "score__estimator__model__n_neighbors": 3
+          }
+        },
+        {
+          "label": "k9",
+          "settings": {
+            "score__estimator__model__n_neighbors": 9
+          }
+        }
+      ],
+      "MLP": [
+        {
+          "label": "h64",
+          "settings": {
+            "score__estimator__model__hidden_layer_sizes": [
+              64
+            ]
+          }
+        },
+        {
+          "label": "h32",
+          "settings": {
+            "score__estimator__model__hidden_layer_sizes": [
+              32
+            ]
+          }
+        },
+        {
+          "label": "h128",
+          "settings": {
+            "score__estimator__model__hidden_layer_sizes": [
+              128
+            ]
+          }
+        }
+      ],
+      "GNB": [
+        {
+          "label": "smooth1e-9",
+          "settings": {
+            "score__estimator__model__var_smoothing": 1e-09
+          }
+        },
+        {
+          "label": "smooth1e-10",
+          "settings": {
+            "score__estimator__model__var_smoothing": 1e-10
+          }
+        },
+        {
+          "label": "smooth1e-8",
+          "settings": {
+            "score__estimator__model__var_smoothing": 1e-08
+          }
+        }
+      ],
+      "LDA": [
+        {
+          "label": "svd",
+          "settings": {
+            "score__estimator__model__solver": "svd",
+            "score__estimator__model__shrinkage": null
+          }
+        },
+        {
+          "label": "lsqr_auto",
+          "settings": {
+            "score__estimator__model__solver": "lsqr",
+            "score__estimator__model__shrinkage": "auto"
+          }
+        }
+      ]
+    },
+    "parameter_rule": "within each fitting block, three-fold match-grouped raw OOF AUC; original setting wins exact ties",
+    "calibration": "Platt fitted to selected model's three-fold match-grouped raw OOF scores in the fitting block",
+    "outer": "five match-grouped folds",
+    "inner_ensemble": "five match-grouped folds inside each outer training block; retune all twelve base models in each inner fitting block",
+    "ensemble_rule": "maximum training inner-OOF AUC among 4095 equal-weight subsets; exact ties prefer fewer members, then original order",
+    "threshold_rule": "Youden J on selected ensemble's training-only inner-OOF probabilities",
+    "test": "final parameter and ensemble selection on pre-2025 training data only",
+    "ranking": "no feature ranks used to tune parameters or select ensemble"
+  },
+  "outer": {
+    "auc": 0.9587593728698023,
+    "accuracy": 0.8944723618090452,
+    "f1": 0.9320388349514563,
+    "balanced_accuracy": 0.9139400136332652,
+    "precision": 0.9863013698630136,
+    "recall_win": 0.8834355828220859,
+    "recall_loss": 0.9444444444444444,
+    "score_mse": 0.06450039475234103,
+    "brier": 0.06450039475234103,
+    "log_loss": 0.21969730787077582,
+    "score_min": 0.03106405413885443,
+    "score_max": 0.9865788329033714,
+    "scores_outside_0_1": 0,
+    "confusion_matrix": [
+      [
+        34,
+        2
+      ],
+      [
+        19,
+        144
+      ]
+    ]
+  },
+  "outer_folds": [
+    {
+      "fold": 1,
+      "selection": {
+        "index": 2512,
+        "columns": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          9
+        ],
+        "members": [
+          "LR",
+          "Ridge",
+          "Lasso",
+          "RF",
+          "GB",
+          "SVR",
+          "MLP"
+        ],
+        "training_oof_auc": 0.9761009667024705,
+        "auc_tie_count": 1,
+        "threshold_youden": 0.8265229721463909
+      },
+      "validation": {
+        "auc": 0.9791666666666667,
+        "accuracy": 0.9210526315789473,
+        "f1": 0.9491525423728814,
+        "balanced_accuracy": 0.9041666666666667,
+        "precision": 0.9655172413793104,
+        "recall_win": 0.9333333333333333,
+        "recall_loss": 0.875,
+        "score_mse": 0.056183683799271536,
+        "brier": 0.056183683799271536,
+        "log_loss": 0.20150706042827343,
+        "score_min": 0.1569913047907047,
+        "score_max": 0.9837689143045972,
+        "scores_outside_0_1": 0,
+        "confusion_matrix": [
+          [
+            7,
+            1
+          ],
+          [
+            2,
+            28
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 2,
+      "selection": {
+        "index": 696,
+        "columns": [
+          3,
+          5,
+          7,
+          11
+        ],
+        "members": [
+          "RF",
+          "SVR",
+          "DT",
+          "LDA"
+        ],
+        "training_oof_auc": 0.9642679900744416,
+        "auc_tie_count": 1,
+        "threshold_youden": 0.7788369890251062
+      },
+      "validation": {
+        "auc": 0.9696969696969697,
+        "accuracy": 0.8421052631578947,
+        "f1": 0.9,
+        "balanced_accuracy": 0.9090909090909092,
+        "precision": 1.0,
+        "recall_win": 0.8181818181818182,
+        "recall_loss": 1.0,
+        "score_mse": 0.052984821413097155,
+        "brier": 0.052984821413097155,
+        "log_loss": 0.1950760591077433,
+        "score_min": 0.1366584728636025,
+        "score_max": 0.9638263592961807,
+        "scores_outside_0_1": 0,
+        "confusion_matrix": [
+          [
+            5,
+            0
+          ],
+          [
+            6,
+            27
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 3,
+      "selection": {
+        "index": 351,
+        "columns": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "members": [
+          "LR",
+          "Lasso",
+          "GB",
+          "SVR"
+        ],
+        "training_oof_auc": 0.9850703416594889,
+        "auc_tie_count": 1,
+        "threshold_youden": 0.755712559244494
+      },
+      "validation": {
+        "auc": 0.9444444444444444,
+        "accuracy": 0.813953488372093,
+        "f1": 0.8666666666666667,
+        "balanced_accuracy": 0.8823529411764706,
+        "precision": 1.0,
+        "recall_win": 0.7647058823529411,
+        "recall_loss": 1.0,
+        "score_mse": 0.09527540398064338,
+        "brier": 0.09527540398064338,
+        "log_loss": 0.30043292467016364,
+        "score_min": 0.03106405413885443,
+        "score_max": 0.9865788329033714,
+        "scores_outside_0_1": 0,
+        "confusion_matrix": [
+          [
+            9,
+            0
+          ],
+          [
+            8,
+            26
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 4,
+      "selection": {
+        "index": 194,
+        "columns": [
+          2,
+          5,
+          7
+        ],
+        "members": [
+          "Lasso",
+          "SVR",
+          "DT"
+        ],
+        "training_oof_auc": 0.9681099299974073,
+        "auc_tie_count": 1,
+        "threshold_youden": 0.7379972243570517
+      },
+      "validation": {
+        "auc": 0.9809523809523809,
+        "accuracy": 0.918918918918919,
+        "f1": 0.9473684210526315,
+        "balanced_accuracy": 0.95,
+        "precision": 1.0,
+        "recall_win": 0.9,
+        "recall_loss": 1.0,
+        "score_mse": 0.06535564092023713,
+        "brier": 0.06535564092023713,
+        "log_loss": 0.22188635605546006,
+        "score_min": 0.32951416302008957,
+        "score_max": 0.9683295572348659,
+        "scores_outside_0_1": 0,
+        "confusion_matrix": [
+          [
+            7,
+            0
+          ],
+          [
+            3,
+            27
+          ]
+        ]
+      }
+    },
+    {
+      "fold": 5,
+      "selection": {
+        "index": 43,
+        "columns": [
+          3,
+          5
+        ],
+        "members": [
+          "RF",
+          "SVR"
+        ],
+        "training_oof_auc": 0.9744773282650013,
+        "auc_tie_count": 1,
+        "threshold_youden": 0.7824994768798588
+      },
+      "validation": {
+        "auc": 0.9841269841269842,
+        "accuracy": 0.9767441860465116,
+        "f1": 0.9863013698630136,
+        "balanced_accuracy": 0.9285714285714286,
+        "precision": 0.972972972972973,
+        "recall_win": 1.0,
+        "recall_loss": 0.8571428571428571,
+        "score_mse": 0.05051568075417245,
+        "brier": 0.05051568075417245,
+        "log_loss": 0.17491150672201614,
+        "score_min": 0.08215477689977153,
+        "score_max": 0.9848165097410226,
+        "scores_outside_0_1": 0,
+        "confusion_matrix": [
+          [
+            6,
+            1
+          ],
+          [
+            0,
+            36
+          ]
+        ]
+      }
+    }
+  ],
+  "final_selection": {
+    "index": 1909,
+    "columns": [
+      0,
+      2,
+      6,
+      7,
+      9,
+      10
+    ],
+    "members": [
+      "LR",
+      "Lasso",
+      "AdaB",
+      "DT",
+      "MLP",
+      "GNB"
+    ],
+    "training_oof_auc": 0.9700068166325835,
+    "auc_tie_count": 2,
+    "threshold_youden": 0.7818255669291855
+  },
+  "test_2025": {
+    "auc": 0.9733333333333334,
+    "accuracy": 0.925,
+    "f1": 0.9508196721311475,
+    "balanced_accuracy": 0.8833333333333333,
+    "precision": 0.9354838709677419,
+    "recall_win": 0.9666666666666667,
+    "recall_loss": 0.8,
+    "score_mse": 0.08764948557089987,
+    "brier": 0.08764948557089987,
+    "log_loss": 0.2800981400156243,
+    "score_min": 0.14411926867714814,
+    "score_max": 0.9604901558071267,
+    "scores_outside_0_1": 0,
+    "confusion_matrix": [
+      [
+        8,
+        2
+      ],
+      [
+        1,
+        29
+      ]
+    ]
+  },
+  "shap_2025": {
+    "protocol": {
+      "seeds": [
+        42,
+        142,
+        242
+      ],
+      "nsamples": 2048,
+      "background": 50,
+      "test_sets": 40
+    },
+    "models": {
+      "Ensemble": {
+        "backhand_rank_range": [
+          8,
+          8
+        ],
+        "backhand_mean_abs_shap": 0.00849300866378291,
+        "backhand_rank_by_seed": {
+          "42": 8,
+          "142": 8,
+          "242": 9
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          8.0,
+          9.0,
+          10.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Total Returns",
+          "Unforced Errors",
+          "Double Faults",
+          "2nd Serve Pts Won "
+        ],
+        "n_union_features": 30
+      },
+      "LR": {
+        "backhand_rank_range": [
+          4,
+          4
+        ],
+        "backhand_mean_abs_shap": 0.06713473365171022,
+        "backhand_rank_by_seed": {
+          "42": 4,
+          "142": 4,
+          "242": 4
+        },
+        "backhand_top6_match_bootstrap_frequency": 1.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          3.0,
+          4.0,
+          5.0
+        ],
+        "top_six": [
+          "Total Returns",
+          "Service Breaks",
+          "Total Points Won",
+          "Backhand Returns",
+          "Forehand Returns",
+          "Double Faults"
+        ],
+        "n_union_features": 30
+      },
+      "Ridge": {
+        "backhand_rank_range": [
+          9,
+          9
+        ],
+        "backhand_mean_abs_shap": 0.021632801411239598,
+        "backhand_rank_by_seed": {
+          "42": 9,
+          "142": 9,
+          "242": 9
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.008,
+        "backhand_rank_match_bootstrap_percentiles": [
+          7.0,
+          9.0,
+          10.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Total Returns",
+          "Unforced Errors",
+          "Double Faults",
+          "2nd Serve Pts Won "
+        ],
+        "n_union_features": 30
+      },
+      "Lasso": {
+        "backhand_rank_range": [
+          22,
+          22
+        ],
+        "backhand_mean_abs_shap": 0.0007850819200815942,
+        "backhand_rank_by_seed": {
+          "42": 27,
+          "142": 29,
+          "242": 19
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          18.0,
+          23.0,
+          28.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Unforced Errors",
+          "Total Returns",
+          "Double Faults",
+          "2nd Serve Pts Won "
+        ],
+        "n_union_features": 30
+      },
+      "RF": {
+        "backhand_rank_range": [
+          14,
+          14
+        ],
+        "backhand_mean_abs_shap": 0.000998066313714782,
+        "backhand_rank_by_seed": {
+          "42": 15,
+          "142": 14,
+          "242": 14
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          12.0,
+          14.0,
+          21.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Unforced Errors",
+          "Double Faults",
+          "2nd Serve Pts Won ",
+          "2nd Serve In "
+        ],
+        "n_union_features": 30
+      },
+      "GB": {
+        "backhand_rank_range": [
+          20,
+          20
+        ],
+        "backhand_mean_abs_shap": 0.0004065393359617078,
+        "backhand_rank_by_seed": {
+          "42": 20,
+          "142": 20,
+          "242": 20
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          18.0,
+          20.0,
+          25.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Unforced Errors",
+          "2nd Serve Pts Won ",
+          "2nd Serve In ",
+          "Double Faults"
+        ],
+        "n_union_features": 30
+      },
+      "SVR": {
+        "backhand_rank_range": [
+          18,
+          18
+        ],
+        "backhand_mean_abs_shap": 0.006537546966912044,
+        "backhand_rank_by_seed": {
+          "42": 18,
+          "142": 18,
+          "242": 17
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          14.0,
+          18.0,
+          24.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "2nd Serve Pts Won ",
+          "Unforced Errors",
+          "Double Faults",
+          "Break Points"
+        ],
+        "n_union_features": 30
+      },
+      "AdaB": {
+        "backhand_rank_range": [
+          26,
+          26
+        ],
+        "backhand_mean_abs_shap": 0.0018827196788395156,
+        "backhand_rank_by_seed": {
+          "42": 27,
+          "142": 26,
+          "242": 23
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          21.0,
+          25.0,
+          28.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Unforced Errors",
+          "2nd Serve Pts Won ",
+          "2nd Serve In ",
+          "1st Serve Pts Won "
+        ],
+        "n_union_features": 30
+      },
+      "DT": {
+        "backhand_rank_range": [
+          20,
+          20
+        ],
+        "backhand_mean_abs_shap": 0.0005722742552027276,
+        "backhand_rank_by_seed": {
+          "42": 19,
+          "142": 19,
+          "242": 20
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          12.0,
+          19.0,
+          24.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Unforced Errors",
+          "Total Points Won",
+          "2nd Serve In ",
+          "Forehand Returns",
+          "Slice/Block (3rd Shot)"
+        ],
+        "n_union_features": 30
+      },
+      "KNN": {
+        "backhand_rank_range": [
+          8,
+          8
+        ],
+        "backhand_mean_abs_shap": 0.014037520609538539,
+        "backhand_rank_by_seed": {
+          "42": 8,
+          "142": 9,
+          "242": 9
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.1375,
+        "backhand_rank_match_bootstrap_percentiles": [
+          5.0,
+          8.0,
+          12.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "2nd Serve Pts Won ",
+          "Unforced Errors",
+          "1st Serve Speed (km/h)",
+          "Net Approaches",
+          "Break Points"
+        ],
+        "n_union_features": 30
+      },
+      "MLP": {
+        "backhand_rank_range": [
+          22,
+          22
+        ],
+        "backhand_mean_abs_shap": 0.009977195616343516,
+        "backhand_rank_by_seed": {
+          "42": 22,
+          "142": 22,
+          "242": 22
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          14.0,
+          22.0,
+          30.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Double Faults",
+          "Total Points Won",
+          "Total Returns",
+          "Slice/Block Returns",
+          "Forehand Return Win "
+        ],
+        "n_union_features": 30
+      },
+      "GNB": {
+        "backhand_rank_range": [
+          11,
+          11
+        ],
+        "backhand_mean_abs_shap": 0.010250245576693073,
+        "backhand_rank_by_seed": {
+          "42": 10,
+          "142": 12,
+          "242": 11
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0585,
+        "backhand_rank_match_bootstrap_percentiles": [
+          6.0,
+          11.0,
+          13.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Unforced Errors",
+          "2nd Serve Pts Won ",
+          "Double Faults",
+          "Slice/Block Returns",
+          "Break Points"
+        ],
+        "n_union_features": 30
+      },
+      "LDA": {
+        "backhand_rank_range": [
+          21,
+          21
+        ],
+        "backhand_mean_abs_shap": 0.0030365862107253855,
+        "backhand_rank_by_seed": {
+          "42": 20,
+          "142": 21,
+          "242": 22
+        },
+        "backhand_top6_match_bootstrap_frequency": 0.0,
+        "backhand_rank_match_bootstrap_percentiles": [
+          19.0,
+          21.0,
+          25.0
+        ],
+        "top_six": [
+          "Service Breaks",
+          "Total Points Won",
+          "Unforced Errors",
+          "2nd Serve Pts Won ",
+          "Total Returns",
+          "Double Faults"
+        ],
+        "n_union_features": 30
+      }
+    },
+    "single_pairwise_spearman_median": 0.6283091048201989,
+    "single_pairwise_top6_jaccard_median": 0.5,
+    "single_backhand_top6_count": 1
+  }
+}

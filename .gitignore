@@ -30,3 +30,9 @@ figure*.pdf
 figure*.png
 *.xlsx
 
+# The six source workbooks are deliberately versioned.
+!data/raw/*.xlsx
+
+# Recalculated tables and fitted models are local outputs.
+outputs/
+
