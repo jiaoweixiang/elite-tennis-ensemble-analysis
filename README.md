@@ -99,4 +99,4 @@ The source corrections and variable definitions are described in [`data/README.m
 
 ## Citation and archival record
 
-`CITATION.cff` describes this software repository. It contains no DOI because none has been registered. A DOI can later be obtained by connecting the public repository to Zenodo and archiving a versioned GitHub release. The release should be made only after the manuscript, source-file rights, authorship and citation details have been confirmed; the DOI and release version can then be added to `CITATION.cff`.
+The code and data for release `v1.0.0` are archived at [Zenodo, DOI: 10.5281/zenodo.23132419](https://doi.org/10.5281/zenodo.23132419). Cite this version DOI when referring to the analysis reported in the manuscript. The [concept DOI: 10.5281/zenodo.23132418](https://doi.org/10.5281/zenodo.23132418) represents the release series. `CITATION.cff` contains the preferred software citation metadata.

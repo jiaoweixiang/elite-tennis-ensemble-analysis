@@ -5,6 +5,9 @@ title: "Elite tennis ensemble analysis: reproducible set-level workflow"
 authors:
   - family-names: "Jiao"
     given-names: "Weixiang"
+version: "1.0.0"
+date-released: 2026-10-04
+doi: "10.5281/zenodo.23132419"
 repository-code: "https://github.com/jiaoweixiang/elite-tennis-ensemble-analysis"
 keywords:
   - tennis
