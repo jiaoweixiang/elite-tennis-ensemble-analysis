@@ -2,7 +2,7 @@
 
 `indicator_dictionary.csv` records the 34 operational definitions and codes from manuscript Table 1, alongside the exact model-column names.
 
-`raw/` contains the six annual workbooks used in the current analysis. The 2023 source is the author's corrected `23年小德硬地技术统计-修正.xlsx`; the superseded 2023 workbook is not an input. There were no eligible 2022 Djokovic Grand Slam hard-court matches under the study's inclusion criteria. The workbook names retain the original annotator labels for traceability.
+`raw/` contains the six annual workbooks used in the current analysis. The 2023 source is the author's corrected `23年小德硬地技术统计-修正.xlsx`; the superseded 2023 workbook is not an input. There were no eligible 2022 Djokovic Grand Slam hard-court matches under the study's inclusion criteria. Workbook filenames, annotator fields and author metadata have been de-identified; the source map and checksums retain data traceability.
 
 `processed/train_grouped.csv` and `processed/test_grouped.csv` are the authoritative English-labelled model inputs. Each row is one set. The first column, `Set Result`, is the binary outcome. Columns 2–35 are the 34 candidate performance indicators; the remaining columns document match identity, year, event, round, within-match set number, source row, validation group and the second-serve-speed correction. All sets from the same `match_id` stay within one group during validation. `reference/match_mapping.csv` identifies the source workbook and column for every set. The 2021 workbook has a one-row-shifted feature layout, which `analysis/build_processed.py` handles explicitly.
 
