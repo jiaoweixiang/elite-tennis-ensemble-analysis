@@ -99,4 +99,4 @@ The source corrections and variable definitions are described in [`data/README.m
 
 ## Citation and archival record
 
-The code and data for release `v1.0.0` are archived at [Zenodo, DOI: 10.5281/zenodo.23132419](https://doi.org/10.5281/zenodo.23132419). Cite this version DOI when referring to the analysis reported in the manuscript. The [concept DOI: 10.5281/zenodo.23132418](https://doi.org/10.5281/zenodo.23132418) represents the release series. `CITATION.cff` contains the preferred software citation metadata.
+Release `v1.0.1` removes annotator identifiers from the deposited source workbooks and provenance files without changing the set-level measurements or numerical results. The [Zenodo concept DOI: 10.5281/zenodo.23132418](https://doi.org/10.5281/zenodo.23132418) links the release series. For the manuscript, cite the version DOI assigned to `v1.0.1` after Zenodo finishes archiving it. `CITATION.cff` contains the software citation metadata.
