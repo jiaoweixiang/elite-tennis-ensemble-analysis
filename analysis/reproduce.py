@@ -17,7 +17,7 @@ import pandas as pd
 from scipy.stats import rankdata
 from sklearn.metrics import (
     accuracy_score, balanced_accuracy_score, brier_score_loss,
-    f1_score, precision_score, recall_score, roc_auc_score,
+    f1_score, precision_score, recall_score, roc_auc_score, roc_curve, r2_score,
 )
 from sklearn.model_selection import StratifiedGroupKFold
 
@@ -151,15 +151,28 @@ def reproduce_shap(test: pd.DataFrame, out: Path) -> None:
     order = np.argsort(-importance, kind="stable")
     pd.DataFrame({"rank": np.arange(1, len(order) + 1), "feature": features[order],
                   "mean_absolute_SHAP": importance[order]}).to_csv(out / "ensemble_shap_ranks.csv", index=False)
+    mean_values = np.stack([z["values"] for z in files]).mean(axis=0)
+    rows = []
+    for j, feature in enumerate(features):
+        for i in range(len(test)):
+            rows.append({"feature": feature, "rank": int(np.flatnonzero(order == j)[0] + 1),
+                         "set_row": i + 1, "match_id": test.match_id.iat[i],
+                         "set_result": int(test.iloc[i, 0]),
+                         "feature_value": float(test[feature].iat[i]),
+                         "mean_SHAP": float(mean_values[i, j])})
+    pd.DataFrame(rows).to_csv(out / "ensemble_shap_per_set.csv", index=False)
     backhand = int(np.flatnonzero(features == "Backhand Returns")[0])
     by_match = [np.flatnonzero(test.match_id.to_numpy(str) == g) for g in np.unique(test.match_id)]
     rng = np.random.RandomState(42)
     ranks = []
+    backhand_magnitudes = []
     for _ in range(2000):
         draw = np.concatenate([by_match[j] for j in rng.randint(len(by_match), size=len(by_match))])
         imp = absolute[draw].mean(axis=0)
         ranks.append(int(np.flatnonzero(np.argsort(-imp, kind="stable") == backhand)[0] + 1))
-    pd.DataFrame({"resample": np.arange(1, 2001), "backhand_rank": ranks}).to_csv(
+        backhand_magnitudes.append(float(imp[backhand]))
+    pd.DataFrame({"resample": np.arange(1, 2001), "backhand_rank": ranks,
+                  "backhand_mean_absolute_SHAP": backhand_magnitudes}).to_csv(
         out / "backhand_match_resample_ranks.csv", index=False)
     original = read_json("primary_results.json")["full"]["shap_2025"]
     assert np.mean(np.asarray(ranks) <= 6) == original["backhand_top6_match_bootstrap_frequency"]
@@ -209,17 +222,37 @@ def calibration_diagnostics(train: pd.DataFrame, test: pd.DataFrame,
 def other_results(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> None:
     arrays = np.load(REF / "prediction_matrices.npz")
     singles = read_json("single_model_results.json")["models"]
+    outer_thresholds = pd.read_csv(REF / "single_model_outer_thresholds.csv")[NAMES].to_numpy(float)
+    final_thresholds = pd.read_csv(REF / "single_model_final_thresholds.csv")
+    assert final_thresholds.model.tolist() == NAMES and outer_thresholds.shape == (5, len(NAMES))
+    outer_predictions = np.zeros_like(arrays["outer_members"], dtype=int)
+    folds = StratifiedGroupKFold(5, shuffle=True, random_state=42).split(
+        train.iloc[:, 1:35], train.iloc[:, 0], train.cv_group)
+    for fold, (_, heldout) in enumerate(folds):
+        outer_predictions[heldout] = arrays["outer_members"][heldout] >= outer_thresholds[fold]
     rows = []
+    roc_rows = []
     for j, name in enumerate(NAMES):
-        for sample, mat, data in (("outer", arrays["outer_members"], train),
-                                  ("2025", arrays["test_members"], test)):
+        false_positive, true_positive, thresholds = roc_curve(
+            train.iloc[:, 0], arrays["outer_members"][:, j])
+        for k, (fpr, tpr, threshold) in enumerate(zip(false_positive, true_positive, thresholds)):
+            roc_rows.append({"model": name, "point_index": k,
+                             "fpr": fpr, "tpr": tpr, "score_threshold": threshold})
+        for sample, mat, data, predictions in (
+            ("outer", arrays["outer_members"], train, outer_predictions[:, j]),
+            ("2025", arrays["test_members"], test,
+             arrays["test_members"][:, j] >= final_thresholds.development_oof_threshold.iat[j]),
+        ):
             y = data.iloc[:, 0].to_numpy(int)
             reference = singles[name]["full"]["outer" if sample == "outer" else "test_2025"]
-            auc, brier = roc_auc_score(y, mat[:, j]), brier_score_loss(y, mat[:, j])
-            assert abs(auc - reference["auc"]) < 1e-10
-            rows.append({"model": name, "sample": sample, "auc": auc, "brier": brier,
-                         "accuracy": reference["accuracy"], "f1": reference["f1"]})
+            calculated = metrics(y, mat[:, j], predictions)
+            for measure in ("auc", "brier", "accuracy", "f1", "precision", "recall"):
+                old = reference["recall_win" if measure == "recall" else measure]
+                assert abs(calculated[measure] - old) < 1e-10, (name, sample, measure)
+            rows.append({"model": name, "sample": sample, **calculated,
+                         "oof_pseudo_r2": r2_score(y, mat[:, j]) if sample == "outer" else np.nan})
     pd.DataFrame(rows).to_csv(out / "single_model_performance.csv", index=False)
+    pd.DataFrame(roc_rows).to_csv(out / "single_model_roc_coordinates.csv", index=False)
     tuning = read_json("tuning_results.json")
     pd.DataFrame([
         {"sample": sample, "auc": tuning[key]["auc"], "members": "+".join(tuning["final_selection"]["members"])}

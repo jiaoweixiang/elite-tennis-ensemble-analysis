@@ -16,7 +16,7 @@ python -m pip install -r requirements.txt
 python run_all.py
 ```
 
-`run_all.py` verifies SHA-256 checksums, reconstructs all 239 set rows and 34 candidate indicators from the six source workbooks, and checks the reconstructed tables against the deposited model inputs. It then recalculates the reported AUC, accuracy, F1, Brier score, 4,095-subset development selection scores, SHAP ranks, match-resampling ranks, and comparisons among the top 40 ensembles and 12 single learners. Numerical CSV and JSON files are written to `outputs/`; no plotting software is needed. The quick statistical run uses deposited per-learner predictions and SHAP arrays, not saved headline values, to recompute the statistics.
+`run_all.py` verifies SHA-256 checksums, reconstructs all 239 set rows and 34 candidate indicators from the six source workbooks, and checks the reconstructed tables against the deposited model inputs. It then recalculates the reported AUC, accuracy, F1, Brier score, 4,095-subset development selection scores, single-model OOF pseudo-R² and ROC coordinates, per-set ensemble SHAP values, match-resampling ranks, and comparisons among the top 40 ensembles and 12 single learners. Numerical CSV and JSON files are written to `outputs/`; no plotting software is needed. The quick statistical run uses deposited per-learner predictions and SHAP arrays, not saved headline values, to recompute the statistics.
 
 To rerun model fitting from the corrected set tables, use:
 
@@ -25,10 +25,20 @@ python analysis/refit_primary.py --check-reference
 python analysis/refit_primary.py --variant two --check-reference
 python analysis/refit_primary.py --variant eight --check-reference
 python analysis/refit_primary.py --variant backhand --check-reference
+python analysis/refit_baselines.py --check-reference
 python analysis/refit_sensitivity.py
 ```
 
-The full, two-feature and eight-feature commands repeat five outer folds, five inner folds, three match-grouped calibration folds, and AUC selection over 4,095 subsets. Results, per-set predictions and fitted final learners are written to `outputs/refit*`. `--check-reference` compares the new predictions and selected members with the deposited analysis. The two-feature variant removes `Service Breaks` and `Total Points Won`; the eight-feature variant also removes `Double Faults`, `Unforced Errors`, `Backhand Return Win`, `Forehand Return Win`, `1st Serve Pts Won` and `2nd Serve Pts Won`. Both reselect their ensemble members. The backhand ablation removes only `Backhand Returns`, retaining the members and thresholds already selected in the full model before refitting. These variants are sensitivity analyses, not the primary model.
+The full, two-feature and eight-feature commands repeat five outer folds, five inner folds, three match-grouped calibration folds, and AUC selection over 4,095 subsets. Results, per-set predictions and fitted final learners are written to `outputs/refit*`. The full refit also writes independently recalculated metrics for all 12 single learners. `--check-reference` compares the new predictions and selected members with the deposited analysis. The classification-comparator command independently refits L2 logistic regression, L1 logistic regression and a random-forest classifier, writing their Table 4 metrics and per-set predictions to `outputs/refit_baselines/`. The two-feature variant removes `Service Breaks` and `Total Points Won`; the eight-feature variant also removes `Double Faults`, `Unforced Errors`, `Backhand Return Win`, `Forehand Return Win`, `1st Serve Pts Won` and `2nd Serve Pts Won`. Both reselect their ensemble members. The backhand ablation removes only `Backhand Returns`, retaining the members and thresholds already selected in the full model before refitting. These variants are sensitivity analyses, not the primary model.
+
+To reproduce the complete 34-indicator feature-removal panel and the F1-selection comparator in Table 9, run:
+
+```bash
+python analysis/refit_all_ablation.py --jobs 4 --check-reference
+python analysis/refit_primary.py --criterion f1 --output outputs/refit_f1 --check-reference
+```
+
+The first command refits each indicator removal with the original fold-specific members and thresholds, writes `outputs/feature_ablation_refits/feature_ablation.csv`, and checks all 34 rows against the deposited panel source. It is more computationally demanding than `run_all.py`; set `--jobs 1` on a low-memory computer. The second command repeats grouped F1-based subset selection as a sensitivity comparison; its `results.json` and per-set prediction CSVs provide the Table 9 F1-selection values. The primary analysis continues to select by AUC.
 
 The sensitivity command permutes each indicator 30 times in the refitted ensemble members and verifies the resulting prediction changes against the deposited Figure 4A values.
 
@@ -68,6 +78,7 @@ The final development selection has seven members: LR, Ridge, Lasso, gradient bo
 | `data/processed/` | Corrected set-level tables with match identifiers and the 34 candidate indicators |
 | `data/indicator_dictionary.csv` | Operational definitions and manuscript indicator codes |
 | `data/reference/` | Deposited base predictions, SHAP arrays, sensitivity outputs and numerical audit records |
+| `data/reference/feature_ablation.csv` | Complete 34-indicator feature-removal panel source, checked by independent refitting |
 | `data/sha256.csv` | Checksums and byte counts for deposited data files |
 | `analysis/models.py` | Documented fixed settings and fold-local feature screen for 12 learners |
 | `analysis/build_processed.py` | Rebuilds the model tables directly from annual workbooks and the set-to-source map |
@@ -77,6 +88,8 @@ The final development selection has seven members: LR, Ridge, Lasso, gradient bo
 | `analysis/reproduce_top40.py` | Recalculation of top-40 ensemble and single-learner SHAP agreement |
 | `analysis/reproduce_tuned_top40.py` | Recalculation of tuned top-40 and single-learner SHAP agreement |
 | `analysis/refit_primary.py` | Full model refit, including two- and eight-feature exclusions |
+| `analysis/refit_baselines.py` | Independent refits of the three classification comparators in Table 4 |
+| `analysis/refit_all_ablation.py` | Independent fixed-member refits of all 34 single-indicator removals |
 | `analysis/refit_sensitivity.py` | Member-level permutation sensitivity for the primary refit |
 | `analysis/refit_shap.py` | Full SHAP rerun for the final primary model |
 | `analysis/summarize_shap_repeats.py` | Rank agreement across 30 complete SHAP runs |

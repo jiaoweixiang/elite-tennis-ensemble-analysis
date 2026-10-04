@@ -59,6 +59,27 @@ def main(output: Path | None = None) -> None:
     single_importance = np.abs(values).mean(axis=(1, 2))
     ensemble_ranks = rank_rows(ensemble_importance)
     single_ranks = rank_rows(single_importance)
+    low_rank = rankdata(-single_importance, axis=1, method="min")
+    high_rank = rankdata(-single_importance, axis=1, method="max")
+
+    single_rows = []
+    for j, name in enumerate(NAMES):
+        for k, feature in enumerate(feature_names):
+            single_rows.append({"model": name, "feature": feature,
+                                "mean_abs_shap": single_importance[j, k],
+                                "rank_low": int(low_rank[j, k]),
+                                "rank_high": int(high_rank[j, k]),
+                                "display_order": int(single_ranks[j, k]),
+                                "screen_retained": bool(single_importance[j, k] > 0)})
+    single_table = pd.DataFrame(single_rows)
+    reference_singles = pd.read_csv(REF / "single_model_shap_ranks.csv")
+    assert single_table[["model", "feature"]].equals(
+        reference_singles[["model", "feature"]].assign(
+            feature=reference_singles.feature.str.strip()))
+    assert np.max(np.abs(single_table.mean_abs_shap - reference_singles.mean_abs_shap)) < 1e-12
+    for column in ("rank_low", "rank_high", "display_order", "screen_retained"):
+        assert np.array_equal(single_table[column], reference_singles[column]), column
+    single_table.to_csv(output / "single_model_shap_ranks.csv", index=False)
 
     selections = []
     rank_table = []

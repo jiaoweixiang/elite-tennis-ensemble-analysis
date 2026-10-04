@@ -39,7 +39,7 @@ def main() -> None:
             for p in files()]
     if args.write_manifest:
         with MANIFEST.open("w", newline="", encoding="utf-8") as stream:
-            writer = csv.DictWriter(stream, fieldnames=["path", "sha256", "bytes"])
+            writer = csv.DictWriter(stream, fieldnames=["path", "sha256", "bytes"], lineterminator="\n")
             writer.writeheader()
             writer.writerows(rows)
     else:
