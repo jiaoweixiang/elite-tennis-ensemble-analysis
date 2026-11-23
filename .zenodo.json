@@ -1,0 +1,27 @@
+{
+  "title": "Elite tennis ensemble analysis: reproducible set-level workflow",
+  "upload_type": "software",
+  "version": "v1.0.2",
+  "creators": [
+    {
+      "name": "Jiao, Weixiang"
+    }
+  ],
+  "description": "<p>Version 1.0.2 accompanies the revised manuscript and contains the author-supplied source workbooks, processed inputs, predictions, explanations, supplementary tables, figure exports and numerical reproduction scripts.</p><p>Revision analyses include twelve-indicator outcome exclusion, random and member-count-matched ensemble comparisons, opponent-rank adjustment, alternative return representations and two-observer recoding checks. See RELEASE_NOTES.md and LICENSE for details.</p>",
+  "license": "cc-by-4.0",
+  "notes": "Author-owned materials use CC BY 4.0. Identified third-party source-derived records retain attribution and CC BY-NC-SA 4.0 as specified in LICENSE and data/README.md.",
+  "keywords": [
+    "tennis",
+    "ensemble learning",
+    "explainable machine learning",
+    "sports analytics"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/jiaoweixiang/elite-tennis-ensemble-analysis/tree/v1.0.2",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "access_right": "open"
+}
