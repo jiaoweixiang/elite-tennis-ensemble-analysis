@@ -1,0 +1,6 @@
+seed 42 maximum SHAP difference: 2.61e-15
+seed 142 maximum SHAP difference: 1.72e-15
+seed 242 maximum SHAP difference: 1.67e-15
+All 30 complete-run backhand ranks match the deposited record
+SHAP values saved to outputs/shap_repeat30
+Summarized 435 SHAP-run pairs: {'runs': 30, 'backhand_rank_min': 6, 'backhand_rank_max': 6, 'backhand_top6_frequency': 1.0, 'pairwise_rank_spearman_median': 0.9959955506117909, 'pairwise_rank_spearman_min': 0.9884315906562846, 'pairwise_rank_spearman_max': 1.0, 'pairwise_top6_jaccard_median': 1.0, 'mean_abs_shap_30_vs_archived3_max_absolute_difference': 9.495147873606925e-05, 'point_shap_30_vs_archived3_max_absolute_difference': 0.00222093691577457}

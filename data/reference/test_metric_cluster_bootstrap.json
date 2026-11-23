@@ -31,5 +31,46 @@
     ],
     "n": 5000
   },
-  "scope": "2025 match-cluster bootstrap, 5000 draws; fixed model and threshold; excludes training and selection uncertainty"
+  "specificity": {
+    "estimate": 0.7,
+    "interval": [
+      0.42857142857142855,
+      1.0
+    ],
+    "n": 5000
+  },
+  "balanced_accuracy": {
+    "estimate": 0.8333333333333333,
+    "interval": [
+      0.6969065656565657,
+      0.9696969696969697
+    ],
+    "n": 5000
+  },
+  "MCC": {
+    "estimate": 0.7216878364870322,
+    "interval": [
+      0.46291004988627577,
+      0.9284141650970551
+    ],
+    "n": 5000
+  },
+  "precision": {
+    "estimate": 0.90625,
+    "interval": [
+      0.8,
+      1.0
+    ],
+    "n": 5000
+  },
+  "recall": {
+    "estimate": 0.9666666666666667,
+    "interval": [
+      0.8888888888888888,
+      1.0
+    ],
+    "n": 5000
+  },
+  "scope": "2025 match-cluster bootstrap, 5000 draws; all displayed 2025 performance intervals use identical match draws and fixed predictions/threshold",
+  "one_class_omitted": 0
 }

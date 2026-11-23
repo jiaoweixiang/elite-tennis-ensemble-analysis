@@ -1,0 +1,22 @@
+{
+  "selection_seed": 20261113,
+  "bootstrap_seed": 20261114,
+  "bootstrap_draws": 5000,
+  "groups": [
+    "12 original single learners",
+    "40 uniform subsets from all4095",
+    "40 subsets with original top40 size histogram",
+    "40 frozen development-AUC-selected subsets"
+  ],
+  "random_selection": "One fixed draw per random group, without replacement within group, no exclusion based on AUC and no resampling to obtain a favourable point estimate.",
+  "size_matching": "Only the matched group preserves the exact top40 size histogram. Unrestricted group is uniform over all4095, including singletons.",
+  "metrics": [
+    "top10 Jaccard pairwise median",
+    "top10 Jaccard pairwise mean",
+    "full34feature Spearman pairwise median",
+    "full34feature Spearman pairwise mean"
+  ],
+  "importance": "Original linear composition of calibrated-output member SHAP; average absolute ensemble SHAP over original three seeds and sampled sets.",
+  "confidence": "Two-sided95% percentile intervals,5000 whole-match resamples of12 temporal-test matches; same draw for all groups. Groups and fitted learners are fixed.",
+  "scope": "Intervals represent test-match composition uncertainty conditional on the chosen groups and fitted explanations; do not include random-group selection or model retraining uncertainty."
+}

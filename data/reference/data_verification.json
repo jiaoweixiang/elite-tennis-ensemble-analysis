@@ -610,8 +610,8 @@
       "adjusted_sum": "1.00"
     }
   ],
-  "data_rule": "All 45 2023 sets mapped from revised source workbook, all 34 features refreshed; three depth shares sum to one with two decimal places and largest-remainder allocation. Winners maps to 得分次数, confirmed by author. Non-2023 training and 2025 test unchanged.",
-  "selection_policy": "Six methods reported regardless of backhand rank; Brier-based training-only method selection. Previously examined 2025 test remains exploratory temporal evaluation.",
+  "data_rule": "All 45 2023 sets mapped from revised source workbook, all 34 features refreshed; three depth shares sum to one with two decimal places and largest-remainder allocation. Net Points Won maps to 得分次数, confirmed by author. Non-2023 training and 2025 test unchanged.",
+  "selection_policy": "The 2025 test set had been examined in earlier analyses and is treated as an exploratory temporal evaluation.",
   "additional_final_file_corrections": [
     {
       "split": "train",
@@ -669,9 +669,7 @@
     }
   ],
   "final_file_hashes": {
-    "train_grouped.csv": "ce81d30145adc57b99270899beebb534bb11a777f3a701cc240b94e4fb6d9ffe",
-    "test_grouped.csv": "71be006c03e0861337eb490c74cf013cd5d6559d3df727b742219923df312489",
-    "train_en_corrected.csv": "cad7b25df0b10845202366bdefd76f0b8db8a61c806ba278e48e8a2a343c9903",
-    "val_en_corrected.csv": "d432cd0bc8aeb537a0ed6371ae960f888f6d60ca089c9476d7efb914fc592711"
+    "train_grouped.csv": "91b18ecf183d65f4b25b50650d972ada0be647d644990c3bf69cc0aab2b6ccc4",
+    "test_grouped.csv": "ccc1673c988967c4f17604959621c621da41eee3cf0d7d268c328678a728ad90"
   }
 }

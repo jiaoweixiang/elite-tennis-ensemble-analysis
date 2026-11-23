@@ -1,0 +1,5 @@
+scope,metric,n_matches,unweighted_exact_count_kappa,icc_absolute_single,kappa_interpretation
+36 overlapping matches; author-aligned extract of Kaggle ATP matches v3,Aces,36,0.9398496240601504,0.9991713818982456,Exact whole-match integer count categories; not event-level coding kappa.
+36 overlapping matches; author-aligned extract of Kaggle ATP matches v3,Double Faults,36,1.0,1.0,Exact whole-match integer count categories; not event-level coding kappa.
+36 overlapping matches; author-aligned extract of Kaggle ATP matches v3,Break Points,36,1.0,1.0,Exact whole-match integer count categories; not event-level coding kappa.
+36 overlapping matches; author-aligned extract of Kaggle ATP matches v3,Service Breaks,36,0.9667282809611828,0.9965356824705532,Exact whole-match integer count categories; not event-level coding kappa.

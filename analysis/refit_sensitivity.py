@@ -1,4 +1,4 @@
-"""Recalculate member-level permutation prediction sensitivity (Figure 4A)."""
+"""Recalculate member-level permutation prediction sensitivity on the development sets (Figure 4a)."""
 
 from pathlib import Path
 
@@ -15,7 +15,6 @@ def main() -> None:
     names = bundle["selection"]["members"]
     features = bundle["features"]
     train = pd.read_csv(ROOT / "data/processed/train_grouped.csv")[features].to_numpy(float)
-    test = pd.read_csv(ROOT / "data/processed/test_grouped.csv")[features].to_numpy(float)
 
     def predict(x):
         return np.column_stack([
@@ -25,7 +24,7 @@ def main() -> None:
 
     rng = np.random.RandomState(42)
     rows = []
-    for subset, x in (("development", train), ("2025", test)):
+    for subset, x in (("development", train),):
         original = predict(x)
         for column, feature in enumerate(features):
             differences = np.zeros((30, len(names)))
@@ -36,16 +35,12 @@ def main() -> None:
             for member, name in enumerate(names):
                 rows.append({"subset": subset, "feature": feature, "model": name,
                              "mean_abs_probability_change": differences[:, member].mean(),
-                             "sd_across_permutations": differences[:, member].std(ddof=1),
+                             "probability_points": 100 * differences[:, member].mean(),
                              "n_sets": len(x), "repeats": 30})
     result = pd.DataFrame(rows)
-    totals = result.loc[result.subset == "development"].groupby("model").mean_abs_probability_change.sum()
-    result["within_model_relative_sensitivity"] = result.mean_abs_probability_change / result.model.map(totals)
-    result["probability_points"] = 100 * result.mean_abs_probability_change
     reference = pd.read_csv(REF / "prediction_sensitivity.csv")
     assert result[["subset", "feature", "model"]].equals(reference[["subset", "feature", "model"]])
-    for column in ("mean_abs_probability_change", "sd_across_permutations",
-                   "within_model_relative_sensitivity", "probability_points"):
+    for column in ("mean_abs_probability_change", "probability_points"):
         delta = np.max(np.abs(result[column] - reference[column]))
         assert delta < 1e-10, (column, delta)
     output = refit / "prediction_sensitivity.csv"

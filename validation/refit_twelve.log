@@ -1,0 +1,8 @@
+outer 1, final fit: 161 fitting sets, 38 predictions
+outer 2, final fit: 161 fitting sets, 38 predictions
+outer 3, final fit: 156 fitting sets, 43 predictions
+outer 4, final fit: 162 fitting sets, 37 predictions
+outer 5, final fit: 156 fitting sets, 43 predictions
+all-development final fit: 199 fitting sets, 40 predictions
+test score maximum absolute difference: 1.11e-16
+Refit complete: REPOSITORY/outputs/refit_twelve

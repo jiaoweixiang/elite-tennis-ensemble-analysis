@@ -11,28 +11,5 @@ env/
 .idea/
 .vscode/
 
-# Manuscripts and administrative files
-*.doc
-*.docx
-*.ppt
-*.pptx
-*.pdf
-*.png
-*.jpg
-*.jpeg
-*.tif
-*.tiff
-
-# Generated analysis outputs
-tennis_workflow_results_en.xlsx
-model_ablation_all_4095.csv
-figure*.pdf
-figure*.png
-*.xlsx
-
-# The six source workbooks are deliberately versioned.
-!data/raw/*.xlsx
-
-# Recalculated tables and fitted models are local outputs.
+# Recalculated results, refits and caches are local outputs.
 outputs/
-

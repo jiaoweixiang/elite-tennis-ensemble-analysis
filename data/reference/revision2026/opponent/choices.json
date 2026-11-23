@@ -1,0 +1,230 @@
+{
+  "outer": [
+    {
+      "fold": 1,
+      "scenario": "fixed_members",
+      "members": [
+        "Ridge",
+        "GB",
+        "SVR",
+        "AdaB",
+        "MLP"
+      ],
+      "columns": [
+        1,
+        4,
+        5,
+        6,
+        9
+      ],
+      "threshold": 0.8107768842905493
+    },
+    {
+      "fold": 1,
+      "scenario": "reselected",
+      "index": 315,
+      "columns": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "members": [
+        "LR",
+        "Ridge",
+        "GB",
+        "SVR"
+      ],
+      "inner_auc": 0.9750268528464017,
+      "threshold": 0.7656068534576916
+    },
+    {
+      "fold": 2,
+      "scenario": "fixed_members",
+      "members": [
+        "Lasso",
+        "DT",
+        "KNN",
+        "LDA"
+      ],
+      "columns": [
+        2,
+        7,
+        8,
+        11
+      ],
+      "threshold": 0.8058675302100844
+    },
+    {
+      "fold": 2,
+      "scenario": "reselected",
+      "index": 607,
+      "columns": [
+        2,
+        3,
+        8,
+        11
+      ],
+      "members": [
+        "Lasso",
+        "RF",
+        "KNN",
+        "LDA"
+      ],
+      "inner_auc": 0.9632754342431762,
+      "threshold": 0.7826371887588068
+    },
+    {
+      "fold": 3,
+      "scenario": "fixed_members",
+      "members": [
+        "LR",
+        "Ridge",
+        "Lasso",
+        "GB",
+        "SVR",
+        "MLP"
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        9
+      ],
+      "threshold": 0.8127977296070118
+    },
+    {
+      "fold": 3,
+      "scenario": "reselected",
+      "index": 300,
+      "columns": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "members": [
+        "LR",
+        "Ridge",
+        "Lasso",
+        "SVR"
+      ],
+      "inner_auc": 0.9830605799598048,
+      "threshold": 0.7981723870873582
+    },
+    {
+      "fold": 4,
+      "scenario": "fixed_members",
+      "members": [
+        "Ridge",
+        "SVR",
+        "AdaB",
+        "DT"
+      ],
+      "columns": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "threshold": 0.7359203078159101
+    },
+    {
+      "fold": 4,
+      "scenario": "reselected",
+      "index": 160,
+      "columns": [
+        1,
+        5,
+        9
+      ],
+      "members": [
+        "Ridge",
+        "SVR",
+        "MLP"
+      ],
+      "inner_auc": 0.9660357791029297,
+      "threshold": 0.8231485876388888
+    },
+    {
+      "fold": 5,
+      "scenario": "fixed_members",
+      "members": [
+        "LR",
+        "RF",
+        "SVR"
+      ],
+      "columns": [
+        0,
+        3,
+        5
+      ],
+      "threshold": 0.7630785878891279
+    },
+    {
+      "fold": 5,
+      "scenario": "reselected",
+      "index": 701,
+      "columns": [
+        3,
+        5,
+        9,
+        11
+      ],
+      "members": [
+        "RF",
+        "SVR",
+        "MLP",
+        "LDA"
+      ],
+      "inner_auc": 0.9638881346728211,
+      "threshold": 0.78895844514573
+    }
+  ],
+  "final_fixed": {
+    "members": [
+      "LR",
+      "Ridge",
+      "Lasso",
+      "GB",
+      "AdaB",
+      "DT",
+      "GNB"
+    ],
+    "columns": [
+      0,
+      1,
+      2,
+      4,
+      6,
+      7,
+      10
+    ],
+    "threshold": 0.7595348622078176
+  },
+  "final_reselected": {
+    "index": 2856,
+    "columns": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11
+    ],
+    "members": [
+      "LR",
+      "Lasso",
+      "GB",
+      "AdaB",
+      "DT",
+      "GNB",
+      "LDA"
+    ],
+    "inner_auc": 0.9694955691888207,
+    "threshold": 0.7032882750671228
+  }
+}

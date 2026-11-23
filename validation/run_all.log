@@ -1,0 +1,44 @@
+Running verify_data.py
+Verified 222 files, 239 sets and the 155 km/h source correction
+Running build_processed.py
+Rebuilt all 239 set rows and 34 candidate indicators from the six workbooks
+Running audit_source_mapping.py
+Compared 8126 source values; differences: 11
+[((2019, '2nd Serve In '), 3), ((2025, 'Midcourt Balls'), 2), ((2025, 'Backcourt Deep Balls'), 2), ((2020, 'Forecourt Short Balls'), 1), ((2020, 'Midcourt Balls'), 1), ((2020, 'Backcourt Deep Balls'), 1), ((2024, '1st Serve In '), 1)]
+Running check_recording_origins.py
+Verified 204 original recoding-sample values against modelling inputs.
+Running descriptive.py
+Recalculated 34 indicator distributions and correlations
+Running reproduce.py
+Verified inputs and wrote numerical results to REPOSITORY/outputs
+Running reproduce_top40.py
+Rebuilt 40 ensemble rankings and 846 pair comparisons
+Running bootstrap_ci.py
+Recalculated 5,000 match-cluster draws and nine 2025 metric intervals
+Running calibration_diagnostics.py
+Original-workflow calibration diagnostics reproduced: [{'sample': 'development_outer', 'n': 199, 'wins': 163, 'calibration_intercept': 0.12433773697527584, 'calibration_slope': 1.9186973818188042, 'brier': 0.060603306307925625, 'mean_probability': 0.8066833908085234, 'observed_fraction': 0.8190954773869347}, {'sample': 'temporal_2025', 'n': 40, 'wins': 30, 'calibration_intercept': -0.5111288971493986, 'calibration_slope': 1.501629850344847, 'brier': 0.08875838649704418, 'mean_probability': 0.7989833819297493, 'observed_fraction': 0.75}]
+Running return_representation_diagnostics.py
+Share; T omitted max VIF 4.581 rank 7 / 7
+Rates; T omitted max VIF 4.691 rank 8 / 8
+Running reproduce_revision.py
+Supplementary reproduction: classification
+Supplementary reproduction: partial_correlation
+Supplementary reproduction: primary_ablation
+Supplementary reproduction: primary_agreement
+Supplementary reproduction: sensitivity_groups
+Supplementary reproduction: opponent
+Supplementary reproduction: representations
+Supplementary reproduction: reliability
+Supplementary numerical reproduction passed; see outputs/revision2026.
+Running ablation_ranks.py
+{
+  "indicators": 34,
+  "focal": "Backhand Returns",
+  "delta_AUC": 0.0166666666666667,
+  "rank": 5,
+  "ranking": "Descending 2025 test deletion-refit AUC decrease, standard competition ranks for ties",
+  "indicators_at_focal_rank": 5,
+  "indicators_with_strictly_larger_effect": 4,
+  "prediction_columns_independently_checked": 7
+}
+Numerical reproduction complete; see outputs/

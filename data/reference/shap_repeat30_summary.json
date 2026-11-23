@@ -78,7 +78,5 @@
     "Backhand Returns"
   ],
   "mean_abs_shap_30_vs_archived3_max_absolute_difference": 9.495147873606752e-05,
-  "point_shap_30_vs_archived3_median_absolute_difference": 0.00015383153534861732,
-  "point_shap_30_vs_archived3_max_absolute_difference": 0.00222093691577472,
-  "mean_abs_shap_30_vs_archived3_rank_spearman": 0.9982202447163514
+  "point_shap_30_vs_archived3_max_absolute_difference": 0.00222093691577472
 }

@@ -1,0 +1,98 @@
+{
+  "version": "1.0.2",
+  "prepared": "2026-11-22",
+  "status": "PASS",
+  "environment": {
+    "os": "Linux x86_64",
+    "python": "3.12.3",
+    "dependencies": "requirements.txt (+ requirements-shap.txt for SHAP refits); exact versions in validation/requirements-freeze.txt"
+  },
+  "published_to_Zenodo": false,
+  "numerical_reproduction": {
+    "command": "python run_all.py",
+    "scope": "fresh extraction of the release archive",
+    "log": "validation/run_all.log",
+    "table_check": "Table 1 compared with data/indicator_dictionary.csv (34/34 rows identical). Reported values in Supplementary Tables S1-S11 compared with outputs/ at the reported precision: all agree except three cells that differ by 0.001 in rounding (Table S2 fold 5 accuracy 41/43 = 0.9535; Table S3 MLP outer F1 = 0.8475; Table S3 Logistic L1 outer accuracy 180/199 = 0.9045)."
+  },
+  "refit_checks": [
+    {
+      "command": "python analysis/refit_primary.py --check-reference",
+      "log": "validation/refit_primary_full.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_baselines.py --check-reference",
+      "log": "validation/refit_baselines.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_primary.py --variant twelve --check-reference",
+      "log": "validation/refit_twelve.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_exclusion_shap.py --jobs 1 --check-reference",
+      "log": "validation/refit_exclusion_shap.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_primary.py --variant backhand --check-reference",
+      "log": "validation/refit_backhand.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_primary.py --criterion f1 --check-reference",
+      "log": "validation/refit_f1.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_tuning.py --check-reference",
+      "log": "validation/refit_tuning.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_all_ablation.py --jobs 1 --check-reference",
+      "log": "validation/refit_all_ablation.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_sensitivity.py",
+      "log": "validation/refit_sensitivity.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_shap.py --check-reference",
+      "log": "validation/refit_shap.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_shap.py --runs 30 --check-reference --output outputs/shap_repeat30; python analysis/summarize_shap_repeats.py",
+      "log": "validation/refit_shap_30runs.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_revision_opponent.py",
+      "log": "validation/refit_opponent.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_revision_representations.py court_drop_only",
+      "log": "validation/refit_representations_court_drop_only.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_revision_representations.py return_share_without_total",
+      "log": "validation/refit_representations_return_share_without_total.log",
+      "status": "PASS"
+    },
+    {
+      "command": "python analysis/refit_revision_representations.py return_rates_without_total",
+      "log": "validation/refit_representations_return_rates_without_total.log",
+      "status": "PASS"
+    }
+  ],
+  "notes": [
+    "Refit checks assert agreement with the deposited predictions, selections and SHAP arrays (differences at floating-point precision, below 1e-8).",
+    "Model inputs (data/processed) are unchanged; the 2020 workbook change is limited to de-identified annotator cells in row 1."
+  ]
+}

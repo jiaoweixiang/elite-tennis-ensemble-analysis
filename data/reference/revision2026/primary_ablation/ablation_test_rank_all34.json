@@ -1,0 +1,10 @@
+{
+  "indicators": 34,
+  "focal": "Backhand Returns",
+  "delta_AUC": 0.0166666666666667,
+  "rank": 5,
+  "ranking": "Descending 2025 test deletion-refit AUC decrease, standard competition ranks for ties",
+  "indicators_at_focal_rank": 5,
+  "indicators_with_strictly_larger_effect": 4,
+  "prediction_columns_independently_checked": 7
+}

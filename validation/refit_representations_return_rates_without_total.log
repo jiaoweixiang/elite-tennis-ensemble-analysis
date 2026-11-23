@@ -1,0 +1,11 @@
+[6.3s] return_rates_without_total: outer 1/5 finished; members=['LR', 'Ridge', 'GB', 'SVR', 'MLP', 'LDA']
+[14.0s] return_rates_without_total: outer 2/5 finished; members=['Ridge', 'Lasso', 'RF', 'KNN', 'LDA']
+[20.4s] return_rates_without_total: outer 3/5 finished; members=['LR', 'Ridge', 'Lasso', 'DT', 'KNN']
+[27.9s] return_rates_without_total: outer 4/5 finished; members=['LR', 'Ridge', 'Lasso', 'GB', 'SVR', 'KNN', 'MLP', 'GNB', 'LDA']
+[35.6s] return_rates_without_total: outer 5/5 finished; members=['LR', 'Ridge', 'RF', 'GB', 'SVR', 'KNN', 'MLP']
+[42.1s] return_rates_without_total: Final choice {'index': 456, 'columns': [0, 7, 9, 10], 'members': ['LR', 'DT', 'MLP', 'GNB'], 'inner_auc': 0.9802317655078391, 'threshold': 0.7744635205031533}
+[42.3s] return_rates_without_total: AUC outer/test (0.9660872528970689, 0.9433333333333334)
+[53.8s] return_rates_without_total: SHAP seed 42 finished
+[64.3s] return_rates_without_total: SHAP seed 142 finished
+[77.1s] return_rates_without_total: SHAP seed 242 finished
+[79.5s] return_rates_without_total: DONE

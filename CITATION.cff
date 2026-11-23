@@ -1,13 +1,15 @@
 cff-version: 1.2.0
-message: "If you use the data or analysis code, please cite this repository and the associated article when published."
+message: "Cite the deposited version of this software. Licence exceptions for third-party source-derived records are listed in LICENSE and data/README.md."
 type: software
 title: "Elite tennis ensemble analysis: reproducible set-level workflow"
 authors:
   - family-names: "Jiao"
     given-names: "Weixiang"
-version: "1.0.1"
-date-released: 2026-10-04
-doi: "10.5281/zenodo.23133624"
+version: "1.0.2"
+date-released: "2026-11-19"
+license:
+  - "CC-BY-4.0"
+  - "CC-BY-NC-SA-4.0"
 repository-code: "https://github.com/jiaoweixiang/elite-tennis-ensemble-analysis"
 keywords:
   - tennis

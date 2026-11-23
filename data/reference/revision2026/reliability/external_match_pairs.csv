@@ -1,0 +1,37 @@
+match_id,year,event,round,n_sets,opponent,score_winner_first,csv_line,source_file,djokovic_in_source_columns,study_Aces,reference_Aces,difference_Aces,study_Double Faults,reference_Double Faults,difference_Double Faults,study_Break Points,reference_Break Points,difference_Break Points,study_Service Breaks,reference_Service Breaks,difference_Service Breaks
+2019_AO_F_Djokovic,2019,AO,F,3,Rafael Nadal,6-3 6-2 6-3,3,source:小德公开数据集（英文）.csv,winner,8.0,8.0,0.0,0.0,0.0,0.0,8.0,8.0,0.0,5.0,5.0,0.0
+2019_AO_QF_Djokovic,2019,AO,QF,2,Kei Nishikori,6-1 4-1 RET,4,source:小德公开数据集（英文）.csv,winner,2.0,2.0,0.0,1.0,1.0,0.0,4.0,4.0,0.0,4.0,4.0,0.0
+2019_AO_R128_Djokovic,2019,AO,R128,3,Mitchell Krueger,6-3 6-2 6-2,8,source:小德公开数据集（英文）.csv,winner,6.0,6.0,0.0,2.0,2.0,0.0,20.0,20.0,0.0,6.0,6.0,0.0
+2019_AO_R16_Djokovic,2019,AO,R16,4,Daniil Medvedev,6-4 6-7(5) 6-2 6-3,5,source:小德公开数据集（英文）.csv,winner,6.0,6.0,0.0,5.0,5.0,0.0,18.0,18.0,0.0,7.0,7.0,0.0
+2019_AO_R32_Djokovic,2019,AO,R32,4,Denis Shapovalov,6-3 6-4 4-6 6-0,6,source:小德公开数据集（英文）.csv,winner,5.0,5.0,0.0,4.0,4.0,0.0,13.0,13.0,0.0,8.0,8.0,0.0
+2019_AO_R64_Djokovic,2019,AO,R64,3,Jo-Wilfried Tsonga,6-3 7-5 6-4,9,source:小德公开数据集（英文）.csv,winner,12.0,12.0,0.0,1.0,1.0,0.0,9.0,9.0,0.0,5.0,5.0,0.0
+2019_AO_SF_Djokovic,2019,AO,SF,3,Lucas Pouille,6-0 6-2 6-2,7,source:小德公开数据集（英文）.csv,winner,6.0,6.0,0.0,0.0,0.0,0.0,12.0,12.0,0.0,7.0,7.0,0.0
+2019_USO_R128_Djokovic,2019,USO,R128,3,Roberto Carballes Baena,6-4 6-1 6-4,45,source:小德公开数据集（英文）.csv,winner,4.0,4.0,0.0,3.0,3.0,0.0,11.0,11.0,0.0,4.0,4.0,0.0
+2019_USO_R16_Djokovic,2019,USO,R16,3,Stan Wawrinka,6-4 7-5 2-1 RET,48,source:小德公开数据集（英文）.csv,loser,2.0,2.0,0.0,5.0,5.0,0.0,5.0,5.0,0.0,1.0,1.0,0.0
+2019_USO_R32_Djokovic,2019,USO,R32,3,Denis Kudla,6-3 6-4 6-2,47,source:小德公开数据集（英文）.csv,winner,6.0,6.0,0.0,8.0,8.0,0.0,9.0,9.0,0.0,5.0,4.0,1.0
+2019_USO_R64_Djokovic,2019,USO,R64,3,Juan Ignacio Londero,6-4 7-6(3) 6-1,46,source:小德公开数据集（英文）.csv,winner,7.0,7.0,0.0,8.0,8.0,0.0,18.0,18.0,0.0,9.0,9.0,0.0
+2020_AO_F_Djokovic,2020,AO,F,5,Dominic Thiem,6-4 4-6 2-6 6-3 6-4,80,source:小德公开数据集（英文）.csv,winner,9.0,9.0,0.0,5.0,5.0,0.0,12.0,12.0,0.0,5.0,5.0,0.0
+2020_AO_QF_Djokovic,2020,AO,QF,3,Milos Raonic,6-4 6-3 7-6(1),78,source:小德公开数据集（英文）.csv,winner,4.0,4.0,0.0,1.0,1.0,0.0,16.0,16.0,0.0,2.0,2.0,0.0
+2020_AO_R128_Djokovic,2020,AO,R128,4,Jan Lennard Struff,7-6(5) 6-2 2-6 6-1,74,source:小德公开数据集（英文）.csv,winner,15.0,14.0,1.0,3.0,3.0,0.0,11.0,11.0,0.0,7.0,7.0,0.0
+2020_AO_R16_Djokovic,2020,AO,R16,3,Diego Schwartzman,6-3 6-4 6-4,77,source:小德公开数据集（英文）.csv,winner,8.0,8.0,0.0,1.0,1.0,0.0,8.0,8.0,0.0,4.0,4.0,0.0
+2020_AO_R32_Djokovic,2020,AO,R32,3,Yoshihito Nishioka,6-3 6-2 6-2,76,source:小德公开数据集（英文）.csv,winner,17.0,17.0,0.0,2.0,2.0,0.0,6.0,6.0,0.0,5.0,5.0,0.0
+2020_AO_R64_Djokovic,2020,AO,R64,3,Tatsuma Ito,6-1 6-4 6-2,75,source:小德公开数据集（英文）.csv,winner,16.0,16.0,0.0,5.0,5.0,0.0,9.0,9.0,0.0,5.0,5.0,0.0
+2020_AO_SF_Djokovic,2020,AO,SF,3,Roger Federer,7-6(1) 6-4 6-3,79,source:小德公开数据集（英文）.csv,winner,12.0,11.0,1.0,1.0,1.0,0.0,11.0,11.0,0.0,4.0,4.0,0.0
+2020_USO_R128_Djokovic,2020,USO,R128,3,Damir Dzumhur,6-1 6-4 6-1,91,source:小德公开数据集（英文）.csv,winner,5.0,5.0,0.0,5.0,5.0,0.0,19.0,19.0,0.0,7.0,7.0,0.0
+2020_USO_R16_Djokovic,2020,USO,R16,1,Pablo Carreno Busta,6-5 DEF,94,source:小德公开数据集（英文）.csv,loser,9.0,9.0,0.0,0.0,0.0,0.0,4.0,4.0,0.0,0.0,0.0,0.0
+2020_USO_R32_Djokovic,2020,USO,R32,3,Jan Lennard Struff,6-3 6-3 6-1,93,source:小德公开数据集（英文）.csv,winner,4.0,4.0,0.0,5.0,5.0,0.0,11.0,11.0,0.0,5.0,5.0,0.0
+2020_USO_R64_Djokovic,2020,USO,R64,4,Kyle Edmund,6-7(5) 6-3 6-4 6-2,92,source:小德公开数据集（英文）.csv,winner,16.0,16.0,0.0,3.0,3.0,0.0,12.0,12.0,0.0,6.0,6.0,0.0
+2021_AO_F_Djokovic,2021,AO,F,3,Daniil Medvedev,7-5 6-2 6-2,166,source:小德公开数据集（英文）.csv,winner,3.0,3.0,0.0,2.0,2.0,0.0,11.0,11.0,0.0,7.0,7.0,0.0
+2021_AO_QF_Djokovic,2021,AO,QF,4,Alexander Zverev,6-7(6) 6-2 6-4 7-6(6),164,source:小德公开数据集（英文）.csv,winner,23.0,23.0,0.0,5.0,5.0,0.0,9.0,9.0,0.0,6.0,6.0,0.0
+2021_AO_R128_Djokovic,2021,AO,R128,3,Jeremy Chardy,6-3 6-1 6-2,160,source:小德公开数据集（英文）.csv,winner,9.0,9.0,0.0,1.0,1.0,0.0,13.0,13.0,0.0,6.0,6.0,0.0
+2021_AO_R16_Djokovic,2021,AO,R16,4,Milos Raonic,7-6(4) 4-6 6-1 6-4,163,source:小德公开数据集（英文）.csv,winner,10.0,10.0,0.0,3.0,3.0,0.0,11.0,11.0,0.0,3.0,3.0,0.0
+2021_AO_R32_Djokovic,2021,AO,R32,5,Taylor Fritz,7-6(1) 6-4 3-6 4-6 6-2,162,source:小德公开数据集（英文）.csv,winner,15.0,15.0,0.0,5.0,5.0,0.0,9.0,9.0,0.0,4.0,4.0,0.0
+2021_AO_R64_Djokovic,2021,AO,R64,4,Frances Tiafoe,6-3 6-7(3) 7-6(2) 6-3,161,source:小德公开数据集（英文）.csv,winner,26.0,26.0,0.0,5.0,5.0,0.0,14.0,14.0,0.0,5.0,5.0,0.0
+2021_AO_SF_Djokovic,2021,AO,SF,3,Aslan Karatsev,6-3 6-4 6-2,165,source:小德公开数据集（英文）.csv,winner,17.0,17.0,0.0,2.0,2.0,0.0,7.0,7.0,0.0,6.0,6.0,0.0
+2021_USO_F_Djokovic,2021,USO,F,3,Daniil Medvedev,6-4 6-4 6-4,159,source:小德公开数据集（英文）.csv,loser,6.0,6.0,0.0,3.0,3.0,0.0,6.0,6.0,0.0,1.0,1.0,0.0
+2021_USO_QF_Djokovic,2021,USO,QF,4,Matteo Berrettini,5-7 6-2 6-2 6-3,157,source:小德公开数据集（英文）.csv,winner,12.0,12.0,0.0,4.0,4.0,0.0,16.0,16.0,0.0,5.0,5.0,0.0
+2021_USO_R128_Djokovic,2021,USO,R128,4,Holger Rune,6-1 6-7(5) 6-2 6-1,153,source:小德公开数据集（英文）.csv,winner,17.0,17.0,0.0,7.0,7.0,0.0,14.0,14.0,0.0,8.0,8.0,0.0
+2021_USO_R16_Djokovic,2021,USO,R16,4,Jenson Brooksby,1-6 6-3 6-2 6-2,156,source:小德公开数据集（英文）.csv,winner,9.0,9.0,0.0,1.0,1.0,0.0,12.0,12.0,0.0,6.0,6.0,0.0
+2021_USO_R32_Djokovic,2021,USO,R32,4,Kei Nishikori,6-7(4) 6-3 6-3 6-2,155,source:小德公开数据集（英文）.csv,winner,15.0,15.0,0.0,7.0,7.0,0.0,16.0,16.0,0.0,7.0,7.0,0.0
+2021_USO_R64_Djokovic,2021,USO,R64,3,Tallon Griekspoor,6-2 6-3 6-2,154,source:小德公开数据集（英文）.csv,winner,13.0,13.0,0.0,5.0,5.0,0.0,10.0,10.0,0.0,6.0,6.0,0.0
+2021_USO_SF_Djokovic,2021,USO,SF,5,Alexander Zverev,4-6 6-2 6-4 4-6 6-2,158,source:小德公开数据集（英文）.csv,winner,12.0,12.0,0.0,2.0,2.0,0.0,9.0,9.0,0.0,6.0,6.0,0.0

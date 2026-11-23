@@ -1,0 +1,33 @@
+outer 1, inner 1
+outer 1, inner 2
+outer 1, inner 3
+outer 1, inner 4
+outer 1, inner 5
+outer 1 selection: ['LR', 'Ridge', 'Lasso', 'RF', 'GB', 'SVR', 'MLP']
+outer 2, inner 1
+outer 2, inner 2
+outer 2, inner 3
+outer 2, inner 4
+outer 2, inner 5
+outer 2 selection: ['RF', 'SVR', 'DT', 'LDA']
+outer 3, inner 1
+outer 3, inner 2
+outer 3, inner 3
+outer 3, inner 4
+outer 3, inner 5
+outer 3 selection: ['LR', 'Lasso', 'GB', 'SVR']
+outer 4, inner 1
+outer 4, inner 2
+outer 4, inner 3
+outer 4, inner 4
+outer 4, inner 5
+outer 4 selection: ['Lasso', 'SVR', 'DT']
+outer 5, inner 1
+outer 5, inner 2
+outer 5, inner 3
+outer 5, inner 4
+outer 5, inner 5
+outer 5 selection: ['RF', 'SVR']
+outer_platt maximum absolute difference: 6.33e-15
+test_platt maximum absolute difference: 1.55e-15
+Tuning sensitivity refit complete: REPOSITORY/outputs/refit_tuning

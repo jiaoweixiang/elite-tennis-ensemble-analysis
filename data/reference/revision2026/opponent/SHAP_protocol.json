@@ -1,0 +1,14 @@
+{
+  "seeds": [
+    42,
+    142,
+    242
+  ],
+  "nsamples": 2048,
+  "background_n": 50,
+  "background_seed": 42,
+  "l1_reg": 0,
+  "technical_rank_excludes_context": true,
+  "context_retained_in_model": true,
+  "note": "Model-based probability attributions with marginal background; adjustment is not causal conditional SHAP."
+}

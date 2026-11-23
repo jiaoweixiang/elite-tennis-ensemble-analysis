@@ -1,4 +1,4 @@
-"""Recalculate distribution checks and set-outcome correlations (Table 2)."""
+"""Recalculate distribution checks and set-outcome correlations (Supplementary Table S1)."""
 
 from pathlib import Path
 

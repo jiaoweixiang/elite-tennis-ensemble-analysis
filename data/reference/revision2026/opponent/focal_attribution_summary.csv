@@ -1,0 +1,4 @@
+scenario,focal_rank_technical,focal_rank_all,focal_mean_abs_shap,focal_rank_bootstrap_low,focal_rank_bootstrap_high
+original,6,6,0.0165068850401211,5.0,8.0
+fixed_members,6,6,0.0166300464190914,5.0,8.0
+reselected,6,6,0.0174694658815601,5.0,8.0

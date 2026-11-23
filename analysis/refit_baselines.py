@@ -1,4 +1,4 @@
-"""Refit the three classification comparators reported in Table 4."""
+"""Refit the three classification comparators reported in Supplementary Table S3."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from sklearn.metrics import brier_score_loss
 from sklearn.model_selection import StratifiedGroupKFold
 
 from models import BASELINE_NAMES, baseline_pipeline
-from reproduce import ROOT, REF, metrics, verify_inputs, youden_threshold
+from reproduce import ROOT, REF, TEST_COLUMNS, metrics, pick, verify_inputs, youden_threshold
 
 
 FAMILIES = {"Logistic L2": list(range(0, 3)),
@@ -99,12 +99,10 @@ def main() -> None:
     ]).astype(int)
     rows = []
     for j, family in enumerate(names):
-        for sample, labels, scores, predictions in (
-            ("outer", y, outer_scores[:, j], outer_predictions[:, j]),
-            ("2025", yt, test_scores[:, j], test_predictions[:, j]),
-        ):
-            rows.append({"model": family, "sample": sample,
-                         **metrics(labels, scores, predictions)})
+        outer = pick(metrics(y, outer_scores[:, j], outer_predictions[:, j]), ["auc", "accuracy", "f1"])
+        current = pick(metrics(yt, test_scores[:, j], test_predictions[:, j]), TEST_COLUMNS)
+        rows.append({"model": family, **{f"outer_{k}": v for k, v in outer.items()},
+                     **{f"test_2025_{k}": v for k, v in current.items()}})
     pd.DataFrame(rows).to_csv(args.output / "baseline_performance.csv", index=False)
     for label, source, scores, predictions in (
         ("outer", train, outer_scores, outer_predictions),
@@ -122,7 +120,7 @@ def main() -> None:
     if args.check_reference:
         for label in ("outer", "test"):
             actual = pd.read_csv(args.output / f"{label}_predictions.csv")
-            expected = pd.read_csv(REF / f"selection_comparators_{label}_predictions.csv")
+            expected = pd.read_csv(REF / ("outer_predictions.csv" if label == "outer" else "test_predictions.csv"))
             assert actual.match_id.equals(expected.match_id)
             for family in names:
                 key = REFERENCE_NAMES[family]

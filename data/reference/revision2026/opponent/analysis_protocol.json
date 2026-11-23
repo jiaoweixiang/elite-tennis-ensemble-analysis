@@ -1,0 +1,30 @@
+{
+  "created_before_any_adjusted_model_fit": true,
+  "question": "Sensitivity to addition of recorded pre-tournament opponent ATP rank, not proof of absence of opponent effects.",
+  "main": "Fixed original fold-specific ensemble membership; refit all parameters and grouped calibration after adding log2(opponent ATP rank).",
+  "secondary": "Repeat all 4095 subset searches inside the existing 5x5 match-grouped nested CV after adding the same rank covariate.",
+  "covariate": "log2 of opponent rank as of tournament start or most recent ranking before it; one scalar, no seed/year-end/current ranking substitution.",
+  "screen": "Learn original technical-feature screening inside each fit; force context covariate to remain outside that screen, with no context-based dropping of technical features.",
+  "calibration": "Original three-fold match-grouped Platt calibration of each learner; no post-ensemble recalibration or lambda experiments.",
+  "folds": "Original StratifiedGroupKFold five outer / five inner / three calibration folds, shuffle=True, seed=42; all sets of a match stay together.",
+  "selection": "Only development inner-OOF AUC; ties fewer members then original subset order; training-only Youden thresholds.",
+  "outcomes": [
+    "AUC, Brier score and classification metrics",
+    "Technical-feature SHAP ranking and Backhand Returns attribution",
+    "2025 Backhand Returns ablation holding membership fixed",
+    "Paired AUC changes with whole-match resampling"
+  ],
+  "explanations": "KernelSHAP, training background of 50 (seed42), 2048 samples, l1_reg=0, seeds42/142/242; same protocol as original final-ensemble SHAP. Opponent context excluded from technical-only ranks and separately reported.",
+  "uncertainty": "2000 paired whole-match bootstrap draws; fixed fitted predictions, no bootstrap refit. Non-significance is not equivalence.",
+  "completeness": "All71matches/239sets, no rank imputation, no case exclusions;36overlapping matches cross-checked against author CSV.",
+  "source": "Third-party Jeff Sackmann data, archived by jmatarese/atp-data; not certified direct ATP export; CC BY-NC-SA4.0.",
+  "source_snapshot": "c704c1bcbe08949246d956b54b099715d5997dcb",
+  "limitations": [
+    "Ranking proxies opponent strength, not serve direction, handedness-specific patterns, injuries or tactical style.",
+    "Single-player retrospective sensitivity; no causal independence or absence-of-confounding claim."
+  ],
+  "study_source_hashes": {
+    "source:train_grouped.csv": "91b18ecf183d65f4b25b50650d972ada0be647d644990c3bf69cc0aab2b6ccc4",
+    "source:test_grouped.csv": "ccc1673c988967c4f17604959621c621da41eee3cf0d7d268c328678a728ad90"
+  }
+}

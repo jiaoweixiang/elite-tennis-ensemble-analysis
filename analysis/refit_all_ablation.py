@@ -1,9 +1,9 @@
-"""Refit all 34 fixed-member leave-one-indicator-out comparisons.
+"""Refit all 34 fixed-member leave-one-indicator-out comparisons (2025 test AUC).
 
-This is the numeric source for the manuscript's feature-removal panel. The
-ensemble members and Youden thresholds stay fixed at the primary model's
-training-only choices while feature screening, learners and Platt calibration
-are fitted again after each indicator is removed.
+Each indicator is deleted in turn; the primary model's members and threshold
+stay fixed while feature screening, learners and Platt calibration are refitted.
+The resulting 2025 deletion-refit AUC decreases are the source of Figure 4b and
+of the all-indicator ranking computed by ablation_ranks.py.
 """
 
 from __future__ import annotations
@@ -33,7 +33,6 @@ def main() -> None:
     args.output.mkdir(parents=True, exist_ok=True)
     features = list(pd.read_csv(ROOT / "data/processed/train_grouped.csv").columns[1:35])
     primary = json.loads((REF / "primary_results.json").read_text(encoding="utf-8"))["full"]
-    outer_full = primary["outer"]
     test_full = primary["test_2025"]
 
     def fit(item: tuple[int, str]) -> dict:
@@ -48,26 +47,21 @@ def main() -> None:
         if completed.returncode:
             raise RuntimeError(f"Refit failed for {feature}:\n{completed.stdout}\n{completed.stderr}")
         result = json.loads((directory / "results.json").read_text(encoding="utf-8"))
-        outer, test = result["outer"], result["test_2025"]
+        test = result["test_2025"]
         return {"feature": feature,
-                "outer_full_auc": outer_full["auc"], "outer_without_auc": outer["auc"],
-                "outer_auc_drop": outer_full["auc"] - outer["auc"],
                 "test_full_auc": test_full["auc"], "test_without_auc": test["auc"],
                 "test_auc_drop": test_full["auc"] - test["auc"],
-                "outer_brier_increase": outer["brier"] - outer_full["brier"],
-                "test_brier_increase": test["brier"] - test_full["brier"],
-                "selected_member_rule": "fixed AUC-selected membership within each fold"}
+                "selected_member_rule": "fixed AUC-selected final membership and threshold"}
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as executor:
         rows = list(executor.map(fit, enumerate(features)))
     table = pd.DataFrame(rows)
-    table["outer_auc_drop_rank"] = table.outer_auc_drop.rank(ascending=False, method="first").astype(int)
-    table = table.sort_values("outer_auc_drop_rank")
+    table = table.sort_values("test_auc_drop", ascending=False, kind="stable")
     path = args.output / "feature_ablation.csv"
     table.to_csv(path, index=False)
     if args.check_reference:
         expected = pd.read_csv(REF / "feature_ablation.csv", encoding="utf-8-sig")
-        assert table.feature.tolist() == expected.feature.tolist()
+        table = table.set_index("feature").loc[expected.feature].reset_index()
         for column in table.select_dtypes(include=np.number):
             difference = np.max(np.abs(table[column].to_numpy(float) - expected[column].to_numpy(float)))
             assert difference < 1e-8, (column, difference)

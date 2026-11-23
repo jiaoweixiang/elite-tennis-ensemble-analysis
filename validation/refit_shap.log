@@ -1,0 +1,4 @@
+seed 42 maximum SHAP difference: 2.61e-15
+seed 142 maximum SHAP difference: 1.72e-15
+seed 242 maximum SHAP difference: 1.67e-15
+SHAP values saved to REPOSITORY/outputs/refit/shap

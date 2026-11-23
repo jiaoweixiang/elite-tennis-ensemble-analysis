@@ -1,4 +1,4 @@
-﻿training_auc_order,feature,shap_rank,mean_absolute_shap,top6,top10
+training_auc_order,feature,shap_rank,mean_absolute_shap,top6,top10
 1,Break Points,23,0.0018135735764734072,0,0
 1,Service Breaks,1,0.13283696447955715,1,1
 1,Drive Returns,10,0.007266393460086284,0,1
@@ -28,7 +28,7 @@
 1,Rally ≥10 Shots,19,0.0022459447235088762,0,0
 1,Total Points Won,3,0.0375733202517828,1,1
 1,Net Approaches,13,0.00388082129444709,0,0
-1,Winners,33,0.0,0,0
+1,Net Points Won,33,0.0,0,0
 1,Distance per Set (m),20,0.0021204156051079087,0,0
 1,Forecourt Short Balls,24,0.001747866908415415,0,0
 1,Midcourt Balls,34,0.0,0,0
@@ -62,7 +62,7 @@
 2,Rally ≥10 Shots,14,0.0050248782670684515,0,0
 2,Total Points Won,2,0.03177900925593842,1,1
 2,Net Approaches,12,0.006812536277310956,0,0
-2,Winners,33,0.0,0,0
+2,Net Points Won,33,0.0,0,0
 2,Distance per Set (m),15,0.004296295842618533,0,0
 2,Forecourt Short Balls,27,0.0021900234243462146,0,0
 2,Midcourt Balls,34,0.0,0,0
@@ -96,7 +96,7 @@
 3,Rally ≥10 Shots,18,0.002305870866572549,0,0
 3,Total Points Won,3,0.03647350050323627,1,1
 3,Net Approaches,13,0.003715492230014474,0,0
-3,Winners,33,0.0,0,0
+3,Net Points Won,33,0.0,0,0
 3,Distance per Set (m),19,0.00216420403025213,0,0
 3,Forecourt Short Balls,24,0.001776523638665653,0,0
 3,Midcourt Balls,34,0.0,0,0
@@ -130,7 +130,7 @@
 4,Rally ≥10 Shots,20,0.0025992067669922832,0,0
 4,Total Points Won,3,0.03953403237576637,1,1
 4,Net Approaches,12,0.00427032057738882,0,0
-4,Winners,33,0.0,0,0
+4,Net Points Won,33,0.0,0,0
 4,Distance per Set (m),21,0.0023030031078054005,0,0
 4,Forecourt Short Balls,24,0.0017842666596926712,0,0
 4,Midcourt Balls,34,0.0,0,0
@@ -164,7 +164,7 @@
 5,Rally ≥10 Shots,14,0.004345814614086315,0,0
 5,Total Points Won,3,0.037236065471293864,1,1
 5,Net Approaches,13,0.005831114951131286,0,0
-5,Winners,33,0.0,0,0
+5,Net Points Won,33,0.0,0,0
 5,Distance per Set (m),15,0.0036587824777352305,0,0
 5,Forecourt Short Balls,27,0.0017586587324968214,0,0
 5,Midcourt Balls,34,0.0,0,0
@@ -198,7 +198,7 @@
 6,Rally ≥10 Shots,13,0.005754126386958514,0,0
 6,Total Points Won,3,0.03925016961212741,1,1
 6,Net Approaches,11,0.007376704793684422,0,0
-6,Winners,33,0.0,0,0
+6,Net Points Won,33,0.0,0,0
 6,Distance per Set (m),16,0.0042980217569841125,0,0
 6,Forecourt Short Balls,28,0.002297447404109401,0,0
 6,Midcourt Balls,34,0.0,0,0
@@ -232,7 +232,7 @@
 7,Rally ≥10 Shots,14,0.004392670842119116,0,0
 7,Total Points Won,3,0.03630363948273856,1,1
 7,Net Approaches,13,0.005668924982556422,0,0
-7,Winners,33,0.0,0,0
+7,Net Points Won,33,0.0,0,0
 7,Distance per Set (m),15,0.0037060684238395306,0,0
 7,Forecourt Short Balls,27,0.0017846846422758958,0,0
 7,Midcourt Balls,34,0.0,0,0
@@ -266,7 +266,7 @@
 8,Rally ≥10 Shots,13,0.004658319359051201,0,0
 8,Total Points Won,2,0.03230704170706993,1,1
 8,Net Approaches,10,0.006764689158286334,0,1
-8,Winners,33,0.0,0,0
+8,Net Points Won,33,0.0,0,0
 8,Distance per Set (m),17,0.0036014727142539113,0,0
 8,Forecourt Short Balls,27,0.001947488544002051,0,0
 8,Midcourt Balls,34,0.0,0,0
@@ -300,7 +300,7 @@
 9,Rally ≥10 Shots,19,0.002619085973688083,0,0
 9,Total Points Won,3,0.04383820712724086,1,1
 9,Net Approaches,13,0.004528928716981888,0,0
-9,Winners,33,0.0,0,0
+9,Net Points Won,33,0.0,0,0
 9,Distance per Set (m),20,0.0024715164900324022,0,0
 9,Forecourt Short Balls,24,0.0020422971852485324,0,0
 9,Midcourt Balls,34,0.0,0,0
@@ -334,7 +334,7 @@
 10,Rally ≥10 Shots,19,0.0026687676490231844,0,0
 10,Total Points Won,3,0.03821591809735359,1,1
 10,Net Approaches,12,0.004052710454717177,0,0
-10,Winners,33,0.0,0,0
+10,Net Points Won,33,0.0,0,0
 10,Distance per Set (m),21,0.0023548419264226915,0,0
 10,Forecourt Short Balls,24,0.0018176995116512822,0,0
 10,Midcourt Balls,34,0.0,0,0
@@ -368,7 +368,7 @@
 11,Rally ≥10 Shots,19,0.002135976298828878,0,0
 11,Total Points Won,3,0.03661311175075921,1,1
 11,Net Approaches,12,0.0038444075065481404,0,0
-11,Winners,33,0.0,0,0
+11,Net Points Won,33,0.0,0,0
 11,Distance per Set (m),21,0.002068632138556626,0,0
 11,Forecourt Short Balls,24,0.0017532143644374035,0,0
 11,Midcourt Balls,34,0.0,0,0
@@ -402,7 +402,7 @@
 12,Rally ≥10 Shots,18,0.0025979663428458487,0,0
 12,Total Points Won,3,0.04213543743941472,1,1
 12,Net Approaches,15,0.003809073143942177,0,0
-12,Winners,33,0.0,0,0
+12,Net Points Won,33,0.0,0,0
 12,Distance per Set (m),19,0.0022086664677570867,0,0
 12,Forecourt Short Balls,24,0.0015449081180999187,0,0
 12,Midcourt Balls,34,0.0,0,0
@@ -436,7 +436,7 @@
 13,Rally ≥10 Shots,17,0.0034462493566867953,0,0
 13,Total Points Won,3,0.0345276961202851,1,1
 13,Net Approaches,11,0.0060309054746900785,0,0
-13,Winners,33,0.0,0,0
+13,Net Points Won,33,0.0,0,0
 13,Distance per Set (m),19,0.002816803540469309,0,0
 13,Forecourt Short Balls,21,0.0026778305127990064,0,0
 13,Midcourt Balls,34,0.0,0,0
@@ -470,7 +470,7 @@
 14,Rally ≥10 Shots,14,0.004254207673776157,0,0
 14,Total Points Won,3,0.03642579932432115,1,1
 14,Net Approaches,13,0.005786346330894381,0,0
-14,Winners,33,0.0,0,0
+14,Net Points Won,33,0.0,0,0
 14,Distance per Set (m),15,0.0036073995196905,0,0
 14,Forecourt Short Balls,27,0.00178269526868988,0,0
 14,Midcourt Balls,34,0.0,0,0
@@ -504,7 +504,7 @@
 15,Rally ≥10 Shots,13,0.004610781691191914,0,0
 15,Total Points Won,2,0.027742443505167438,1,1
 15,Net Approaches,9,0.00731190895847039,0,1
-15,Winners,33,0.0,0,0
+15,Net Points Won,33,0.0,0,0
 15,Distance per Set (m),16,0.003891103754051122,0,0
 15,Forecourt Short Balls,27,0.0023266793761027747,0,0
 15,Midcourt Balls,34,0.0,0,0
@@ -538,7 +538,7 @@
 16,Rally ≥10 Shots,18,0.002171699371773042,0,0
 16,Total Points Won,3,0.038526529044065436,1,1
 16,Net Approaches,13,0.003060568385257627,0,0
-16,Winners,33,0.0,0,0
+16,Net Points Won,33,0.0,0,0
 16,Distance per Set (m),20,0.001696020194457247,0,0
 16,Forecourt Short Balls,28,0.0006577994794763882,0,0
 16,Midcourt Balls,34,0.0,0,0
@@ -572,7 +572,7 @@
 17,Rally ≥10 Shots,14,0.005702597230494035,0,0
 17,Total Points Won,2,0.03773496148183294,1,1
 17,Net Approaches,13,0.006457564149947997,0,0
-17,Winners,33,0.0,0,0
+17,Net Points Won,33,0.0,0,0
 17,Distance per Set (m),17,0.004475907733809582,0,0
 17,Forecourt Short Balls,24,0.002719874055585099,0,0
 17,Midcourt Balls,34,0.0,0,0
@@ -606,7 +606,7 @@
 18,Rally ≥10 Shots,16,0.0036241321927096702,0,0
 18,Total Points Won,3,0.03996596856270269,1,1
 18,Net Approaches,11,0.005578898016617972,0,0
-18,Winners,33,0.0,0,0
+18,Net Points Won,33,0.0,0,0
 18,Distance per Set (m),22,0.0025786760536743677,0,0
 18,Forecourt Short Balls,26,0.001689348665653138,0,0
 18,Midcourt Balls,34,0.0,0,0
@@ -640,7 +640,7 @@
 19,Rally ≥10 Shots,20,0.002470823581976775,0,0
 19,Total Points Won,3,0.03837490739809928,1,1
 19,Net Approaches,12,0.004212085133900855,0,0
-19,Winners,33,0.0,0,0
+19,Net Points Won,33,0.0,0,0
 19,Distance per Set (m),21,0.0022438749283208246,0,0
 19,Forecourt Short Balls,24,0.0017905053583849922,0,0
 19,Midcourt Balls,34,0.0,0,0
@@ -674,7 +674,7 @@
 20,Rally ≥10 Shots,17,0.003390478819847191,0,0
 20,Total Points Won,3,0.03565750835892464,1,1
 20,Net Approaches,11,0.006166379595952337,0,0
-20,Winners,33,0.0,0,0
+20,Net Points Won,33,0.0,0,0
 20,Distance per Set (m),21,0.0027666522909633702,0,0
 20,Forecourt Short Balls,22,0.0026519309974081017,0,0
 20,Midcourt Balls,34,0.0,0,0
@@ -708,7 +708,7 @@
 21,Rally ≥10 Shots,14,0.004943499164703841,0,0
 21,Total Points Won,3,0.03881930242418275,1,1
 21,Net Approaches,12,0.006516564515717248,0,0
-21,Winners,33,0.0,0,0
+21,Net Points Won,33,0.0,0,0
 21,Distance per Set (m),15,0.004067679847752546,0,0
 21,Forecourt Short Balls,28,0.0019196676683957868,0,0
 21,Midcourt Balls,34,0.0,0,0
@@ -742,7 +742,7 @@
 22,Rally ≥10 Shots,14,0.004330596698524849,0,0
 22,Total Points Won,2,0.030920324104120364,1,1
 22,Net Approaches,12,0.006015440217487634,0,0
-22,Winners,33,0.0,0,0
+22,Net Points Won,33,0.0,0,0
 22,Distance per Set (m),15,0.003798281221222979,0,0
 22,Forecourt Short Balls,26,0.0019731373579328173,0,0
 22,Midcourt Balls,34,0.0,0,0
@@ -776,7 +776,7 @@
 23,Rally ≥10 Shots,14,0.005595606604710339,0,0
 23,Total Points Won,3,0.039389780859650364,1,1
 23,Net Approaches,11,0.007515525043337465,0,0
-23,Winners,33,0.0,0,0
+23,Net Points Won,33,0.0,0,0
 23,Distance per Set (m),16,0.0041824927249223915,0,0
 23,Forecourt Short Balls,28,0.0022971047768578796,0,0
 23,Midcourt Balls,34,0.0,0,0
@@ -810,7 +810,7 @@
 24,Rally ≥10 Shots,15,0.005259300333303602,0,0
 24,Total Points Won,3,0.03551668515339417,1,1
 24,Net Approaches,11,0.007698310387223877,0,0
-24,Winners,33,0.0,0,0
+24,Net Points Won,33,0.0,0,0
 24,Distance per Set (m),16,0.004179417142673517,0,0
 24,Forecourt Short Balls,28,0.002238510217231204,0,0
 24,Midcourt Balls,34,0.0,0,0
@@ -844,7 +844,7 @@
 25,Rally ≥10 Shots,15,0.003250750772632204,0,0
 25,Total Points Won,2,0.036196864829310456,1,1
 25,Net Approaches,11,0.005335643532435497,0,0
-25,Winners,33,0.0,0,0
+25,Net Points Won,33,0.0,0,0
 25,Distance per Set (m),22,0.0019840245564389913,0,0
 25,Forecourt Short Balls,29,0.0012257551638982516,0,0
 25,Midcourt Balls,34,0.0,0,0
@@ -878,7 +878,7 @@
 26,Rally ≥10 Shots,18,0.0029511063062771107,0,0
 26,Total Points Won,3,0.0443497813452708,1,1
 26,Net Approaches,15,0.004148119317852961,0,0
-26,Winners,33,0.0,0,0
+26,Net Points Won,33,0.0,0,0
 26,Distance per Set (m),20,0.0023871101170404798,0,0
 26,Forecourt Short Balls,25,0.0015528710379196689,0,0
 26,Midcourt Balls,34,0.0,0,0
@@ -912,7 +912,7 @@
 27,Rally ≥10 Shots,17,0.0032838571640279876,0,0
 27,Total Points Won,3,0.034663972663781406,1,1
 27,Net Approaches,11,0.006148761246519803,0,0
-27,Winners,33,0.0,0,0
+27,Net Points Won,33,0.0,0,0
 27,Distance per Set (m),20,0.002713556927823583,0,0
 27,Forecourt Short Balls,21,0.0026545454110008097,0,0
 27,Midcourt Balls,34,0.0,0,0
@@ -946,7 +946,7 @@
 28,Rally ≥10 Shots,14,0.004219493924965834,0,0
 28,Total Points Won,2,0.03005205589037501,1,1
 28,Net Approaches,11,0.005964276080074022,0,0
-28,Winners,33,0.0,0,0
+28,Net Points Won,33,0.0,0,0
 28,Distance per Set (m),16,0.003736166370735204,0,0
 28,Forecourt Short Balls,25,0.00198986244260695,0,0
 28,Midcourt Balls,34,0.0,0,0
@@ -980,7 +980,7 @@
 29,Rally ≥10 Shots,18,0.0029800187388778388,0,0
 29,Total Points Won,3,0.03441334234940463,1,1
 29,Net Approaches,11,0.005679427630542013,0,0
-29,Winners,33,0.0,0,0
+29,Net Points Won,33,0.0,0,0
 29,Distance per Set (m),21,0.002542461810980139,0,0
 29,Forecourt Short Balls,22,0.0025092106098241586,0,0
 29,Midcourt Balls,34,0.0,0,0
@@ -1014,7 +1014,7 @@
 30,Rally ≥10 Shots,14,0.004688368134741947,0,0
 30,Total Points Won,3,0.034454147745554234,1,1
 30,Net Approaches,11,0.007025290159879635,0,0
-30,Winners,33,0.0,0,0
+30,Net Points Won,33,0.0,0,0
 30,Distance per Set (m),16,0.003805102806571597,0,0
 30,Forecourt Short Balls,27,0.002077460284936194,0,0
 30,Midcourt Balls,34,0.0,0,0
@@ -1048,7 +1048,7 @@
 31,Rally ≥10 Shots,14,0.004997414011704319,0,0
 31,Total Points Won,3,0.037693073331941065,1,1
 31,Net Approaches,13,0.006317928802023297,0,0
-31,Winners,33,0.0,0,0
+31,Net Points Won,33,0.0,0,0
 31,Distance per Set (m),15,0.004122267151537554,0,0
 31,Forecourt Short Balls,28,0.0019473150116686736,0,0
 31,Midcourt Balls,34,0.0,0,0
@@ -1082,7 +1082,7 @@
 32,Rally ≥10 Shots,13,0.0053232137320589155,0,0
 32,Total Points Won,2,0.03102230228815584,1,1
 32,Net Approaches,10,0.007742848393575669,0,1
-32,Winners,33,0.0,0,0
+32,Net Points Won,33,0.0,0,0
 32,Distance per Set (m),17,0.0041090748320907755,0,0
 32,Forecourt Short Balls,27,0.002181704346095528,0,0
 32,Midcourt Balls,34,0.0,0,0
@@ -1116,7 +1116,7 @@
 33,Rally ≥10 Shots,21,0.0020168282015538565,0,0
 33,Total Points Won,3,0.03388451330482745,1,1
 33,Net Approaches,13,0.003463864031259819,0,0
-33,Winners,33,0.0,0,0
+33,Net Points Won,33,0.0,0,0
 33,Distance per Set (m),19,0.0021824824960926205,0,0
 33,Forecourt Short Balls,24,0.001763724432393791,0,0
 33,Midcourt Balls,34,0.0,0,0
@@ -1150,7 +1150,7 @@
 34,Rally ≥10 Shots,14,0.005910340701049144,0,0
 34,Total Points Won,3,0.033680096326697016,1,1
 34,Net Approaches,12,0.008361874187585416,0,0
-34,Winners,33,0.0,0,0
+34,Net Points Won,33,0.0,0,0
 34,Distance per Set (m),16,0.005214657251174095,0,0
 34,Forecourt Short Balls,26,0.002718570488665832,0,0
 34,Midcourt Balls,34,0.0,0,0
@@ -1184,7 +1184,7 @@
 35,Rally ≥10 Shots,17,0.0035604776639533912,0,0
 35,Total Points Won,3,0.041271711037281715,1,1
 35,Net Approaches,11,0.005723902847787977,0,0
-35,Winners,33,0.0,0,0
+35,Net Points Won,33,0.0,0,0
 35,Distance per Set (m),22,0.0025098465728921157,0,0
 35,Forecourt Short Balls,25,0.0016546711338173363,0,0
 35,Midcourt Balls,34,0.0,0,0
@@ -1218,7 +1218,7 @@
 36,Rally ≥10 Shots,18,0.0022652379521831616,0,0
 36,Total Points Won,3,0.03735085273071274,1,1
 36,Net Approaches,15,0.0029669512232218605,0,0
-36,Winners,33,0.0,0,0
+36,Net Points Won,33,0.0,0,0
 36,Distance per Set (m),22,0.0019588083619458347,0,0
 36,Forecourt Short Balls,21,0.0020183450981362725,0,0
 36,Midcourt Balls,34,0.0,0,0
@@ -1252,7 +1252,7 @@
 37,Rally ≥10 Shots,14,0.005904896482759864,0,0
 37,Total Points Won,2,0.03350565772066501,1,1
 37,Net Approaches,9,0.008043667965323053,0,1
-37,Winners,33,0.0,0,0
+37,Net Points Won,33,0.0,0,0
 37,Distance per Set (m),16,0.004498882746985194,0,0
 37,Forecourt Short Balls,26,0.0025770025061092037,0,0
 37,Midcourt Balls,34,0.0,0,0
@@ -1286,7 +1286,7 @@
 38,Rally ≥10 Shots,17,0.0034329996157116396,0,0
 38,Total Points Won,3,0.0401280814485931,1,1
 38,Net Approaches,11,0.0057156584287174845,0,0
-38,Winners,33,0.0,0,0
+38,Net Points Won,33,0.0,0,0
 38,Distance per Set (m),22,0.002458088686012375,0,0
 38,Forecourt Short Balls,25,0.0016750502762647923,0,0
 38,Midcourt Balls,34,0.0,0,0
@@ -1320,7 +1320,7 @@
 39,Rally ≥10 Shots,15,0.005361857278468505,0,0
 39,Total Points Won,2,0.02901961273112654,1,1
 39,Net Approaches,8,0.008131378784657113,0,1
-39,Winners,33,0.0,0,0
+39,Net Points Won,33,0.0,0,0
 39,Distance per Set (m),16,0.004393292266866735,0,0
 39,Forecourt Short Balls,26,0.0025270953541426965,0,0
 39,Midcourt Balls,34,0.0,0,0
@@ -1354,7 +1354,7 @@
 40,Rally ≥10 Shots,13,0.0049377974742404905,0,0
 40,Total Points Won,3,0.043172375050645674,1,1
 40,Net Approaches,12,0.006120779445039762,0,0
-40,Winners,33,0.0,0,0
+40,Net Points Won,33,0.0,0,0
 40,Distance per Set (m),17,0.003961165606229759,0,0
 40,Forecourt Short Balls,28,0.0017644462895405782,0,0
 40,Midcourt Balls,34,0.0,0,0

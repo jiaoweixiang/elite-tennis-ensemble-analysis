@@ -1,0 +1,39 @@
+outer 1, inner 1: 133 fitting sets, 28 predictions
+outer 1, inner 2: 128 fitting sets, 33 predictions
+outer 1, inner 3: 123 fitting sets, 38 predictions
+outer 1, inner 4: 130 fitting sets, 31 predictions
+outer 1, inner 5: 130 fitting sets, 31 predictions
+outer 1, final fit: 161 fitting sets, 38 predictions
+outer 1/5: ['AdaB', 'DT', 'MLP']
+outer 2, inner 1: 129 fitting sets, 32 predictions
+outer 2, inner 2: 127 fitting sets, 34 predictions
+outer 2, inner 3: 134 fitting sets, 27 predictions
+outer 2, inner 4: 120 fitting sets, 41 predictions
+outer 2, inner 5: 134 fitting sets, 27 predictions
+outer 2, final fit: 161 fitting sets, 38 predictions
+outer 2/5: ['LR', 'Lasso', 'DT', 'KNN', 'LDA']
+outer 3, inner 1: 122 fitting sets, 34 predictions
+outer 3, inner 2: 126 fitting sets, 30 predictions
+outer 3, inner 3: 123 fitting sets, 33 predictions
+outer 3, inner 4: 130 fitting sets, 26 predictions
+outer 3, inner 5: 123 fitting sets, 33 predictions
+outer 3, final fit: 156 fitting sets, 43 predictions
+outer 3/5: ['Lasso', 'RF', 'KNN', 'LDA']
+outer 4, inner 1: 131 fitting sets, 31 predictions
+outer 4, inner 2: 125 fitting sets, 37 predictions
+outer 4, inner 3: 129 fitting sets, 33 predictions
+outer 4, inner 4: 134 fitting sets, 28 predictions
+outer 4, inner 5: 129 fitting sets, 33 predictions
+outer 4, final fit: 162 fitting sets, 37 predictions
+outer 4/5: ['LR', 'Ridge', 'RF', 'AdaB', 'KNN', 'LDA']
+outer 5, inner 1: 126 fitting sets, 30 predictions
+outer 5, inner 2: 124 fitting sets, 32 predictions
+outer 5, inner 3: 123 fitting sets, 33 predictions
+outer 5, inner 4: 127 fitting sets, 29 predictions
+outer 5, inner 5: 124 fitting sets, 32 predictions
+outer 5, final fit: 156 fitting sets, 43 predictions
+outer 5/5: ['LR', 'Lasso', 'SVR']
+all-development final fit: 199 fitting sets, 40 predictions
+outer F1-selection score maximum absolute difference: 2.16e-15
+2025 F1-selection score maximum absolute difference: 8.88e-16
+Refit complete: REPOSITORY/outputs/refit_f1

@@ -1,0 +1,83 @@
+[
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/README.md",
+    "file": "source:README.md",
+    "bytes": 2312,
+    "sha256": "6c596e7ef38c5e14574f865945a59234d8667ae6b041dbbe04c807d952637329",
+    "retrieved_utc": "2026-11-12T11:56:43.097316+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/README.md"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/matches_data_dictionary.txt",
+    "file": "source:matches_data_dictionary.txt",
+    "bytes": 3758,
+    "sha256": "b4b525ad8163f9ee2ffde3ab7108924ec1385ef7d2fddf828c1fc096fcaafee4",
+    "retrieved_utc": "2026-11-12T11:56:43.388373+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/matches_data_dictionary.txt"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/UPSTREAM_README.md",
+    "file": "source:UPSTREAM_README.md",
+    "bytes": 4673,
+    "sha256": "80fd5a50ba020fd306890d31142187bb737627ba468d3e36faabe92d48ab5083",
+    "retrieved_utc": "2026-11-12T11:56:43.816630+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/UPSTREAM_README.md"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/atp_matches_2019.csv",
+    "file": "source:atp_matches_2019.csv",
+    "bytes": 586071,
+    "sha256": "7f1a21451ff622bb0c6a09690898db46d51e59dcdf08086d369753822e1d5478",
+    "retrieved_utc": "2026-11-12T11:56:47.589140+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/atp_matches_2019.csv"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/atp_matches_2020.csv",
+    "file": "source:atp_matches_2020.csv",
+    "bytes": 307277,
+    "sha256": "985a917b72d5efb7dd5ef9df8ecc58c637ed6b88561ccad364653af71ac12da0",
+    "retrieved_utc": "2026-11-12T11:56:46.983199+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/atp_matches_2020.csv"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/atp_matches_2021.csv",
+    "file": "source:atp_matches_2021.csv",
+    "bytes": 573056,
+    "sha256": "b9b1d31a4b0b9273b8f338cbb1347c5a847ad2361334ec760a286f5990fba347",
+    "retrieved_utc": "2026-11-12T11:56:47.415549+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/atp_matches_2021.csv"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/atp_matches_2023.csv",
+    "file": "source:atp_matches_2023.csv",
+    "bytes": 625341,
+    "sha256": "9b9671aa7c8156e74c2e4466675b7ed4e762bb8a58b7237a30daefd84ffceff5",
+    "retrieved_utc": "2026-11-12T11:56:48.592829+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/atp_matches_2023.csv"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/atp_matches_2024.csv",
+    "file": "source:atp_matches_2024.csv",
+    "bytes": 650136,
+    "sha256": "73aec32247a0db68d8aa8fd8003eefea132905177f1cb145502d9215b53311be",
+    "retrieved_utc": "2026-11-12T11:56:49.341983+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/atp_matches_2024.csv"
+  },
+  {
+    "url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/main/atp/atp_matches_2025.csv",
+    "file": "source:atp_matches_2025.csv",
+    "bytes": 617154,
+    "sha256": "78c356ef9328b89ae58a17564d61c02cdad2a3a007f6b8af5cfc17992b11bb2d",
+    "retrieved_utc": "2026-11-12T11:56:49.282543+00:00",
+    "repo_commit": "c704c1bcbe08949246d956b54b099715d5997dcb",
+    "pinned_url": "https://huggingface.co/datasets/jmatarese/atp-data/resolve/c704c1bcbe08949246d956b54b099715d5997dcb/atp/atp_matches_2025.csv"
+  }
+]

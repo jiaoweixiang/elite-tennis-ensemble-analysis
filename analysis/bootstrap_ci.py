@@ -4,7 +4,7 @@ import json
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import accuracy_score, brier_score_loss, f1_score, roc_auc_score
+from sklearn.metrics import accuracy_score, brier_score_loss, f1_score, roc_auc_score, balanced_accuracy_score, matthews_corrcoef, precision_score, recall_score
 
 from reproduce import ROOT, REF
 
@@ -17,7 +17,7 @@ def main() -> None:
     scores = frame.auc_selector_score.to_numpy(float)
     predictions = frame.auc_selector_pred.to_numpy(int)
     rng = np.random.default_rng(20260928)
-    sampled_metrics = {name: [] for name in ("auc", "accuracy", "f1", "brier")}
+    sampled_metrics = {name: [] for name in ("auc", "accuracy", "f1", "brier", "specificity", "balanced_accuracy", "MCC", "precision", "recall")}
     for _ in range(5000):
         sampled_groups = rng.choice(groups, len(groups), replace=True)
         positions = np.concatenate([np.flatnonzero(group_values == group) for group in sampled_groups])
@@ -28,10 +28,20 @@ def main() -> None:
         sampled_metrics["accuracy"].append(accuracy_score(y, predicted))
         sampled_metrics["f1"].append(f1_score(y, predicted))
         sampled_metrics["brier"].append(brier_score_loss(y, score))
+        sampled_metrics["specificity"].append(float(np.mean(predicted[y==0]==0)))
+        sampled_metrics["balanced_accuracy"].append(balanced_accuracy_score(y,predicted))
+        sampled_metrics["MCC"].append(matthews_corrcoef(y,predicted))
+        sampled_metrics["precision"].append(precision_score(y,predicted,zero_division=0))
+        sampled_metrics["recall"].append(recall_score(y,predicted))
     functions = {"auc": (roc_auc_score, scores),
                  "accuracy": (accuracy_score, predictions),
                  "f1": (f1_score, predictions),
-                 "brier": (brier_score_loss, scores)}
+                 "brier": (brier_score_loss, scores),
+                 "specificity": (lambda a,b:float(np.mean(b[a==0]==0)),predictions),
+                 "balanced_accuracy": (balanced_accuracy_score,predictions),
+                 "MCC": (matthews_corrcoef,predictions),
+                 "precision": (lambda a,b:precision_score(a,b,zero_division=0),predictions),
+                 "recall": (recall_score,predictions)}
     rows = []
     for name, (function, values) in functions.items():
         low, high = np.quantile(sampled_metrics[name], [0.025, 0.975])
@@ -48,7 +58,7 @@ def main() -> None:
     output = ROOT / "outputs/test_metric_cluster_bootstrap.csv"
     output.parent.mkdir(exist_ok=True)
     result.to_csv(output, index=False)
-    print("Recalculated 5,000 match-cluster draws and four 2025 metric intervals", flush=True)
+    print("Recalculated 5,000 match-cluster draws and nine 2025 metric intervals", flush=True)
 
 
 if __name__ == "__main__":

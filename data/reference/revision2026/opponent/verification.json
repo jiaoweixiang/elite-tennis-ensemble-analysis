@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "all71matches": true,
+  "all239sets": true,
+  "original_study_files_unchanged": true,
+  "context_never_screened_out": true,
+  "grouped_nested_selection": true,
+  "bootstrap_unit": "whole match",
+  "elapsed_seconds": 49.80768585205078
+}

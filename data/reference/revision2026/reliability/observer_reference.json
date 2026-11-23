@@ -1,0 +1,27 @@
+{
+  "manual_indicators": 26,
+  "tracking_indicators": [
+    "1st Serve Speed (km/h)",
+    "2nd Serve Speed (km/h)",
+    "Backcourt Deep Balls",
+    "Backhand Avg Speed",
+    "Distance per Set (m)",
+    "Forecourt Short Balls",
+    "Forehand Avg Speed",
+    "Midcourt Balls"
+  ],
+  "manual_pairs": 156,
+  "manual_equal": 143,
+  "count_indicators": 20,
+  "count_pairs": 120,
+  "count_equal": 112,
+  "pooled_kappa": 0.9288361749444033,
+  "ICC_min": 0.9600000000000002,
+  "ICC_max": 1.0,
+  "ICC_estimable": 25,
+  "ICC_undefined": [
+    "Drive Returns"
+  ],
+  "source_sha256": "e97d2a8b9a3879cd518413a250f74af143eef4123fda5148f25cf457959fece9",
+  "source": "supplementary/TableS11.docx"
+}

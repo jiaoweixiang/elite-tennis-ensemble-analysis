@@ -1,0 +1,11 @@
+[6.1s] court_drop_only: outer 1/5 finished; members=['LR', 'GB', 'SVR', 'MLP']
+[11.8s] court_drop_only: outer 2/5 finished; members=['Lasso', 'DT', 'KNN', 'LDA']
+[18.3s] court_drop_only: outer 3/5 finished; members=['LR', 'Ridge', 'Lasso', 'GB', 'KNN']
+[24.1s] court_drop_only: outer 4/5 finished; members=['LR', 'Ridge', 'Lasso', 'SVR', 'DT', 'KNN']
+[30.4s] court_drop_only: outer 5/5 finished; members=['LR', 'RF', 'SVR']
+[37.3s] court_drop_only: Final choice {'index': 2884, 'columns': [0, 2, 6, 7, 9, 10, 11], 'members': ['LR', 'Lasso', 'AdaB', 'DT', 'MLP', 'GNB', 'LDA'], 'inner_auc': 0.9705180640763463, 'threshold': 0.7760050699953632}
+[38.6s] court_drop_only: AUC outer/test (0.9602931152010907, 0.9733333333333334)
+[79.8s] court_drop_only: SHAP seed 42 finished
+[117.0s] court_drop_only: SHAP seed 142 finished
+[155.2s] court_drop_only: SHAP seed 242 finished
+[157.5s] court_drop_only: DONE

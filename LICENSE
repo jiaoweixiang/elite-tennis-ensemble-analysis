@@ -1,0 +1,27 @@
+# Licence and third-party exceptions
+
+Original code, documentation, author-compiled measurements and other original
+materials in this release are distributed under Creative Commons Attribution
+4.0 International (CC BY 4.0), except for the third-party material identified
+below. See https://creativecommons.org/licenses/by/4.0/legalcode .
+
+Third-party data are not relicensed under CC BY 4.0. Opponent-ranking metadata
+extracted from Jeff Sackmann / Tennis Abstract match records and the comparator
+columns derived from the Kaggle ATP matches dataset retain the upstream
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International licence:
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode .
+
+The Kaggle dataset explicitly credits Jeff Sackmann and Tennis Abstract. Its
+API licence field is "Other (specified in description)"; this release does not
+interpret that field as a grant of unrestricted rights. Upstream attribution
+and non-commercial/share-alike conditions are retained for these source-derived
+records. Exact provenance and scope are documented in data/README.md.
+
+The six full upstream yearly match CSVs are not redistributed in this ZIP.
+analysis/fetch_opponent_sources.py optionally downloads the pinned, hash-checked
+copies into outputs/third_party/opponent_sources. This does not change their
+licence. The original upstream README and download manifest are retained.
+
+No rights over third-party match footage are granted; no match footage is
+included. These notices distinguish original author material from third-party
+source records and do not assert ownership over the latter.

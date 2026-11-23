@@ -1,0 +1,205 @@
+match_id,set_number,indicator,original,observer1,observer2,count_indicator,device_indicator
+2020_AO_QF_Djokovic,1,Break Points,9.0,9.0,9.0,True,False
+2020_AO_QF_Djokovic,2,Break Points,3.0,3.0,3.0,True,False
+2020_AO_QF_Djokovic,3,Break Points,4.0,4.0,4.0,True,False
+2020_AO_QF_Djokovic,1,Service Breaks,1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,2,Service Breaks,1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,3,Service Breaks,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,1,Drive Returns,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,2,Drive Returns,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,3,Drive Returns,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,1,Slice/Block Returns,25.0,24.0,25.0,True,False
+2020_AO_QF_Djokovic,2,Slice/Block Returns,12.0,11.0,12.0,True,False
+2020_AO_QF_Djokovic,3,Slice/Block Returns,18.0,18.0,18.0,True,False
+2020_AO_QF_Djokovic,1,Total Returns,46.0,46.0,46.0,True,False
+2020_AO_QF_Djokovic,2,Total Returns,21.0,21.0,21.0,True,False
+2020_AO_QF_Djokovic,3,Total Returns,37.0,37.0,37.0,True,False
+2020_AO_QF_Djokovic,1,Backhand Returns,22.0,22.0,22.0,True,False
+2020_AO_QF_Djokovic,2,Backhand Returns,12.0,12.0,12.0,True,False
+2020_AO_QF_Djokovic,3,Backhand Returns,20.0,19.0,19.0,True,False
+2020_AO_QF_Djokovic,1,Backhand Returns Won,16.0,16.0,16.0,True,False
+2020_AO_QF_Djokovic,2,Backhand Returns Won,9.0,9.0,9.0,True,False
+2020_AO_QF_Djokovic,3,Backhand Returns Won,13.0,13.0,13.0,True,False
+2020_AO_QF_Djokovic,1,Backhand Return Win,0.73,0.73,0.73,False,False
+2020_AO_QF_Djokovic,2,Backhand Return Win,0.75,0.75,0.75,False,False
+2020_AO_QF_Djokovic,3,Backhand Return Win,0.65,0.68,0.68,False,False
+2020_AO_QF_Djokovic,1,Forehand Returns,24.0,24.0,24.0,True,False
+2020_AO_QF_Djokovic,2,Forehand Returns,9.0,9.0,9.0,True,False
+2020_AO_QF_Djokovic,3,Forehand Returns,17.0,18.0,18.0,True,False
+2020_AO_QF_Djokovic,1,Forehand Returns Won,16.0,16.0,16.0,True,False
+2020_AO_QF_Djokovic,2,Forehand Returns Won,8.0,8.0,8.0,True,False
+2020_AO_QF_Djokovic,3,Forehand Returns Won,14.0,14.0,14.0,True,False
+2020_AO_QF_Djokovic,1,Forehand Return Win,0.67,0.67,0.67,False,False
+2020_AO_QF_Djokovic,2,Forehand Return Win,0.89,0.89,0.89,False,False
+2020_AO_QF_Djokovic,3,Forehand Return Win,0.82,0.78,0.78,False,False
+2020_AO_QF_Djokovic,1,Drive (3rd Shot),1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,2,Drive (3rd Shot),1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,3,Drive (3rd Shot),2.0,2.0,2.0,True,False
+2020_AO_QF_Djokovic,1,Slice/Block (3rd Shot),0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,2,Slice/Block (3rd Shot),4.0,4.0,4.0,True,False
+2020_AO_QF_Djokovic,3,Slice/Block (3rd Shot),1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,1,Aces,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,2,Aces,1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,3,Aces,3.0,3.0,3.0,True,False
+2020_AO_QF_Djokovic,1,Double Faults,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,2,Double Faults,1.0,1.0,1.0,True,False
+2020_AO_QF_Djokovic,3,Double Faults,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,1,1st Serve In,0.76,0.76,0.75,False,False
+2020_AO_QF_Djokovic,2,1st Serve In,0.55,0.55,0.55,False,False
+2020_AO_QF_Djokovic,3,1st Serve In,0.74,0.74,0.74,False,False
+2020_AO_QF_Djokovic,1,2nd Serve In,1.0,1.0,1.0,False,False
+2020_AO_QF_Djokovic,2,2nd Serve In,0.93,0.94,0.92,False,False
+2020_AO_QF_Djokovic,3,2nd Serve In,1.0,1.0,1.0,False,False
+2020_AO_QF_Djokovic,1,1st Serve Pts Won,0.68,0.68,0.68,False,False
+2020_AO_QF_Djokovic,2,1st Serve Pts Won,0.42,0.42,0.42,False,False
+2020_AO_QF_Djokovic,3,1st Serve Pts Won,0.63,0.63,0.63,False,False
+2020_AO_QF_Djokovic,1,2nd Serve Pts Won,0.67,0.67,0.67,False,False
+2020_AO_QF_Djokovic,2,2nd Serve Pts Won,0.6,0.6,0.6,False,False
+2020_AO_QF_Djokovic,3,2nd Serve Pts Won,0.3,0.3,0.3,False,False
+2020_AO_QF_Djokovic,1,1st Serve Speed (km/h),193.0,193.0,193.0,False,True
+2020_AO_QF_Djokovic,2,1st Serve Speed (km/h),189.0,189.0,189.0,False,True
+2020_AO_QF_Djokovic,3,1st Serve Speed (km/h),188.0,188.0,188.0,False,True
+2020_AO_QF_Djokovic,1,2nd Serve Speed (km/h),172.0,172.0,172.0,False,True
+2020_AO_QF_Djokovic,2,2nd Serve Speed (km/h),163.0,163.0,163.0,False,True
+2020_AO_QF_Djokovic,3,2nd Serve Speed (km/h),149.0,149.0,149.0,False,True
+2020_AO_QF_Djokovic,1,Unforced Errors,2.0,2.0,1.0,True,False
+2020_AO_QF_Djokovic,2,Unforced Errors,6.0,6.0,6.0,True,False
+2020_AO_QF_Djokovic,3,Unforced Errors,7.0,7.0,7.0,True,False
+2020_AO_QF_Djokovic,1,Forehand Avg Speed,128.0,128.0,128.0,False,True
+2020_AO_QF_Djokovic,2,Forehand Avg Speed,126.0,126.0,126.0,False,True
+2020_AO_QF_Djokovic,3,Forehand Avg Speed,128.0,128.0,128.0,False,True
+2020_AO_QF_Djokovic,1,Backhand Avg Speed,109.0,109.0,109.0,False,True
+2020_AO_QF_Djokovic,2,Backhand Avg Speed,112.0,112.0,112.0,False,True
+2020_AO_QF_Djokovic,3,Backhand Avg Speed,112.0,112.0,112.0,False,True
+2020_AO_QF_Djokovic,1,Rally ≤4 Shots,75.0,75.0,75.0,True,False
+2020_AO_QF_Djokovic,2,Rally ≤4 Shots,51.0,51.0,51.0,True,False
+2020_AO_QF_Djokovic,3,Rally ≤4 Shots,78.0,78.0,78.0,True,False
+2020_AO_QF_Djokovic,1,Rally 5–9 Shots,5.0,5.0,5.0,True,False
+2020_AO_QF_Djokovic,2,Rally 5–9 Shots,7.0,7.0,7.0,True,False
+2020_AO_QF_Djokovic,3,Rally 5–9 Shots,12.0,12.0,12.0,True,False
+2020_AO_QF_Djokovic,1,Rally ≥10 Shots,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,2,Rally ≥10 Shots,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,3,Rally ≥10 Shots,0.0,0.0,0.0,True,False
+2020_AO_QF_Djokovic,1,Total Points Won,45.0,45.0,45.0,True,False
+2020_AO_QF_Djokovic,2,Total Points Won,33.0,33.0,33.0,True,False
+2020_AO_QF_Djokovic,3,Total Points Won,48.0,48.0,48.0,True,False
+2020_AO_QF_Djokovic,1,Net Approaches,4.0,5.0,4.0,True,False
+2020_AO_QF_Djokovic,2,Net Approaches,5.0,5.0,5.0,True,False
+2020_AO_QF_Djokovic,3,Net Approaches,2.0,2.0,2.0,True,False
+2020_AO_QF_Djokovic,1,Net Points Won,4.0,4.0,4.0,True,False
+2020_AO_QF_Djokovic,2,Net Points Won,4.0,4.0,4.0,True,False
+2020_AO_QF_Djokovic,3,Net Points Won,2.0,2.0,2.0,True,False
+2020_AO_QF_Djokovic,1,Distance per Set (m),1060.0,1060.0,1060.0,False,True
+2020_AO_QF_Djokovic,2,Distance per Set (m),890.0,890.0,890.0,False,True
+2020_AO_QF_Djokovic,3,Distance per Set (m),1970.0,1970.0,1970.0,False,True
+2020_AO_QF_Djokovic,1,Forecourt Short Balls,0.06,0.06,0.06,False,True
+2020_AO_QF_Djokovic,2,Forecourt Short Balls,0.08,0.08,0.08,False,True
+2020_AO_QF_Djokovic,3,Forecourt Short Balls,0.03,0.03,0.03,False,True
+2020_AO_QF_Djokovic,1,Midcourt Balls,0.34,0.34,0.34,False,True
+2020_AO_QF_Djokovic,2,Midcourt Balls,0.49,0.49,0.49,False,True
+2020_AO_QF_Djokovic,3,Midcourt Balls,0.51,0.51,0.51,False,True
+2020_AO_QF_Djokovic,1,Backcourt Deep Balls,0.6,0.6,0.6,False,True
+2020_AO_QF_Djokovic,2,Backcourt Deep Balls,0.43,0.43,0.43,False,True
+2020_AO_QF_Djokovic,3,Backcourt Deep Balls,0.46,0.46,0.46,False,True
+2020_USO_R128_Djokovic,1,Break Points,3.0,3.0,3.0,True,False
+2020_USO_R128_Djokovic,2,Break Points,8.0,9.0,9.0,True,False
+2020_USO_R128_Djokovic,3,Break Points,8.0,8.0,9.0,True,False
+2020_USO_R128_Djokovic,1,Service Breaks,2.0,3.0,2.0,True,False
+2020_USO_R128_Djokovic,2,Service Breaks,1.0,1.0,1.0,True,False
+2020_USO_R128_Djokovic,3,Service Breaks,4.0,4.0,4.0,True,False
+2020_USO_R128_Djokovic,1,Drive Returns,0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,2,Drive Returns,0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,3,Drive Returns,0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,1,Slice/Block Returns,4.0,4.0,4.0,True,False
+2020_USO_R128_Djokovic,2,Slice/Block Returns,4.0,4.0,4.0,True,False
+2020_USO_R128_Djokovic,3,Slice/Block Returns,5.0,5.0,5.0,True,False
+2020_USO_R128_Djokovic,1,Total Returns,19.0,19.0,19.0,True,False
+2020_USO_R128_Djokovic,2,Total Returns,36.0,36.0,36.0,True,False
+2020_USO_R128_Djokovic,3,Total Returns,35.0,35.0,35.0,True,False
+2020_USO_R128_Djokovic,1,Backhand Returns,9.0,9.0,9.0,True,False
+2020_USO_R128_Djokovic,2,Backhand Returns,22.0,22.0,22.0,True,False
+2020_USO_R128_Djokovic,3,Backhand Returns,24.0,24.0,24.0,True,False
+2020_USO_R128_Djokovic,1,Backhand Returns Won,6.0,6.0,6.0,True,False
+2020_USO_R128_Djokovic,2,Backhand Returns Won,22.0,22.0,22.0,True,False
+2020_USO_R128_Djokovic,3,Backhand Returns Won,21.0,21.0,21.0,True,False
+2020_USO_R128_Djokovic,1,Backhand Return Win,0.67,0.67,0.67,False,False
+2020_USO_R128_Djokovic,2,Backhand Return Win,1.0,1.0,1.0,False,False
+2020_USO_R128_Djokovic,3,Backhand Return Win,0.88,0.88,0.88,False,False
+2020_USO_R128_Djokovic,1,Forehand Returns,10.0,10.0,10.0,True,False
+2020_USO_R128_Djokovic,2,Forehand Returns,14.0,14.0,14.0,True,False
+2020_USO_R128_Djokovic,3,Forehand Returns,11.0,11.0,11.0,True,False
+2020_USO_R128_Djokovic,1,Forehand Returns Won,9.0,9.0,9.0,True,False
+2020_USO_R128_Djokovic,2,Forehand Returns Won,11.0,11.0,11.0,True,False
+2020_USO_R128_Djokovic,3,Forehand Returns Won,9.0,9.0,9.0,True,False
+2020_USO_R128_Djokovic,1,Forehand Return Win,0.9,0.9,0.9,False,False
+2020_USO_R128_Djokovic,2,Forehand Return Win,0.79,0.79,0.79,False,False
+2020_USO_R128_Djokovic,3,Forehand Return Win,0.82,0.82,0.82,False,False
+2020_USO_R128_Djokovic,1,Drive (3rd Shot),2.0,2.0,2.0,True,False
+2020_USO_R128_Djokovic,2,Drive (3rd Shot),2.0,2.0,2.0,True,False
+2020_USO_R128_Djokovic,3,Drive (3rd Shot),1.0,1.0,1.0,True,False
+2020_USO_R128_Djokovic,1,Slice/Block (3rd Shot),2.0,2.0,2.0,True,False
+2020_USO_R128_Djokovic,2,Slice/Block (3rd Shot),0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,3,Slice/Block (3rd Shot),0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,1,Aces,1.0,1.0,1.0,True,False
+2020_USO_R128_Djokovic,2,Aces,1.0,1.0,1.0,True,False
+2020_USO_R128_Djokovic,3,Aces,3.0,3.0,3.0,True,False
+2020_USO_R128_Djokovic,1,Double Faults,1.0,1.0,1.0,True,False
+2020_USO_R128_Djokovic,2,Double Faults,3.0,3.0,3.0,True,False
+2020_USO_R128_Djokovic,3,Double Faults,1.0,1.0,1.0,True,False
+2020_USO_R128_Djokovic,1,1st Serve In,0.8,0.79,0.8,False,False
+2020_USO_R128_Djokovic,2,1st Serve In,0.55,0.55,0.55,False,False
+2020_USO_R128_Djokovic,3,1st Serve In,0.5,0.5,0.5,False,False
+2020_USO_R128_Djokovic,1,2nd Serve In,0.75,0.76,0.75,False,False
+2020_USO_R128_Djokovic,2,2nd Serve In,0.83,0.83,0.82,False,False
+2020_USO_R128_Djokovic,3,2nd Serve In,0.91,0.91,0.91,False,False
+2020_USO_R128_Djokovic,1,1st Serve Pts Won,0.6,0.6,0.6,False,False
+2020_USO_R128_Djokovic,2,1st Serve Pts Won,0.34,0.34,0.34,False,False
+2020_USO_R128_Djokovic,3,1st Serve Pts Won,0.46,0.46,0.46,False,False
+2020_USO_R128_Djokovic,1,2nd Serve Pts Won,0.75,0.75,0.75,False,False
+2020_USO_R128_Djokovic,2,2nd Serve Pts Won,0.56,0.56,0.56,False,False
+2020_USO_R128_Djokovic,3,2nd Serve Pts Won,0.45,0.45,0.45,False,False
+2020_USO_R128_Djokovic,1,1st Serve Speed (km/h),190.0,190.0,190.0,False,True
+2020_USO_R128_Djokovic,2,1st Serve Speed (km/h),193.0,193.0,193.0,False,True
+2020_USO_R128_Djokovic,3,1st Serve Speed (km/h),190.0,190.0,190.0,False,True
+2020_USO_R128_Djokovic,1,2nd Serve Speed (km/h),164.0,164.0,164.0,False,True
+2020_USO_R128_Djokovic,2,2nd Serve Speed (km/h),158.0,158.0,158.0,False,True
+2020_USO_R128_Djokovic,3,2nd Serve Speed (km/h),160.0,160.0,160.0,False,True
+2020_USO_R128_Djokovic,1,Unforced Errors,6.0,6.0,6.0,True,False
+2020_USO_R128_Djokovic,2,Unforced Errors,12.0,12.0,12.0,True,False
+2020_USO_R128_Djokovic,3,Unforced Errors,5.0,5.0,5.0,True,False
+2020_USO_R128_Djokovic,1,Forehand Avg Speed,124.0,124.0,124.0,False,True
+2020_USO_R128_Djokovic,2,Forehand Avg Speed,123.0,123.0,123.0,False,True
+2020_USO_R128_Djokovic,3,Forehand Avg Speed,124.0,124.0,124.0,False,True
+2020_USO_R128_Djokovic,1,Backhand Avg Speed,108.0,108.0,108.0,False,True
+2020_USO_R128_Djokovic,2,Backhand Avg Speed,108.0,108.0,108.0,False,True
+2020_USO_R128_Djokovic,3,Backhand Avg Speed,110.0,110.0,110.0,False,True
+2020_USO_R128_Djokovic,1,Rally ≤4 Shots,41.0,41.0,42.0,True,False
+2020_USO_R128_Djokovic,2,Rally ≤4 Shots,66.0,66.0,66.0,True,False
+2020_USO_R128_Djokovic,3,Rally ≤4 Shots,35.0,35.0,35.0,True,False
+2020_USO_R128_Djokovic,1,Rally 5–9 Shots,4.0,4.0,3.0,True,False
+2020_USO_R128_Djokovic,2,Rally 5–9 Shots,13.0,13.0,13.0,True,False
+2020_USO_R128_Djokovic,3,Rally 5–9 Shots,9.0,9.0,9.0,True,False
+2020_USO_R128_Djokovic,1,Rally ≥10 Shots,0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,2,Rally ≥10 Shots,3.0,3.0,3.0,True,False
+2020_USO_R128_Djokovic,3,Rally ≥10 Shots,0.0,0.0,0.0,True,False
+2020_USO_R128_Djokovic,1,Total Points Won,30.0,30.0,30.0,True,False
+2020_USO_R128_Djokovic,2,Total Points Won,46.0,46.0,46.0,True,False
+2020_USO_R128_Djokovic,3,Total Points Won,29.0,29.0,29.0,True,False
+2020_USO_R128_Djokovic,1,Net Approaches,2.0,2.0,2.0,True,False
+2020_USO_R128_Djokovic,2,Net Approaches,17.0,17.0,17.0,True,False
+2020_USO_R128_Djokovic,3,Net Approaches,7.0,7.0,7.0,True,False
+2020_USO_R128_Djokovic,1,Net Points Won,2.0,2.0,2.0,True,False
+2020_USO_R128_Djokovic,2,Net Points Won,10.0,10.0,10.0,True,False
+2020_USO_R128_Djokovic,3,Net Points Won,4.0,4.0,4.0,True,False
+2020_USO_R128_Djokovic,1,Distance per Set (m),640.0,640.0,640.0,False,True
+2020_USO_R128_Djokovic,2,Distance per Set (m),920.0,920.0,920.0,False,True
+2020_USO_R128_Djokovic,3,Distance per Set (m),710.0,710.0,710.0,False,True
+2020_USO_R128_Djokovic,1,Forecourt Short Balls,0.02,0.02,0.02,False,True
+2020_USO_R128_Djokovic,2,Forecourt Short Balls,0.07,0.07,0.07,False,True
+2020_USO_R128_Djokovic,3,Forecourt Short Balls,0.12,0.12,0.12,False,True
+2020_USO_R128_Djokovic,1,Midcourt Balls,0.49,0.49,0.49,False,True
+2020_USO_R128_Djokovic,2,Midcourt Balls,0.44,0.44,0.44,False,True
+2020_USO_R128_Djokovic,3,Midcourt Balls,0.4,0.4,0.4,False,True
+2020_USO_R128_Djokovic,1,Backcourt Deep Balls,0.49,0.49,0.49,False,True
+2020_USO_R128_Djokovic,2,Backcourt Deep Balls,0.49,0.49,0.49,False,True
+2020_USO_R128_Djokovic,3,Backcourt Deep Balls,0.48,0.48,0.48,False,True

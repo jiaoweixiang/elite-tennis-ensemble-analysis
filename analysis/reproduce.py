@@ -1,7 +1,24 @@
-"""Recalculate the numerical results from the deposited model outputs.
+"""Recalculate the manuscript's numerical results from the deposited model outputs.
 
 The input tables and frozen member predictions are checked before use. For an
 independent rerun of model fitting, see ``analysis/refit_primary.py``.
+
+Outputs (in outputs/):
+  primary_performance.csv        Tables S2-S3 ensemble rows (pooled outer and 2025)
+  outer_folds.csv                Table S2 fold rows
+  final_selection.json           Table S2 final selection row
+  ensemble_candidates_4095.csv   Figure 3c
+  primary_outer_predictions.csv, primary_2025_predictions.csv
+  ensemble_shap_ranks.csv        Figure 4c-d; Table S7 leading six indicators
+  ensemble_shap_per_set.csv      Figure 4c, 4e
+  backhand_match_resample_ranks.csv  Table S5 (2025 SHAP rows); Figure 4f
+  backhand_ablation.csv          Table S5 fixed-member dAUC
+  calibration_diagnostics.csv    Table S4 quintile rows
+  single_model_performance.csv   Table S3 learner rows; Figure 3a, 3d
+  single_model_roc_coordinates.csv   Figure 3b
+  comparator_performance.csv     Table S3 baseline rows; Table S7 F1 selection
+  tuning_sensitivity.csv         Table S7 hyperparameter tuning
+  feature_exclusion_performance.csv  Table S7 twelve-indicator exclusion
 """
 
 from __future__ import annotations
@@ -30,6 +47,8 @@ COMBOS = [c for size in range(1, 13) for c in itertools.combinations(range(12), 
 WEIGHTS = np.zeros((12, len(COMBOS)))
 for j, combo in enumerate(COMBOS):
     WEIGHTS[list(combo), j] = 1 / len(combo)
+OUTER_COLUMNS = ["auc", "accuracy", "f1", "brier"]
+TEST_COLUMNS = ["auc", "accuracy", "precision", "recall", "f1", "brier"]
 
 
 def read_json(name: str) -> dict:
@@ -95,6 +114,14 @@ def metrics(y: np.ndarray, score: np.ndarray, pred: np.ndarray) -> dict:
     }
 
 
+def pick(values: dict, columns) -> dict:
+    return {column: values[column] for column in columns}
+
+
+def match_groups(match_id: np.ndarray) -> list[np.ndarray]:
+    return [np.flatnonzero(match_id == g) for g in sorted(set(match_id))]
+
+
 def reconstruct_primary(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> tuple[np.ndarray, np.ndarray]:
     arrays = np.load(REF / "prediction_matrices.npz")
     expected = read_json("primary_results.json")["full"]
@@ -108,9 +135,10 @@ def reconstruct_primary(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> t
         choice = expected["outer_folds"][fold - 1]["selection"]
         p = arrays["outer_members"][heldout][:, choice["columns"]].mean(axis=1)
         outer_scores[heldout], outer_preds[heldout] = p, p >= choice["threshold_youden"]
-        fold_rows.append({"fold": fold, "members": "+".join(choice["members"]),
-                          "inner_auc": choice["inner_auc"], "n_validation_sets": len(heldout),
-                          **metrics(y[heldout], p, outer_preds[heldout])})
+        fold_rows.append({"fold": fold, "matches": train.match_id.iloc[heldout].nunique(),
+                          "sets": len(heldout), "members": "+".join(choice["members"]),
+                          "inner_auc": choice["inner_auc"], "threshold": choice["threshold_youden"],
+                          **pick(metrics(y[heldout], p, outer_preds[heldout]), OUTER_COLUMNS)})
     assert np.isfinite(outer_scores).all()
     final = select_auc(arrays["train_platt_oof"], y)
     assert final["members"] == expected["final_selection"]["members"]
@@ -122,10 +150,11 @@ def reconstruct_primary(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> t
     old_test = pd.read_csv(REF / "test_predictions.csv")
     assert np.allclose(outer_scores, old_outer.auc_selector_score, atol=1e-12)
     assert np.allclose(test_scores, old_test.auc_selector_score, atol=1e-12)
+    outer_metrics, test_metrics = metrics(y, outer_scores, outer_preds), metrics(yt, test_scores, test_preds)
     rows = [{"sample": "2019-2024 grouped outer", "sets": len(y), "matches": train.match_id.nunique(),
-             "members": "reselected in each outer fold", **metrics(y, outer_scores, outer_preds)},
+             "members": "selected independently in each fold", **pick(outer_metrics, OUTER_COLUMNS)},
             {"sample": "2025 temporal", "sets": len(yt), "matches": test.match_id.nunique(),
-             "members": "+".join(final["members"]), **metrics(yt, test_scores, test_preds)}]
+             "members": "+".join(final["members"]), **pick(test_metrics, TEST_COLUMNS)}]
     pd.DataFrame(rows).to_csv(out / "primary_performance.csv", index=False)
     pd.DataFrame(fold_rows).to_csv(out / "outer_folds.csv", index=False)
     pd.DataFrame({"subset_order": np.arange(1, 4096),
@@ -178,20 +207,39 @@ def reproduce_shap(test: pd.DataFrame, out: Path) -> None:
     assert np.mean(np.asarray(ranks) <= 6) == original["backhand_top6_match_bootstrap_frequency"]
 
 
-def reproduce_exclusions(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> None:
-    rows = []
-    for name, prefix in (("two score-related measures", "two_feature"),
-                         ("eight outcome-linked measures", "eight_feature")):
-        for sample, file, data in (("outer", f"{prefix}_outer_predictions.csv", train),
-                                   ("2025", f"{prefix}_test_predictions.csv", test)):
-            table = pd.read_csv(REF / file)
-            score = table.score.to_numpy(float)
-            pred_col = "pred" if "pred" in table else "prediction"
-            pred = table[pred_col].to_numpy(int)
-            y = data.iloc[:, 0].to_numpy(int)
-            assert len(table) == len(y) and np.array_equal(table.label, y)
-            rows.append({"analysis": name, "sample": sample, **metrics(y, score, pred)})
-    pd.DataFrame(rows).to_csv(out / "feature_exclusion_performance.csv", index=False)
+def reproduce_exclusion(test: pd.DataFrame, out: Path) -> None:
+    """Table S7 twelve-indicator exclusion: 2025 metrics, AUC difference, Backhand ranks."""
+    reference = read_json("twelve_feature_results.json")
+    table = pd.read_csv(REF / "twelve_feature_test_predictions.csv")
+    full = pd.read_csv(REF / "test_predictions.csv")
+    y = test.iloc[:, 0].to_numpy(int)
+    assert np.array_equal(table.label, y) and np.array_equal(full.label, y)
+    score, pred = table.score.to_numpy(float), table.prediction.to_numpy(int)
+    full_score = full.auc_selector_score.to_numpy(float)
+    groups = match_groups(table.match_id.to_numpy(str))
+    rng = np.random.default_rng(20261111)
+    draws = []
+    for _ in range(2000):
+        ix = np.concatenate([groups[j] for j in rng.integers(0, len(groups), len(groups))])
+        if len(np.unique(y[ix])) < 2:
+            continue
+        draws.append(roc_auc_score(y[ix], full_score[ix]) - roc_auc_score(y[ix], score[ix]))
+    difference = roc_auc_score(y, full_score) - roc_auc_score(y, score)
+    low, high = np.quantile(draws, [0.025, 0.975])
+    saved = reference["full_minus_restricted_test_auc"]
+    assert np.allclose([difference, low, high], [saved["estimate"], *saved["CI95"]], atol=1e-12)
+    ranks = pd.read_csv(REF / "revision2026/twelve_agreement/topAUC40_backhand_ranks.csv")
+    measured = pick(metrics(y, score, pred), ["auc", "accuracy", "f1"])
+    for key, value in measured.items():
+        assert abs(value - reference["test_2025"][key]) < 1e-12
+    row = {"analysis": "twelve indicators excluded", "sample": "2025",
+           "members": "+".join(reference["final_selection"]["members"]), **measured,
+           "full_minus_restricted_auc": difference, "difference_CI95_low": low, "difference_CI95_high": high,
+           "backhand_shap_rank": int(ranks.backhand_rank.iat[0]),
+           "backhand_top6_count_among_top40": int((ranks.backhand_rank <= 6).sum())}
+    assert row["backhand_shap_rank"] == reference["shap_2025"]["backhand_rank_selected_ensemble"]
+    assert row["backhand_top6_count_among_top40"] == reference["shap_2025"]["backhand_top6_count_among_top40"]
+    pd.DataFrame([row]).to_csv(out / "feature_exclusion_performance.csv", index=False)
 
 
 def calibration_diagnostics(train: pd.DataFrame, test: pd.DataFrame,
@@ -209,7 +257,7 @@ def calibration_diagnostics(train: pd.DataFrame, test: pd.DataFrame,
                          "matches": table.iloc[ids].match_id.nunique(),
                          "mean_predicted_probability": p[ids].mean(),
                          "observed_win_rate": y[ids].mean(),
-                         "brier": np.mean((p[ids] - y[ids]) ** 2) if label == "Overall" else np.nan,
+                         "brier": np.mean((p[ids] - y[ids]) ** 2),
                          "minimum_probability": p[ids].min(), "maximum_probability": p[ids].max()})
     frame = pd.DataFrame(rows)
     frame.to_csv(out / "calibration_diagnostics.csv", index=False)
@@ -217,9 +265,10 @@ def calibration_diagnostics(train: pd.DataFrame, test: pd.DataFrame,
     assert np.array_equal(frame.sets, old["Sets"])
     assert np.allclose(frame.mean_predicted_probability, old["Mean predicted p(win)"], atol=1e-12)
     assert np.allclose(frame.observed_win_rate, old["Observed win rate"], atol=1e-12)
+    assert np.allclose(frame.brier, old["Brier score"], atol=1e-12)
 
 
-def other_results(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> None:
+def single_learners(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> None:
     arrays = np.load(REF / "prediction_matrices.npz")
     singles = read_json("single_model_results.json")["models"]
     outer_thresholds = pd.read_csv(REF / "single_model_outer_thresholds.csv")[NAMES].to_numpy(float)
@@ -230,42 +279,80 @@ def other_results(train: pd.DataFrame, test: pd.DataFrame, out: Path) -> None:
         train.iloc[:, 1:35], train.iloc[:, 0], train.cv_group)
     for fold, (_, heldout) in enumerate(folds):
         outer_predictions[heldout] = arrays["outer_members"][heldout] >= outer_thresholds[fold]
-    rows = []
-    roc_rows = []
+    y, yt = train.iloc[:, 0].to_numpy(int), test.iloc[:, 0].to_numpy(int)
+    rows, roc_rows = [], []
     for j, name in enumerate(NAMES):
-        false_positive, true_positive, thresholds = roc_curve(
-            train.iloc[:, 0], arrays["outer_members"][:, j])
+        false_positive, true_positive, thresholds = roc_curve(y, arrays["outer_members"][:, j])
         for k, (fpr, tpr, threshold) in enumerate(zip(false_positive, true_positive, thresholds)):
             roc_rows.append({"model": name, "point_index": k,
                              "fpr": fpr, "tpr": tpr, "score_threshold": threshold})
-        for sample, mat, data, predictions in (
-            ("outer", arrays["outer_members"], train, outer_predictions[:, j]),
-            ("2025", arrays["test_members"], test,
-             arrays["test_members"][:, j] >= final_thresholds.development_oof_threshold.iat[j]),
-        ):
-            y = data.iloc[:, 0].to_numpy(int)
-            reference = singles[name]["full"]["outer" if sample == "outer" else "test_2025"]
-            calculated = metrics(y, mat[:, j], predictions)
-            for measure in ("auc", "brier", "accuracy", "f1", "precision", "recall"):
-                old = reference["recall_win" if measure == "recall" else measure]
-                assert abs(calculated[measure] - old) < 1e-10, (name, sample, measure)
-            rows.append({"model": name, "sample": sample, **calculated,
-                         "oof_pseudo_r2": r2_score(y, mat[:, j]) if sample == "outer" else np.nan})
+        outer = pick(metrics(y, arrays["outer_members"][:, j], outer_predictions[:, j]), ["auc", "accuracy", "f1"])
+        test_pred = arrays["test_members"][:, j] >= final_thresholds.development_oof_threshold.iat[j]
+        current = pick(metrics(yt, arrays["test_members"][:, j], test_pred), TEST_COLUMNS)
+        for key, value in outer.items():
+            assert abs(value - singles[name]["outer"][key]) < 1e-10, (name, "outer", key)
+        for key, value in current.items():
+            assert abs(value - singles[name]["test_2025"][key]) < 1e-10, (name, "2025", key)
+        rows.append({"model": name, "oof_pseudo_r2": r2_score(y, arrays["outer_members"][:, j]),
+                     **{f"outer_{k}": v for k, v in outer.items()},
+                     **{f"test_2025_{k}": v for k, v in current.items()}})
     pd.DataFrame(rows).to_csv(out / "single_model_performance.csv", index=False)
     pd.DataFrame(roc_rows).to_csv(out / "single_model_roc_coordinates.csv", index=False)
-    tuning = read_json("tuning_results.json")
-    pd.DataFrame([
-        {"sample": sample, "auc": tuning[key]["auc"], "members": "+".join(tuning["final_selection"]["members"])}
-        for sample, key in (("outer", "outer"), ("2025", "test_2025"))
-    ]).to_csv(out / "tuning_sensitivity.csv", index=False)
-    backhand = read_json("backhand_ablation.json")
-    pd.DataFrame([{"sample": label, **backhand[key]} for label, key in
-                  (("outer", "outer"), ("2025", "test_2025"))]).to_csv(
-                      out / "backhand_ablation.csv", index=False)
+
+
+def comparators(out: Path) -> None:
+    """Table S3 classification comparators and the Table S7 F1-selection workflow."""
+    outer, test = pd.read_csv(REF / "outer_predictions.csv"), pd.read_csv(REF / "test_predictions.csv")
+    rows = []
+    for label, key in (("Baseline: Logistic L2", "logistic_l2"), ("Baseline: Logistic L1", "logistic_l1"),
+                       ("Baseline: RF classifier", "random_forest"), ("F1-selection ensemble", "f1_selector")):
+        o = metrics(outer.label.to_numpy(int), outer[key + "_score"].to_numpy(float), outer[key + "_pred"].to_numpy(int))
+        t = metrics(test.label.to_numpy(int), test[key + "_score"].to_numpy(float), test[key + "_pred"].to_numpy(int))
+        rows.append({"model": label, **{f"outer_{k}": o[k] for k in ("auc", "accuracy", "f1")},
+                     **{f"test_2025_{k}": t[k] for k in TEST_COLUMNS}})
+    pd.DataFrame(rows).to_csv(out / "comparator_performance.csv", index=False)
+
+
+def tuning(out: Path) -> None:
+    """Table S7 hyperparameter-tuning column."""
+    result = read_json("tuning_results.json")
+    pd.DataFrame([{"members": "+".join(result["final_selection"]["members"]),
+                   **{f"outer_{k}": result["outer"][k] for k in ("auc", "accuracy", "f1")},
+                   **{f"test_2025_{k}": result["test_2025"][k] for k in ("auc", "accuracy", "f1")},
+                   "backhand_shap_rank": result["shap_2025"]["ensemble_backhand_rank"],
+                   **{f"setting_{name}": value for name, value in result["final_settings"].items()}}]).to_csv(
+        out / "tuning_sensitivity.csv", index=False)
+
+
+def backhand_ablation(out: Path) -> None:
+    """Table S5 fixed-member dAUC, using the same 2,000 paired match resamples as Figure 4b."""
+    p = pd.read_csv(REF / "revision2026/primary_ablation/test_ablation_predictions.csv")
+    ab = pd.read_csv(REF / "backhand_ablation_test_predictions.csv")
+    column = {c.strip(): c for c in p.columns}["Backhand Returns"]
+    assert np.allclose(p[column], ab.without_backhand, atol=1e-12) and np.allclose(p.full, ab.full, atol=1e-12)
+    y, full, without = p.label.to_numpy(int), p.full.to_numpy(float), p[column].to_numpy(float)
+    groups = match_groups(p.match_id.to_numpy(str))
+    rng = np.random.default_rng(20261112)
+    for _ in range(2000):
+        rng.integers(0, 59, 59)  # advance the generator to the state used for the reported intervals
+    draws = []
+    for _ in range(2000):
+        ix = np.concatenate([groups[j] for j in rng.integers(0, len(groups), len(groups))])
+        if len(np.unique(y[ix])) < 2:
+            continue
+        draws.append(roc_auc_score(y[ix], full[ix]) - roc_auc_score(y[ix], without[ix]))
+    low, high = np.quantile(draws, [0.025, 0.975])
+    source = pd.read_csv(REF / "revision2026/primary_ablation/fig4b_aligned_95CI_source.csv")
+    saved = source[source.feature == "Backhand Returns"].iloc[0]
+    delta = roc_auc_score(y, full) - roc_auc_score(y, without)
+    assert np.allclose([delta, low, high], [saved.delta_auc, saved.CI2_5, saved.CI97_5], atol=1e-12)
+    pd.DataFrame([{"sample": "2025", "full_auc": roc_auc_score(y, full), "without_backhand_auc": roc_auc_score(y, without),
+                   "auc_delta_full_minus_without": delta, "CI95_low": low, "CI95_high": high,
+                   "valid_resamples": len(draws)}]).to_csv(out / "backhand_ablation.csv", index=False)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--output", type=Path, default=ROOT / "outputs")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -274,9 +361,12 @@ def main() -> None:
     verify_inputs(train, test)
     outer_score, test_score = reconstruct_primary(train, test, args.output)
     reproduce_shap(test, args.output)
-    reproduce_exclusions(train, test, args.output)
+    reproduce_exclusion(test, args.output)
     calibration_diagnostics(train, test, outer_score, test_score, args.output)
-    other_results(train, test, args.output)
+    single_learners(train, test, args.output)
+    comparators(args.output)
+    tuning(args.output)
+    backhand_ablation(args.output)
     print(f"Verified inputs and wrote numerical results to {args.output}")
 
 

@@ -1,0 +1,57 @@
+{
+  "variant": "twelve",
+  "removed_features": [
+    "Service Breaks",
+    "Total Points Won",
+    "Aces",
+    "Net Points Won",
+    "Double Faults",
+    "Unforced Errors",
+    "Backhand Return Win ",
+    "Forehand Return Win ",
+    "1st Serve Pts Won ",
+    "2nd Serve Pts Won ",
+    "Backhand Returns Won",
+    "Forehand Returns Won"
+  ],
+  "selection_rule": "max grouped development OOF AUC; ties by fewer members then original order",
+  "calibration": "three-fold match-grouped OOF sigmoid (Platt) per learner",
+  "final_selection": {
+    "index": 829,
+    "columns": [
+      0,
+      1,
+      3,
+      4,
+      5
+    ],
+    "members": [
+      "LR",
+      "Ridge",
+      "RF",
+      "GB",
+      "SVR"
+    ],
+    "inner_auc": 0.7728357191547376,
+    "auc_tie_count": 1,
+    "threshold_youden": 0.8323543242192261
+  },
+  "test_2025": {
+    "auc": 0.8633333333333333,
+    "accuracy": 0.825,
+    "f1": 0.8727272727272727
+  },
+  "full_minus_restricted_test_auc": {
+    "estimate": 0.1100000000000001,
+    "CI95": [
+      -0.012820512820512778,
+      0.375833333333333
+    ],
+    "bootstrap": "2,000 paired whole-match resamples of the 12 test matches, numpy default_rng(20261111), conditional on fitted models"
+  },
+  "shap_2025": {
+    "backhand_rank_selected_ensemble": 4,
+    "backhand_top6_count_among_top40": 39,
+    "protocol": "KernelSHAP per learner, 50 training background observations (seed 42), 2,048 samples, seeds 42/142/242; ensembles composed linearly"
+  }
+}

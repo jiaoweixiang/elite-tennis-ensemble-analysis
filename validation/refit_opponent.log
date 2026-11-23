@@ -1,0 +1,15 @@
+[0.0s] Begin fixed protocol: log2 opponent rank; all71matches; same239sets
+[7.7s] Outer fold1/5 complete; reselected=['LR', 'Ridge', 'GB', 'SVR']
+[15.7s] Outer fold2/5 complete; reselected=['Lasso', 'RF', 'KNN', 'LDA']
+[23.0s] Outer fold3/5 complete; reselected=['LR', 'Ridge', 'Lasso', 'SVR']
+[30.5s] Outer fold4/5 complete; reselected=['Ridge', 'SVR', 'MLP']
+[37.7s] Outer fold5/5 complete; reselected=['RF', 'SVR', 'MLP', 'LDA']
+[40.9s] Final membership chosen on development data: ['LR', 'Lasso', 'GB', 'AdaB', 'DT', 'GNB', 'LDA']
+[40.9s] development metrics: [{'AUC': 0.9655760054533061, 'Brier': 0.06060330630792564, 'accuracy': 0.8844221105527639, 'scenario': 'original', 'split': 'development', 'n_sets': 199, 'n_matches': 59}, {'AUC': 0.9618268575323791, 'Brier': 0.06131185725701516, 'accuracy': 0.8743718592964824, 'scenario': 'fixed_members', 'split': 'development', 'n_sets': 199, 'n_matches': 59}, {'AUC': 0.9364349011588277, 'Brier': 0.07062360004084615, 'accuracy': 0.8542713567839196, 'scenario': 'reselected', 'split': 'development', 'n_sets': 199, 'n_matches': 59}]
+[40.9s] temporal_2025 metrics: [{'AUC': 0.9733333333333334, 'Brier': 0.08875838649704418, 'accuracy': 0.9, 'specificity': 0.7, 'balanced_accuracy': 0.8333333333333333, 'MCC': 0.7216878364870322, 'scenario': 'original', 'split': 'temporal_2025', 'n_sets': 40, 'n_matches': 12, 'focal_ablation_delta_AUC': 0.01666666666666672}, {'AUC': 0.9733333333333334, 'Brier': 0.09017747865996636, 'accuracy': 0.9, 'specificity': 0.7, 'balanced_accuracy': 0.8333333333333333, 'MCC': 0.7216878364870322, 'scenario': 'fixed_members', 'split': 'temporal_2025', 'n_sets': 40, 'n_matches': 12, 'focal_ablation_delta_AUC': 0.01666666666666672}, {'AUC': 0.96, 'Brier': 0.09330703589853566, 'accuracy': 0.875, 'specificity': 0.6, 'balanced_accuracy': 0.7833333333333333, 'MCC': 0.6457765999379483, 'scenario': 'reselected', 'split': 'temporal_2025', 'n_sets': 40, 'n_matches': 12, 'focal_ablation_delta_AUC': 0.013333333333333308}]
+[49.5s] Fitting and paired performance bootstrap complete; start matched-budget SHAP
+[49.7s] KernelSHAP seed42 complete
+[49.7s] KernelSHAP seed142 complete
+[49.7s] KernelSHAP seed242 complete
+[49.8s] Attribution summaries [{'scenario': 'original', 'focal_rank_technical': 6, 'focal_rank_all': 6, 'focal_mean_abs_shap': 0.016506885040121162, 'focal_rank_bootstrap_low': 5.0, 'focal_rank_bootstrap_high': 8.0}, {'scenario': 'fixed_members', 'focal_rank_technical': 6, 'focal_rank_all': 6, 'focal_mean_abs_shap': 0.016630046419091576, 'focal_rank_bootstrap_low': 5.0, 'focal_rank_bootstrap_high': 8.0}, {'scenario': 'reselected', 'focal_rank_technical': 6, 'focal_rank_all': 6, 'focal_mean_abs_shap': 0.017469465881560165, 'focal_rank_bootstrap_low': 5.0, 'focal_rank_bootstrap_high': 8.0}]
+[49.8s] DONE

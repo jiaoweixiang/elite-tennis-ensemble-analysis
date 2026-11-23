@@ -1,8 +1,16 @@
-"""Refit the primary grouped, calibrated AUC-selection workflow from set tables.
+"""Refit the grouped, calibrated AUC-selection workflow from the set tables.
 
-This is intentionally separate from the quick numerical audit in reproduce.py.
-It retrains all 12 base learners in every outer, inner and calibration fold;
-depending on the computer, a complete run can take considerably longer.
+Variants (all reported in the manuscript):
+  full      primary workflow (Supplementary Tables S2-S3); with --criterion f1,
+            the F1-selection comparator (Supplementary Table S7)
+  twelve    twelve-indicator exclusion (Supplementary Table S7); screening,
+            calibration and selection are repeated without the excluded indicators
+  backhand  fixed-member refit without Backhand Returns (Supplementary Table S5)
+--drop-feature refits the primary members without one named indicator; it is
+the source of the 34 deletion-refit comparisons used for Figure 4b.
+
+This is separate from the quick numerical reproduction in reproduce.py and
+retrains the 12 base learners inside the grouped folds.
 """
 
 from __future__ import annotations
@@ -27,6 +35,17 @@ from scipy.stats import rankdata
 
 from models import NAMES, pipeline
 from reproduce import ROOT, REF, COMBOS, WEIGHTS, metrics, select_auc, verify_inputs, youden_threshold
+
+TWELVE_EXCLUDED = ["Service Breaks", "Total Points Won", "Aces", "Net Points Won", "Double Faults",
+                   "Unforced Errors", "Backhand Return Win ", "Forehand Return Win ", "1st Serve Pts Won ",
+                   "2nd Serve Pts Won ", "Backhand Returns Won", "Forehand Returns Won"]
+OUTER_KEYS = ("auc", "accuracy", "f1", "brier")
+SINGLE_OUTER_KEYS = ("auc", "accuracy", "f1")
+TEST_KEYS = ("auc", "accuracy", "precision", "recall", "f1", "brier")
+
+
+def pick(values: dict, keys) -> dict:
+    return {key: values[key] for key in keys}
 
 
 def select_f1(matrix: np.ndarray, labels: np.ndarray) -> dict:
@@ -67,8 +86,8 @@ def select_f1(matrix: np.ndarray, labels: np.ndarray) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--variant", choices=("full", "two", "eight", "backhand"), default="full")
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--variant", choices=("full", "twelve", "backhand"), default="full")
     parser.add_argument("--criterion", choices=("auc", "f1"), default="auc")
     parser.add_argument("--drop-feature", help="Fixed-member refit after removing one named indicator")
     parser.add_argument("--output", type=Path)
@@ -96,23 +115,21 @@ def main() -> None:
     verify_inputs(train, test)
     if args.drop_feature and args.drop_feature not in train.columns[1:35]:
         parser.error(f"Unknown indicator: {args.drop_feature}")
-    removed = {"full": [], "backhand": ["Backhand Returns"],
-               "two": ["Service Breaks", "Total Points Won"],
-               "eight": ["Service Breaks", "Total Points Won", "Double Faults", "Unforced Errors",
-                         "Backhand Return Win ", "Forehand Return Win ", "1st Serve Pts Won ",
-                         "2nd Serve Pts Won "]}[args.variant]
+    removed = {"full": [], "backhand": ["Backhand Returns"], "twelve": TWELVE_EXCLUDED}[args.variant]
     if args.drop_feature:
         removed = [args.drop_feature]
     fixed_members = args.variant == "backhand" or bool(args.drop_feature)
+    # Development (outer) ensemble metrics are reported only for the full indicator set.
+    report_outer = args.variant == "full" and not args.drop_feature
     selector = select_auc if args.criterion == "auc" else select_f1
     features = [name for name in train.columns[1:35] if name not in removed]
+    assert len(features) == 34 - len(removed)
     x, y = train[features].to_numpy(float), train.iloc[:, 0].to_numpy(int)
     xt, yt = test[features].to_numpy(float), test.iloc[:, 0].to_numpy(int)
     groups = train.cv_group.to_numpy(str)
     fingerprint = hashlib.sha256((ROOT / "data/processed/train_grouped.csv").read_bytes()
                                  + (ROOT / "data/processed/test_grouped.csv").read_bytes()
                                  + (Path(__file__).with_name("models.py")).read_bytes()
-                                 + Path(__file__).read_bytes()
                                  + "|".join(features).encode("utf-8")).hexdigest()
 
     def split(indices: np.ndarray, n: int):
@@ -157,37 +174,40 @@ def main() -> None:
     member_outer = np.full((len(train), len(NAMES)), np.nan)
     outer_score = np.full(len(train), np.nan)
     outer_pred = np.zeros(len(train), dtype=int)
-    audit_singles = args.variant == "full" and args.criterion == "auc" and not args.drop_feature
+    audit_singles = report_outer and args.criterion == "auc"
     if audit_singles:
         single_outer_pred = np.zeros((len(train), len(NAMES)), dtype=int)
         single_fold_thresholds = np.full((5, len(NAMES)), np.nan)
     records = []
     primary = json.loads((REF / "primary_results.json").read_text(encoding="utf-8"))["full"]
-    for fold, (fitting, heldout) in enumerate(split(indices, 5), 1):
-        if fixed_members:
-            choice = primary["outer_folds"][fold - 1]["selection"]
-        else:
-            inner = np.full((len(fitting), len(NAMES)), np.nan)
-            local = {int(row): j for j, row in enumerate(fitting)}
-            for subfold, (a, b) in enumerate(split(fitting, 5), 1):
-                p, _ = fit_block(a, x[b], f"outer {fold}, inner {subfold}")
-                inner[[local[int(row)] for row in b]] = p
-            assert np.isfinite(inner).all()
-            choice = selector(inner, y[fitting])
-        probabilities, _ = fit_block(fitting, x[heldout], f"outer {fold}, final fit")
-        member_outer[heldout] = probabilities
-        if audit_singles:
-            single_fold_thresholds[fold - 1] = [youden_threshold(y[fitting], inner[:, j])
-                                                 for j in range(len(NAMES))]
-            single_outer_pred[heldout] = probabilities >= single_fold_thresholds[fold - 1]
-        score = probabilities[:, choice["columns"]].mean(axis=1)
-        pred = score >= choice["threshold_youden"]
-        outer_score[heldout], outer_pred[heldout] = score, pred
-        records.append({"fold": fold, "members": choice["members"],
-                        "inner_auc": choice["inner_auc"],
-                        "threshold": choice["threshold_youden"],
-                        "validation": metrics(y[heldout], score, pred)})
-        print(f"outer {fold}/5: {choice['members']}", flush=True)
+    if not fixed_members:
+        # Grouped out-of-fold member probabilities: needed for final subset selection
+        # and, for the full indicator set, for nested outer evaluation.
+        for fold, (fitting, heldout) in enumerate(split(indices, 5), 1):
+            if report_outer:
+                inner = np.full((len(fitting), len(NAMES)), np.nan)
+                local = {int(row): j for j, row in enumerate(fitting)}
+                for subfold, (a, b) in enumerate(split(fitting, 5), 1):
+                    p, _ = fit_block(a, x[b], f"outer {fold}, inner {subfold}")
+                    inner[[local[int(row)] for row in b]] = p
+                assert np.isfinite(inner).all()
+                choice = selector(inner, y[fitting])
+            probabilities, _ = fit_block(fitting, x[heldout], f"outer {fold}, final fit")
+            member_outer[heldout] = probabilities
+            if audit_singles:
+                single_fold_thresholds[fold - 1] = [youden_threshold(y[fitting], inner[:, j])
+                                                     for j in range(len(NAMES))]
+                single_outer_pred[heldout] = probabilities >= single_fold_thresholds[fold - 1]
+            if report_outer:
+                score = probabilities[:, choice["columns"]].mean(axis=1)
+                pred = score >= choice["threshold_youden"]
+                outer_score[heldout], outer_pred[heldout] = score, pred
+                records.append({"fold": fold, "members": choice["members"],
+                                "inner_auc": choice["inner_auc"],
+                                "threshold": choice["threshold_youden"],
+                                "validation": pick(metrics(y[heldout], score, pred), OUTER_KEYS)})
+                print(f"outer {fold}/5: {choice['members']}", flush=True)
+        assert np.isfinite(member_outer).all()
 
     final = primary["final_selection"] if fixed_members else selector(member_outer, y)
     test_members, bundle = fit_block(indices, xt, "all-development final fit", save_models=True)
@@ -198,13 +218,13 @@ def main() -> None:
         single_rows = []
         expected_singles = json.loads((REF / "single_model_results.json").read_text(encoding="utf-8"))["models"]
         for j, name in enumerate(NAMES):
-            for sample, labels, scores, predictions in (
-                ("outer", y, member_outer[:, j], single_outer_pred[:, j]),
-                ("2025", yt, test_members[:, j], test_members[:, j] >= single_final_thresholds[j]),
+            for sample, labels, scores, predictions, keys in (
+                ("outer", y, member_outer[:, j], single_outer_pred[:, j], SINGLE_OUTER_KEYS),
+                ("2025", yt, test_members[:, j], test_members[:, j] >= single_final_thresholds[j], TEST_KEYS),
             ):
-                measured = metrics(labels, scores, predictions)
-                expected = expected_singles[name]["full"]["outer" if sample == "outer" else "test_2025"]
-                for key in ("auc", "accuracy", "precision", "f1", "balanced_accuracy", "brier"):
+                measured = pick(metrics(labels, scores, predictions), keys)
+                expected = expected_singles[name]["outer" if sample == "outer" else "test_2025"]
+                for key in keys:
                     assert abs(measured[key] - expected[key]) < 1e-8, (name, sample, key)
                 single_rows.append({"model": name, "sample": sample, **measured})
         pd.DataFrame(single_rows).to_csv(args.output / "single_model_performance_refit.csv", index=False)
@@ -214,26 +234,29 @@ def main() -> None:
             args.output / "single_model_final_thresholds.csv", index=False)
     result = {"variant": args.variant, "removed_features": removed,
               "selection_rule": ("fixed original AUC-selected membership and thresholds" if fixed_members else
-                                 "max grouped inner OOF AUC; ties by fewer members then original order" if args.criterion == "auc" else
-                                 "max grouped inner OOF F1; ties by accuracy then original order"),
+                                 "max grouped development OOF AUC; ties by fewer members then original order" if args.criterion == "auc" else
+                                 "max grouped development OOF F1; ties by accuracy then original order"),
               "calibration": "three-fold match-grouped OOF sigmoid (Platt) per learner",
-              "outer": metrics(y, outer_score, outer_pred),
-              "outer_folds": records,
               "final_selection": {k: v for k, v in final.items() if k != "all_auc"},
-              "test_2025": metrics(yt, test_score, test_pred)}
+              "test_2025": pick(metrics(yt, test_score, test_pred), TEST_KEYS)}
+    if report_outer:
+        result["outer"] = pick(metrics(y, outer_score, outer_pred), OUTER_KEYS)
+        result["outer_folds"] = records
+        pd.DataFrame({"match_id": train.match_id, "label": y,
+                      "score": outer_score, "prediction": outer_pred}).to_csv(args.output / "outer_predictions.csv", index=False)
     (args.output / "results.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
-    pd.DataFrame({"match_id": train.match_id, "label": y,
-                  "score": outer_score, "prediction": outer_pred}).to_csv(args.output / "outer_predictions.csv", index=False)
     pd.DataFrame({"match_id": test.match_id, "label": yt,
                   "score": test_score, "prediction": test_pred.astype(int)}).to_csv(args.output / "test_predictions.csv", index=False)
-    np.savez_compressed(args.output / "member_predictions.npz",
-                        outer_members=member_outer, train_platt_oof=member_outer, test_members=test_members)
+    arrays = {"test_members": test_members}
+    if not fixed_members:
+        arrays["train_platt_oof"] = member_outer
+    np.savez_compressed(args.output / "member_predictions.npz", **arrays)
     joblib.dump({**bundle, "features": features, "selection": result["final_selection"]}, args.output / "final_models.joblib")
 
     if args.check_reference:
         if args.criterion == "f1":
-            expected_outer = pd.read_csv(REF / "selection_comparators_outer_predictions.csv")
-            expected_test = pd.read_csv(REF / "selection_comparators_test_predictions.csv")
+            expected_outer = pd.read_csv(REF / "outer_predictions.csv")
+            expected_test = pd.read_csv(REF / "test_predictions.csv")
             for label, reference, scores, predictions in (
                 ("outer", expected_outer, outer_score, outer_pred),
                 ("2025", expected_test, test_score, test_pred),
@@ -242,40 +265,28 @@ def main() -> None:
                 print(f"{label} F1-selection score maximum absolute difference: {difference:.3g}")
                 assert difference < 1e-8
                 assert np.array_equal(reference.f1_selector_pred.to_numpy(int), predictions.astype(int))
-            expected = result
-        elif args.drop_feature == "Backhand Returns" or args.variant == "backhand":
-            reference_outer = pd.read_csv(REF / "backhand_ablation_outer_predictions.csv")
+        elif fixed_members:
             reference_test = pd.read_csv(REF / "backhand_ablation_test_predictions.csv")
-            for label, old, new in (("outer", reference_outer.without_backhand, outer_score),
-                                    ("test", reference_test.without_backhand, test_score)):
-                delta = float(np.max(np.abs(old - new)))
-                print(f"{label} score maximum absolute difference: {delta:.3g}")
-                assert delta < 1e-8
-            expected = primary
+            delta = float(np.max(np.abs(reference_test.without_backhand - test_score)))
+            print(f"test score maximum absolute difference: {delta:.3g}")
+            assert delta < 1e-8
+            assert final["members"] == primary["final_selection"]["members"]
         elif args.variant == "full":
             saved = np.load(REF / "prediction_matrices.npz")
             for key, new in (("outer_members", member_outer), ("test_members", test_members)):
                 delta = float(np.max(np.abs(saved[key] - new)))
                 print(f"{key} maximum absolute difference: {delta:.3g}")
                 assert delta < 1e-8
-            expected = json.loads((REF / "primary_results.json").read_text(encoding="utf-8"))["full"]
+            assert final["members"] == primary["final_selection"]["members"]
+            assert abs(result["outer"]["auc"] - primary["outer"]["auc"]) < 1e-8
+            assert abs(result["test_2025"]["auc"] - primary["test_2025"]["auc"]) < 1e-8
         else:
-            key = "two_feature" if args.variant == "two" else "eight_feature"
-            reference_outer = pd.read_csv(REF / f"{key}_outer_predictions.csv")
-            reference_test = pd.read_csv(REF / f"{key}_test_predictions.csv")
-            for label, old, new in (("outer", reference_outer.score, outer_score),
-                                    ("test", reference_test.score, test_score)):
-                delta = float(np.max(np.abs(old - new)))
-                print(f"{label} score maximum absolute difference: {delta:.3g}")
-                assert delta < 1e-8
-            expected = json.loads((REF / f"{key}_results.json").read_text(encoding="utf-8"))
-        assert final["members"] == expected["final_selection"]["members"]
-        if fixed_members:
-            ablation = json.loads((REF / "backhand_ablation.json").read_text(encoding="utf-8"))
-            assert abs(result["outer"]["auc"] - ablation["outer"]["without_backhand_auc"]) < 1e-8
-            assert abs(result["test_2025"]["auc"] - ablation["test_2025"]["without_backhand_auc"]) < 1e-8
-        else:
-            assert abs(result["outer"]["auc"] - expected["outer"]["auc"]) < 1e-8
+            expected = json.loads((REF / "twelve_feature_results.json").read_text(encoding="utf-8"))
+            reference_test = pd.read_csv(REF / "twelve_feature_test_predictions.csv")
+            delta = float(np.max(np.abs(reference_test.score - test_score)))
+            print(f"test score maximum absolute difference: {delta:.3g}")
+            assert delta < 1e-8
+            assert final["members"] == expected["final_selection"]["members"]
             assert abs(result["test_2025"]["auc"] - expected["test_2025"]["auc"]) < 1e-8
     print(f"Refit complete: {args.output}")
 

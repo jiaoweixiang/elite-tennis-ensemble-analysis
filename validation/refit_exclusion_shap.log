@@ -1,0 +1,50 @@
+LR seed 42 complete
+LR seed 142 complete
+LR seed 242 complete
+Ridge seed 42 complete
+Ridge seed 142 complete
+Ridge seed 242 complete
+Lasso seed 42 complete
+Lasso seed 142 complete
+Lasso seed 242 complete
+RF seed 42 complete
+RF seed 142 complete
+RF seed 242 complete
+GB seed 42 complete
+GB seed 142 complete
+GB seed 242 complete
+SVR seed 42 complete
+SVR seed 142 complete
+SVR seed 242 complete
+AdaB seed 42 complete
+AdaB seed 142 complete
+AdaB seed 242 complete
+DT seed 42 complete
+DT seed 142 complete
+DT seed 242 complete
+KNN seed 42 complete
+KNN seed 142 complete
+KNN seed 242 complete
+MLP seed 42 complete
+MLP seed 142 complete
+MLP seed 242 complete
+GNB seed 42 complete
+GNB seed 142 complete
+GNB seed 242 complete
+LDA seed 42 complete
+LDA seed 142 complete
+LDA seed 242 complete
+Top-40 Backhand ranks match the deposited record
+{
+  "selected_members": [
+    "LR",
+    "Ridge",
+    "RF",
+    "GB",
+    "SVR"
+  ],
+  "selected_backhand_shap_rank": 4,
+  "backhand_top6_count_top40": 39,
+  "n_ensembles": 40
+}
+Explanations complete; elapsed seconds 225.7

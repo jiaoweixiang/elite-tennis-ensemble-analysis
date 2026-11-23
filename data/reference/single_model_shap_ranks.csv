@@ -28,7 +28,7 @@ LR,Rally 5–9 Shots,0.006779986576007447,16,16,16,True
 LR,Rally ≥10 Shots,0.005848925583418227,17,17,17,True
 LR,Total Points Won,0.08079171726000331,3,3,3,True
 LR,Net Approaches,0.003829147214093246,20,20,20,True
-LR,Winners,0.0,31,34,33,False
+LR,Net Points Won,0.0,31,34,33,False
 LR,Distance per Set (m),0.0037733180010182435,21,21,21,True
 LR,Forecourt Short Balls,0.0010609732573714896,30,30,30,True
 LR,Midcourt Balls,0.0,31,34,34,False
@@ -62,7 +62,7 @@ Ridge,Rally 5–9 Shots,0.007348859897466249,16,16,16,True
 Ridge,Rally ≥10 Shots,0.004712052594086347,20,20,20,True
 Ridge,Total Points Won,0.08176899599266398,3,3,3,True
 Ridge,Net Approaches,0.004762072876752306,19,19,19,True
-Ridge,Winners,0.0,31,34,33,False
+Ridge,Net Points Won,0.0,31,34,33,False
 Ridge,Distance per Set (m),0.0029476627239457464,22,22,22,True
 Ridge,Forecourt Short Balls,0.0010495230979574977,30,30,30,True
 Ridge,Midcourt Balls,0.0,31,34,34,False
@@ -96,7 +96,7 @@ Lasso,Rally 5–9 Shots,0.00012005275321663581,16,16,16,True
 Lasso,Rally ≥10 Shots,0.00014044142412395042,5,5,5,True
 Lasso,Total Points Won,0.0001266087791268076,12,12,12,True
 Lasso,Net Approaches,0.0001338244144114495,7,7,7,True
-Lasso,Winners,0.0,31,34,33,False
+Lasso,Net Points Won,0.0,31,34,33,False
 Lasso,Distance per Set (m),0.00011301722607856636,23,23,23,True
 Lasso,Forecourt Short Balls,0.00011988526315917413,18,18,18,True
 Lasso,Midcourt Balls,0.0,31,34,34,False
@@ -130,7 +130,7 @@ RF,Rally 5–9 Shots,0.0018343994762730776,16,16,16,True
 RF,Rally ≥10 Shots,0.0005250714806542361,29,29,29,True
 RF,Total Points Won,0.02597670928616768,2,2,2,True
 RF,Net Approaches,0.0033513458112408414,8,8,8,True
-RF,Winners,0.0,31,34,33,False
+RF,Net Points Won,0.0,31,34,33,False
 RF,Distance per Set (m),0.0027656460829101046,12,12,12,True
 RF,Forecourt Short Balls,0.0018773112751598105,15,15,15,True
 RF,Midcourt Balls,0.0,31,34,34,False
@@ -164,7 +164,7 @@ GB,Rally 5–9 Shots,0.0014011276488868599,16,16,16,True
 GB,Rally ≥10 Shots,0.0004126678483136178,29,29,29,True
 GB,Total Points Won,0.03935485192388126,2,2,2,True
 GB,Net Approaches,0.0030325145715469704,11,11,11,True
-GB,Winners,0.0,31,34,33,False
+GB,Net Points Won,0.0,31,34,33,False
 GB,Distance per Set (m),0.0011147835051876687,20,20,20,True
 GB,Forecourt Short Balls,0.0015826376461301275,14,14,14,True
 GB,Midcourt Balls,0.0,31,34,34,False
@@ -198,7 +198,7 @@ SVR,Rally 5–9 Shots,0.004387885230207748,23,23,23,True
 SVR,Rally ≥10 Shots,0.008419844662819548,12,12,12,True
 SVR,Total Points Won,0.04884837916938463,2,2,2,True
 SVR,Net Approaches,0.013145095383449771,10,10,10,True
-SVR,Winners,0.0,31,34,33,False
+SVR,Net Points Won,0.0,31,34,33,False
 SVR,Distance per Set (m),0.00424468200370092,24,24,24,True
 SVR,Forecourt Short Balls,0.0035876370066687127,27,27,27,True
 SVR,Midcourt Balls,0.0,31,34,34,False
@@ -232,7 +232,7 @@ AdaB,Rally 5–9 Shots,0.003143163010363698,17,17,17,True
 AdaB,Rally ≥10 Shots,0.003123840204573977,18,18,18,True
 AdaB,Total Points Won,0.03286431358862982,2,2,2,True
 AdaB,Net Approaches,0.00860783810735184,7,7,7,True
-AdaB,Winners,0.0,31,34,33,False
+AdaB,Net Points Won,0.0,31,34,33,False
 AdaB,Distance per Set (m),0.0037546966819615017,14,14,14,True
 AdaB,Forecourt Short Balls,0.0018729199933295137,25,25,25,True
 AdaB,Midcourt Balls,0.0,31,34,34,False
@@ -266,7 +266,7 @@ DT,Rally 5–9 Shots,0.0005602042620258333,22,22,22,True
 DT,Rally ≥10 Shots,0.0005566983548081291,23,23,23,True
 DT,Total Points Won,0.045834566783551134,3,3,3,True
 DT,Net Approaches,0.0006591376554316866,10,10,10,True
-DT,Winners,0.0,31,34,33,False
+DT,Net Points Won,0.0,31,34,33,False
 DT,Distance per Set (m),0.00048153113964426403,28,28,28,True
 DT,Forecourt Short Balls,0.0007656984937406935,8,8,8,True
 DT,Midcourt Balls,0.0,31,34,34,False
@@ -300,7 +300,7 @@ KNN,Rally 5–9 Shots,0.004062576598516557,29,29,29,True
 KNN,Rally ≥10 Shots,0.009024727883326752,15,15,15,True
 KNN,Total Points Won,0.012861640545107873,8,8,8,True
 KNN,Net Approaches,0.020478027223943575,4,4,4,True
-KNN,Winners,0.0,31,34,33,False
+KNN,Net Points Won,0.0,31,34,33,False
 KNN,Distance per Set (m),0.006302432748165393,26,26,26,True
 KNN,Forecourt Short Balls,0.008501725017226899,18,18,18,True
 KNN,Midcourt Balls,0.0,31,34,34,False
@@ -334,7 +334,7 @@ MLP,Rally 5–9 Shots,0.010119579079533963,26,26,26,True
 MLP,Rally ≥10 Shots,0.02046376875706447,11,11,11,True
 MLP,Total Points Won,0.03511461233925484,3,3,3,True
 MLP,Net Approaches,0.020707002085543096,10,10,10,True
-MLP,Winners,0.0,31,34,33,False
+MLP,Net Points Won,0.0,31,34,33,False
 MLP,Distance per Set (m),0.016673421719700952,14,14,14,True
 MLP,Forecourt Short Balls,0.012993038258188122,20,20,20,True
 MLP,Midcourt Balls,0.0,31,34,34,False
@@ -368,7 +368,7 @@ GNB,Rally 5–9 Shots,0.0037787319564335105,24,24,24,True
 GNB,Rally ≥10 Shots,0.0027202468365348977,28,28,28,True
 GNB,Total Points Won,0.01002695021847184,12,12,12,True
 GNB,Net Approaches,0.009031239354177163,13,13,13,True
-GNB,Winners,0.0,31,34,33,False
+GNB,Net Points Won,0.0,31,34,33,False
 GNB,Distance per Set (m),0.00484370642446264,20,20,20,True
 GNB,Forecourt Short Balls,0.01033364887012727,10,10,10,True
 GNB,Midcourt Balls,0.0,31,34,34,False
@@ -402,7 +402,7 @@ LDA,Rally 5–9 Shots,0.006086976689247788,16,16,16,True
 LDA,Rally ≥10 Shots,0.005233668170782588,17,17,17,True
 LDA,Total Points Won,0.07442143404276651,3,3,3,True
 LDA,Net Approaches,0.0037637596561143015,20,20,20,True
-LDA,Winners,0.0,31,34,33,False
+LDA,Net Points Won,0.0,31,34,33,False
 LDA,Distance per Set (m),0.0034902216553562584,21,21,21,True
 LDA,Forecourt Short Balls,0.0013892800967291767,30,30,30,True
 LDA,Midcourt Balls,0.0,31,34,34,False

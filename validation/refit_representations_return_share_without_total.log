@@ -1,0 +1,11 @@
+[6.3s] return_share_without_total: outer 1/5 finished; members=['Ridge', 'GB', 'SVR', 'MLP', 'LDA']
+[12.7s] return_share_without_total: outer 2/5 finished; members=['Lasso', 'RF', 'MLP', 'LDA']
+[18.5s] return_share_without_total: outer 3/5 finished; members=['LR', 'Ridge', 'Lasso', 'GB', 'SVR', 'KNN']
+[24.3s] return_share_without_total: outer 4/5 finished; members=['Lasso', 'SVR', 'LDA']
+[31.0s] return_share_without_total: outer 5/5 finished; members=['LR', 'RF', 'SVR', 'AdaB']
+[37.3s] return_share_without_total: Final choice {'index': 1859, 'columns': [0, 2, 4, 5, 7, 11], 'members': ['LR', 'Lasso', 'GB', 'SVR', 'DT', 'LDA'], 'inner_auc': 0.9679618268575324, 'threshold': 0.797960133687497}
+[37.8s] return_share_without_total: AUC outer/test (0.9577368779822768, 0.9500000000000001)
+[92.4s] return_share_without_total: SHAP seed 42 finished
+[144.4s] return_share_without_total: SHAP seed 142 finished
+[194.4s] return_share_without_total: SHAP seed 242 finished
+[196.7s] return_share_without_total: DONE

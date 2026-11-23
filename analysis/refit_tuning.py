@@ -1,4 +1,4 @@
-"""Refit the documented 33-setting hyperparameter sensitivity analysis."""
+"""Refit the 33-setting hyperparameter-tuning sensitivity analysis (Supplementary Table S7)."""
 
 from __future__ import annotations
 
@@ -152,9 +152,12 @@ def main() -> None:
                   for name in NAMES]).to_csv(args.output / "final_selected_settings.csv", index=False)
     test_score = test_member[:, final["columns"]].mean(axis=1)
     test_pred = test_score >= final["threshold_youden"]
-    result = {"outer": metrics(y, outer_score, outer_pred), "outer_folds": fold_rows,
+    final_settings = {name: choose_and_fit(indices, name)["selected_setting"] for name in NAMES}
+    keys = ("auc", "accuracy", "f1")
+    result = {"final_settings": final_settings,
+              "outer": {k: metrics(y, outer_score, outer_pred)[k] for k in keys}, "outer_folds": fold_rows,
               "final_selection": {k: v for k, v in final.items() if k != "all_auc"},
-              "test_2025": metrics(yt, test_score, test_pred)}
+              "test_2025": {k: metrics(yt, test_score, test_pred)[k] for k in keys}}
     (args.output / "results.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     np.savez_compressed(args.output / "member_predictions.npz", outer_platt=outer_member, test_platt=test_member)
     pd.DataFrame({"match_id": train.match_id, "label": y, "score": outer_score,
@@ -169,6 +172,7 @@ def main() -> None:
             assert delta < 1e-8
         expected = json.loads((REF / "tuning_results.json").read_text(encoding="utf-8"))
         assert final["members"] == expected["final_selection"]["members"]
+        assert final_settings == expected["final_settings"]
         assert abs(result["outer"]["auc"] - expected["outer"]["auc"]) < 1e-8
         assert abs(result["test_2025"]["auc"] - expected["test_2025"]["auc"]) < 1e-8
     print(f"Tuning sensitivity refit complete: {args.output}")

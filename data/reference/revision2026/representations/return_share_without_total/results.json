@@ -1,0 +1,149 @@
+{
+  "scenario": "return_share_without_total",
+  "table": "S10",
+  "n_features": 32,
+  "focal_variable": "Backhand share among classified returns",
+  "outer_auc": 0.9577368779822768,
+  "temporal_auc": 0.9500000000000001,
+  "final_choice": {
+    "index": 1859,
+    "columns": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      11
+    ],
+    "members": [
+      "LR",
+      "Lasso",
+      "GB",
+      "SVR",
+      "DT",
+      "LDA"
+    ],
+    "inner_auc": 0.9679618268575324,
+    "threshold": 0.7979601336874971
+  },
+  "outer_choices": [
+    {
+      "fold": 1,
+      "index": 1276,
+      "columns": [
+        1,
+        4,
+        5,
+        9,
+        11
+      ],
+      "members": [
+        "Ridge",
+        "GB",
+        "SVR",
+        "MLP",
+        "LDA"
+      ],
+      "inner_auc": 0.9715359828141783,
+      "threshold": 0.8300029134291388
+    },
+    {
+      "fold": 2,
+      "index": 609,
+      "columns": [
+        2,
+        3,
+        9,
+        11
+      ],
+      "members": [
+        "Lasso",
+        "RF",
+        "MLP",
+        "LDA"
+      ],
+      "inner_auc": 0.9573200992555831,
+      "threshold": 0.8113745965740907
+    },
+    {
+      "fold": 3,
+      "index": 1615,
+      "columns": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        8
+      ],
+      "members": [
+        "LR",
+        "Ridge",
+        "Lasso",
+        "GB",
+        "SVR",
+        "KNN"
+      ],
+      "inner_auc": 0.9799023830031582,
+      "threshold": 0.7670962531524776
+    },
+    {
+      "fold": 4,
+      "index": 198,
+      "columns": [
+        2,
+        5,
+        11
+      ],
+      "members": [
+        "Lasso",
+        "SVR",
+        "LDA"
+      ],
+      "inner_auc": 0.964998703655691,
+      "threshold": 0.8238866006300006
+    },
+    {
+      "fold": 5,
+      "index": 386,
+      "columns": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "members": [
+        "LR",
+        "RF",
+        "SVR",
+        "AdaB"
+      ],
+      "inner_auc": 0.9649742058104805,
+      "threshold": 0.8206872980168252
+    }
+  ],
+  "sklearn_version": "1.6.1",
+  "source_train_sha256": "91b18ecf183d65f4b25b50650d972ada0be647d644990c3bf69cc0aab2b6ccc4",
+  "source_test_sha256": "ccc1673c988967c4f17604959621c621da41eee3cf0d7d268c328678a728ad90",
+  "focal_shap_rank": 7,
+  "focal_mean_abs_shap": 0.018729606761600726,
+  "focal_rank_bootstrap_CI95": [
+    5.0,
+    7.0
+  ],
+  "SHAP_budget": 2048,
+  "SHAP_seeds": [
+    42,
+    142,
+    242
+  ],
+  "SHAP_background": 50,
+  "bootstrap_seed": 20261111,
+  "bootstrap_draws": 2000,
+  "temporal_mean_mask_delta_auc": 0.02000000000000013,
+  "temporal_mean_mask_delta_CI95": [
+    0.0,
+    0.06314033189033186
+  ],
+  "mean_mask_definition": "Replace the focal transformed predictor by its development-set mean; all fitted learners, screening, calibration and ensemble members remain fixed."
+}

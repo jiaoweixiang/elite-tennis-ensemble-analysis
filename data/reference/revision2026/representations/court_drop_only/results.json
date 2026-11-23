@@ -1,0 +1,151 @@
+{
+  "scenario": "court_drop_only",
+  "table": "S9",
+  "n_features": 33,
+  "focal_variable": "Backhand Returns",
+  "outer_auc": 0.9602931152010907,
+  "temporal_auc": 0.9733333333333334,
+  "final_choice": {
+    "index": 2884,
+    "columns": [
+      0,
+      2,
+      6,
+      7,
+      9,
+      10,
+      11
+    ],
+    "members": [
+      "LR",
+      "Lasso",
+      "AdaB",
+      "DT",
+      "MLP",
+      "GNB",
+      "LDA"
+    ],
+    "inner_auc": 0.9705180640763463,
+    "threshold": 0.7760050699953631
+  },
+  "outer_choices": [
+    {
+      "fold": 1,
+      "index": 410,
+      "columns": [
+        0,
+        4,
+        5,
+        9
+      ],
+      "members": [
+        "LR",
+        "GB",
+        "SVR",
+        "MLP"
+      ],
+      "inner_auc": 0.9758324382384532,
+      "threshold": 0.7957722145788922
+    },
+    {
+      "fold": 2,
+      "index": 659,
+      "columns": [
+        2,
+        7,
+        8,
+        11
+      ],
+      "members": [
+        "Lasso",
+        "DT",
+        "KNN",
+        "LDA"
+      ],
+      "inner_auc": 0.9704714640198511,
+      "threshold": 0.7172909910916323
+    },
+    {
+      "fold": 3,
+      "index": 804,
+      "columns": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "members": [
+        "LR",
+        "Ridge",
+        "Lasso",
+        "GB",
+        "KNN"
+      ],
+      "inner_auc": 0.9850703416594889,
+      "threshold": 0.771791130932787
+    },
+    {
+      "fold": 4,
+      "index": 1639,
+      "columns": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        8
+      ],
+      "members": [
+        "LR",
+        "Ridge",
+        "Lasso",
+        "SVR",
+        "DT",
+        "KNN"
+      ],
+      "inner_auc": 0.9618874773139746,
+      "threshold": 0.8100144789283996
+    },
+    {
+      "fold": 5,
+      "index": 98,
+      "columns": [
+        0,
+        3,
+        5
+      ],
+      "members": [
+        "LR",
+        "RF",
+        "SVR"
+      ],
+      "inner_auc": 0.9636166168884062,
+      "threshold": 0.7909993059601955
+    }
+  ],
+  "sklearn_version": "1.6.1",
+  "source_train_sha256": "91b18ecf183d65f4b25b50650d972ada0be647d644990c3bf69cc0aab2b6ccc4",
+  "source_test_sha256": "ccc1673c988967c4f17604959621c621da41eee3cf0d7d268c328678a728ad90",
+  "focal_shap_rank": 6,
+  "focal_mean_abs_shap": 0.016678856767346276,
+  "focal_rank_bootstrap_CI95": [
+    5.0,
+    8.0
+  ],
+  "SHAP_budget": 2048,
+  "SHAP_seeds": [
+    42,
+    142,
+    242
+  ],
+  "SHAP_background": 50,
+  "bootstrap_seed": 20261111,
+  "bootstrap_draws": 2000,
+  "temporal_focal_ablation_delta_auc": 0.01666666666666672,
+  "temporal_focal_ablation_CI95": [
+    0.0,
+    0.05788644015916716
+  ],
+  "ablation_definition": "Delete Backhand Returns and refit screening, learners and calibration, holding the selected members fixed."
+}

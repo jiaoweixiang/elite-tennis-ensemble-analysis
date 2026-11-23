@@ -1,0 +1,37 @@
+match_id,old_opponent,new_opponent,old_rank,new_rank,exact_name,exact_rank
+2019_AO_F_Djokovic,Rafael Nadal,Rafael Nadal,2.0,2.0,True,True
+2019_AO_QF_Djokovic,Kei Nishikori,Kei Nishikori,9.0,9.0,True,True
+2019_AO_R16_Djokovic,Daniil Medvedev,Daniil Medvedev,19.0,19.0,True,True
+2019_AO_R32_Djokovic,Denis Shapovalov,Denis Shapovalov,27.0,27.0,True,True
+2019_AO_SF_Djokovic,Lucas Pouille,Lucas Pouille,31.0,31.0,True,True
+2019_AO_R128_Djokovic,Mitchell Krueger,Mitchell Krueger,230.0,230.0,True,True
+2019_AO_R64_Djokovic,Jo-Wilfried Tsonga,Jo-Wilfried Tsonga,177.0,177.0,True,True
+2019_USO_R128_Djokovic,Roberto Carballes Baena,Roberto Carballes Baena,76.0,76.0,True,True
+2019_USO_R64_Djokovic,Juan Ignacio Londero,Juan Ignacio Londero,56.0,56.0,True,True
+2019_USO_R32_Djokovic,Denis Kudla,Denis Kudla,111.0,111.0,True,True
+2019_USO_R16_Djokovic,Stan Wawrinka,Stan Wawrinka,24.0,24.0,True,True
+2020_AO_R128_Djokovic,Jan Lennard Struff,Jan Lennard Struff,37.0,37.0,True,True
+2020_AO_R64_Djokovic,Tatsuma Ito,Tatsuma Ito,146.0,146.0,True,True
+2020_AO_R32_Djokovic,Yoshihito Nishioka,Yoshihito Nishioka,71.0,71.0,True,True
+2020_AO_R16_Djokovic,Diego Schwartzman,Diego Schwartzman,14.0,14.0,True,True
+2020_AO_QF_Djokovic,Milos Raonic,Milos Raonic,35.0,35.0,True,True
+2020_AO_SF_Djokovic,Roger Federer,Roger Federer,3.0,3.0,True,True
+2020_AO_F_Djokovic,Dominic Thiem,Dominic Thiem,5.0,5.0,True,True
+2020_USO_R128_Djokovic,Damir Dzumhur,Damir Dzumhur,109.0,109.0,True,True
+2020_USO_R64_Djokovic,Kyle Edmund,Kyle Edmund,44.0,44.0,True,True
+2020_USO_R32_Djokovic,Jan Lennard Struff,Jan Lennard Struff,29.0,29.0,True,True
+2020_USO_R16_Djokovic,Pablo Carreno Busta,Pablo Carreno Busta,27.0,27.0,True,True
+2021_USO_R128_Djokovic,Holger Rune,Holger Rune,145.0,145.0,True,True
+2021_USO_R64_Djokovic,Tallon Griekspoor,Tallon Griekspoor,121.0,121.0,True,True
+2021_USO_R32_Djokovic,Kei Nishikori,Kei Nishikori,56.0,56.0,True,True
+2021_USO_R16_Djokovic,Jenson Brooksby,Jenson Brooksby,99.0,99.0,True,True
+2021_USO_QF_Djokovic,Matteo Berrettini,Matteo Berrettini,8.0,8.0,True,True
+2021_USO_SF_Djokovic,Alexander Zverev,Alexander Zverev,4.0,4.0,True,True
+2021_USO_F_Djokovic,Daniil Medvedev,Daniil Medvedev,2.0,2.0,True,True
+2021_AO_R128_Djokovic,Jeremy Chardy,Jeremy Chardy,61.0,61.0,True,True
+2021_AO_R64_Djokovic,Frances Tiafoe,Frances Tiafoe,64.0,64.0,True,True
+2021_AO_R32_Djokovic,Taylor Fritz,Taylor Fritz,31.0,31.0,True,True
+2021_AO_R16_Djokovic,Milos Raonic,Milos Raonic,14.0,14.0,True,True
+2021_AO_QF_Djokovic,Alexander Zverev,Alexander Zverev,7.0,7.0,True,True
+2021_AO_SF_Djokovic,Aslan Karatsev,Aslan Karatsev,114.0,114.0,True,True
+2021_AO_F_Djokovic,Daniil Medvedev,Daniil Medvedev,4.0,4.0,True,True

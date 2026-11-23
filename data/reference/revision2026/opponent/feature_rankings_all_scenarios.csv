@@ -1,0 +1,93 @@
+scenario,feature,mean_abs_shap,rank_all,rank_technical
+original,Service Breaks,0.13283696447955706,1,1.0
+original,Total Returns,0.0432864795153715,2,2.0
+original,Total Points Won,0.03757332025178282,3,3.0
+original,Unforced Errors,0.02771146156752079,4,4.0
+original,2nd Serve Pts Won ,0.020872219380960805,5,5.0
+original,Backhand Returns,0.016506885040121162,6,6.0
+original,Double Faults,0.015979771255809155,7,7.0
+original,Forehand Returns,0.012152501792226423,8,8.0
+original,1st Serve Pts Won ,0.010565986169675207,9,9.0
+original,Drive Returns,0.007266393460086282,10,10.0
+original,2nd Serve In ,0.004516084667818622,11,11.0
+original,Backhand Avg Speed,0.004266796279070632,12,12.0
+original,Net Approaches,0.0038808212944470856,13,13.0
+original,2nd Serve Speed (km/h),0.003461388280517449,14,14.0
+original,1st Serve In ,0.00324622975071731,15,15.0
+original,Forehand Return Win ,0.0032057072593167984,16,16.0
+original,Rally 5–9 Shots,0.0026606346653175435,17,17.0
+original,Slice/Block Returns,0.002252861854968151,18,18.0
+original,Rally ≥10 Shots,0.002245944723508872,19,19.0
+original,Distance per Set (m),0.002120415605107914,20,20.0
+original,1st Serve Speed (km/h),0.002103573889933981,21,21.0
+original,Slice/Block (3rd Shot),0.002088119412243591,22,22.0
+original,Break Points,0.00181357357647341,23,23.0
+original,Forecourt Short Balls,0.0017478669084154141,24,24.0
+original,Backcourt Deep Balls,0.0012306999533591803,25,25.0
+original,Forehand Avg Speed,0.0008474597068159551,26,26.0
+original,Rally ≤4 Shots,0.0008312261413467602,27,27.0
+original,Backhand Return Win ,0.0007974303434099227,28,28.0
+original,Aces,0.000688087191518853,29,29.0
+original,Drive (3rd Shot),0.000591148416699663,30,30.0
+fixed_members,Service Breaks,0.12901452441219213,1,1.0
+fixed_members,Total Returns,0.044035852854537656,2,2.0
+fixed_members,Total Points Won,0.03630437122139408,3,3.0
+fixed_members,Unforced Errors,0.029597103733615144,4,4.0
+fixed_members,2nd Serve Pts Won ,0.020947484024969466,5,5.0
+fixed_members,Backhand Returns,0.01663004641909146,6,6.0
+fixed_members,Double Faults,0.016262432752981882,7,7.0
+fixed_members,Forehand Returns,0.0123833074198493,8,8.0
+fixed_members,1st Serve Pts Won ,0.01005642072049291,9,9.0
+fixed_members,Drive Returns,0.007964270130808103,10,10.0
+fixed_members,Backhand Avg Speed,0.004539405583194916,11,11.0
+fixed_members,2nd Serve In ,0.004007366258122371,12,12.0
+fixed_members,2nd Serve Speed (km/h),0.0035160597350367,13,13.0
+fixed_members,Opponent ATP rank (log2),0.0035145682607215837,14,
+fixed_members,1st Serve In ,0.0035018568048446217,15,14.0
+fixed_members,Net Approaches,0.003367414586723791,16,15.0
+fixed_members,Slice/Block Returns,0.0033441630040150724,17,16.0
+fixed_members,Forehand Return Win ,0.0032179750878758135,18,17.0
+fixed_members,Rally 5–9 Shots,0.0028818689500048245,19,18.0
+fixed_members,1st Serve Speed (km/h),0.0025741741723647347,20,19.0
+fixed_members,Distance per Set (m),0.0021177557678970084,21,20.0
+fixed_members,Break Points,0.001991211900551743,22,21.0
+fixed_members,Rally ≥10 Shots,0.001882145832278155,23,22.0
+fixed_members,Forecourt Short Balls,0.0016967558489827908,24,23.0
+fixed_members,Slice/Block (3rd Shot),0.0014800583593381753,25,24.0
+fixed_members,Backcourt Deep Balls,0.001297282513557901,26,25.0
+fixed_members,Aces,0.0007537336856666667,27,26.0
+fixed_members,Backhand Return Win ,0.0007477381361836449,28,27.0
+fixed_members,Forehand Avg Speed,0.0007187990419620507,29,28.0
+fixed_members,Rally ≤4 Shots,0.0007064917851473116,30,29.0
+fixed_members,Drive (3rd Shot),0.0006495488512149844,31,30.0
+reselected,Service Breaks,0.12868756818160015,1,1.0
+reselected,Total Returns,0.04453986402973785,2,2.0
+reselected,Total Points Won,0.03542150326323061,3,3.0
+reselected,Unforced Errors,0.02879748983969347,4,4.0
+reselected,2nd Serve Pts Won ,0.02030617829651632,5,5.0
+reselected,Backhand Returns,0.017469465881560176,6,6.0
+reselected,Double Faults,0.01562804741420637,7,7.0
+reselected,Forehand Returns,0.012757394995937144,8,8.0
+reselected,1st Serve Pts Won ,0.009532536107399018,9,9.0
+reselected,Drive Returns,0.0073141734853767095,10,10.0
+reselected,Backhand Avg Speed,0.004309578233132388,11,11.0
+reselected,2nd Serve In ,0.0041114144455861625,12,12.0
+reselected,Opponent ATP rank (log2),0.003487837646824899,13,
+reselected,2nd Serve Speed (km/h),0.0033586991590225123,14,13.0
+reselected,Net Approaches,0.0032498084340658448,15,14.0
+reselected,1st Serve In ,0.0032035188951966714,16,15.0
+reselected,Slice/Block Returns,0.0032026350117775513,17,16.0
+reselected,Forehand Return Win ,0.003007178038199425,18,17.0
+reselected,Rally 5–9 Shots,0.002778008260095018,19,18.0
+reselected,1st Serve Speed (km/h),0.002317753871892976,20,19.0
+reselected,Distance per Set (m),0.0021742891389548084,21,20.0
+reselected,Break Points,0.001968693356683142,22,21.0
+reselected,Rally ≥10 Shots,0.001955175759238633,23,22.0
+reselected,Forecourt Short Balls,0.0016971233322539071,24,23.0
+reselected,Slice/Block (3rd Shot),0.0014895882965422838,25,24.0
+reselected,Backcourt Deep Balls,0.0011806631524910788,26,25.0
+reselected,Backhand Return Win ,0.0008101286849339065,27,26.0
+reselected,Forehand Avg Speed,0.0007900688466882404,28,27.0
+reselected,Rally ≤4 Shots,0.0007593254519396609,29,28.0
+reselected,Aces,0.0007431765123311816,30,29.0
+reselected,Drive (3rd Shot),0.0006933675442540902,31,30.0

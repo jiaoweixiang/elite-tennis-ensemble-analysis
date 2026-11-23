@@ -1,0 +1,7 @@
+split,scenario,metric,low,high,valid_draws
+development,fixed_members,paired_AUC_change,-0.0130459089937008,0.0026763581034581,2000
+development,reselected,paired_AUC_change,-0.0540706350522302,-0.0118640951359179,2000
+temporal_2025,fixed_members,paired_AUC_change,-0.0148148148148148,0.0185185185185183,2000
+temporal_2025,fixed_members,focal_ablation_delta_AUC,0.0,0.0401304713804712,2000
+temporal_2025,reselected,paired_AUC_change,-0.0400030864197531,0.0,2000
+temporal_2025,reselected,focal_ablation_delta_AUC,0.0,0.0480871212121212,2000

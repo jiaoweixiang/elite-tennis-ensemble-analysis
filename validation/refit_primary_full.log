@@ -1,0 +1,9 @@
+outer 1/5: ['Ridge', 'GB', 'SVR', 'AdaB', 'MLP']
+outer 2/5: ['Lasso', 'DT', 'KNN', 'LDA']
+outer 3/5: ['LR', 'Ridge', 'Lasso', 'GB', 'SVR', 'MLP']
+outer 4/5: ['Ridge', 'SVR', 'AdaB', 'DT']
+outer 5/5: ['LR', 'RF', 'SVR']
+all-development final fit: 199 fitting sets, 40 predictions
+outer_members maximum absolute difference: 9.55e-15
+test_members maximum absolute difference: 3.77e-15
+Refit complete: REPOSITORY/outputs/refit

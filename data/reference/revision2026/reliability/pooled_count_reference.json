@@ -1,0 +1,13 @@
+{
+  "method": "Descriptive pooled unweighted exact-count Cohen kappa for 20 manual count indicators across six sets. One indicator-set count pair is one record; 120 paired records. Not event-level kappa, not six independent match observations. Rates and eight tracking-derived indicators excluded by measurement type.",
+  "count_indicators": 20,
+  "sets": 6,
+  "paired_count_records": 120,
+  "equal_count_records": 112,
+  "exact_count_agreement": 0.9333333333333333,
+  "expected_agreement": 0.06319444444444444,
+  "pooled_exact_count_kappa": 0.9288361749444033,
+  "sample_context": "Six sets from two development matches (recorded selection seed 2026); the two matches were accepted after exploratory sampling checks. Estimates are restricted to these records.",
+  "source_sha256": "e97d2a8b9a3879cd518413a250f74af143eef4123fda5148f25cf457959fece9",
+  "source": "supplementary/TableS11.docx"
+}
